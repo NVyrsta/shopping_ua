@@ -103,6 +103,34 @@ export async function fetchProductById(id) {
   }
 }
 
+export async function fetchProductsByIds(ids) {
+  try {
+    // Create a query to find products where the 'id' field matches any of the ids in the array
+    const q = query(dbRef, where('id', 'in', ids));
+
+    // Execute the query
+    const querySnapshot = await getDocs(q);
+
+    // Check if the query returned any documents
+    if (!querySnapshot.empty) {
+      // Map over the returned documents and extract the data
+      const products = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+
+      console.log('Products fetchProductsByIds:', products);
+      return products;
+    } else {
+      console.log('No matching documents!');
+      return [];
+    }
+  } catch (error) {
+    console.error('Error getting documents:', error);
+    return [];
+  }
+}
+
 export async function fetchFavoritesProducts() {
   const ids = JSON.parse(localStorage.getItem('favorites') || '[]');
 
@@ -139,7 +167,6 @@ export async function fetchFavoritesProducts() {
     return [];
   }
 }
-
 
 export async function fetchProductByQuery(queryString) {
   try {
