@@ -2,7 +2,10 @@
   <div
     class="bg-white shadow-lg rounded-lg overflow-hidden transition-transform transform hover:scale-105"
   >
-    <div class="relative">
+    <div 
+      class="relative cursor-pointer"
+      @click="() => $router.push({ name: 'ProductCardPage', params: { id: product.id } })"
+    >
       <img
         :src="product.img"
         :alt="product.name[locale]"
@@ -18,7 +21,7 @@
 
       <div class="absolute top-2 right-2 flex space-x-2">
         <button
-          @click="toggleFavorite"
+          @click.stop="toggleFavorite"
         >
           <svg
             v-if="!isFavorited"
@@ -50,7 +53,7 @@
         </button>
 
         <button 
-          @click="toggleCartItems"
+          @click.stop="toggleCartItems"
         >
           <svg
             v-if="!isInCart"

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="favorites">
     <div class="flex justify-between items-center gap-2 bg-orange-100 px-4">
       <div />
 
@@ -118,4 +118,8 @@ watch(locale, () => {
 });
 </script>
 
-<style scoped></style>
+<style scoped>
+.favorites {
+  min-height: calc(100vh + 40px);
+}
+</style>

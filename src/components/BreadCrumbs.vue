@@ -4,23 +4,23 @@
 
     <span class="arrow-next">
       <SvgIcon 
-        id="slide-prev"
+        id="back"
         width="6"
         height="10"
+        fill="#6d6d6d"
+        class="transform rotate-180"
       />
-
-      <svg width="6" height="10">
-        <use :href="'/__spritemap#sprite-slide-prev'" />
-      </svg>
     </span>
 
     <router-link v-if="isFavoritesPage" to="/favorites">{{ $t('Header.Chosen') }}</router-link> 
 
     <span class="arrow-next">
       <SvgIcon 
-        id="slide-next"
+        id="back"
         width="6"
         height="10"
+        fill="#6d6d6d"
+        class="transform rotate-180"
       />
     </span>
   </nav>

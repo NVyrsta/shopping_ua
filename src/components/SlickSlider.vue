@@ -1,6 +1,8 @@
 <template>
   <carousel 
     :items-to-show="1"
+    :autoplay="2000"
+    wrapAround
   >
     <slide v-for="slide in slides" :key="slide">
       <img :src="slide.src" :alt="slide.title">
@@ -37,19 +39,21 @@ const slides = [
 ];
 </script>
 
-<style scoped>
-.carousel::v-deep .carousel__prev {
-  background: white;
-}
+<style lang="scss" scoped>
+.carousel::v-deep {
+  .carousel__prev {
+    background: white;
+  }
 
-.carousel::v-deep .carousel__next {
-  background: white;
-}
+  & .carousel__next {
+    background: white;
+  }
 
-.carousel::v-deep .carousel__pagination {
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
+  & .carousel__pagination {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }
 </style>

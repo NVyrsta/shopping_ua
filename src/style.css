@@ -5,6 +5,7 @@
 body {
   font-family: Roboto, Helvetica, Arial, sans-serif;
   color: #3f3f3f;
+  overflow-x: hidden;
 }
 
 .underline-effect {

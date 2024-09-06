@@ -1,6 +1,11 @@
 <template>
-  <div>
+  <div class="flex flex-col min-h-screen">
     <CartHeader />
+
+    <div class="flex-1">
+      cart content
+    </div>
+
     <CartFooter />
   </div>
 </template>

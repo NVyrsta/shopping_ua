@@ -6,8 +6,8 @@
 </template>
 
 <script setup>
-import HeaderBanner from '@/components/HeaderBanner.vue';
-import HeaderPrimary from '@/components/HeaderPrimary.vue';
+import HeaderBanner from '@/components/header/HeaderBanner.vue';
+import HeaderPrimary from '@/components/header/HeaderPrimary.vue';
 </script>
 
 <style scoped>
