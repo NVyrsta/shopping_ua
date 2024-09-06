@@ -8,9 +8,20 @@ const { goBack } = useGoBack();
 <template>
   <div class="banner flex justify-between items-center gap-2">
     <div class="flex-1">
-      <a @click.prevent="goBack">
-        <SvgSprite symbol="back" size="0 0 7 12" />
-        <span class="text-sm text-white font-medium cursor-pointer">{{ $t('Main.Back') }}</span>
+      <a 
+        class="flex items-center gap-2 cursor-pointer"
+        @click.prevent="goBack"
+      >
+        <SvgIcon
+          id="back"
+          width="7"
+          height="12"
+          fill="white"
+        />
+
+        <span class="text-sm text-white font-medium uppercase">
+          {{ $t('Main.Back') }}
+        </span>
       </a>    
     </div>
 
