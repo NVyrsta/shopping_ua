@@ -3,7 +3,6 @@
     :width="width"
     :height="height"
     :fill="fill"
-    :viewBox="viewBox"
     role="img"
     aria-hidden="true"
   >

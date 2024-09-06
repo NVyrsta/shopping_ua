@@ -7,7 +7,7 @@ import LanguageSwitcher from '@/components/LanguageSwitcher.vue';
     <div class="flex items-center gap-1 justify-start">
       <a href="#">
         <SvgIcon
-          id="instagram"
+          id="social-instagram"
           width="14"
           height="14"
           fill="white"
@@ -16,7 +16,7 @@ import LanguageSwitcher from '@/components/LanguageSwitcher.vue';
 
       <a href="#">
         <SvgIcon
-          id="facebook"
+          id="social-facebook"
           width="14"
           height="14"
           fill="white"
@@ -25,7 +25,7 @@ import LanguageSwitcher from '@/components/LanguageSwitcher.vue';
 
       <a href="#">
         <SvgIcon
-          id="telegram"
+          id="social-telegram"
           width="14"
           height="14"
           fill="white"

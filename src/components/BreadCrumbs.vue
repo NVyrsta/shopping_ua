@@ -8,6 +8,10 @@
         width="6"
         height="10"
       />
+
+      <svg width="6" height="10">
+        <use :href="'/__spritemap#sprite-slide-prev'" />
+      </svg>
     </span>
 
     <router-link v-if="isFavoritesPage" to="/favorites">{{ $t('Header.Chosen') }}</router-link> 
