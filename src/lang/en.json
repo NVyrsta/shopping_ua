@@ -1,0 +1,26 @@
+{
+  "Header": {
+    "Search": "Search",
+    "Chosen": "Chosen",
+    "Cart": "Cart",
+    "FreeDelivery": "Free delivery",
+    "FreeDeliveryDesc": "Free delivery throughout Ukraine for most products presented in the catalog of our online store.",
+    "QualityQuarantee": "Quality guarantee",
+    "QualityQuaranteeDesc": "All the goods presented in our online store are genuine and correspond to the declared quality. We work only with official Ukrainian manufacturers.",
+    "EasyReturn": "Easy return",
+    "EasyReturnDesc": "According to the legislation of Ukraine, our customers can easily return or exchange a product that did not fit within 14 days from the moment of purchase.",
+    "ManufacturersPrices": "Manufacturers' prices",
+    "ManufacturersPricesDesc": "We work directly with product manufacturers, so we offer our customers the most favorable conditions for shopping."
+  },
+  "Favorites": {
+    "AddProductsToFavorites": "Add products to favorites",
+    "OnTheMainOne": "On the main one",
+    "Main": "Main"
+  },
+  "Main": {
+    "SHOESOFUKRAINIANBRANDS": "SHOES OF UKRAINIAN BRANDS",
+    "HOMECLOTHES": "HOME CLOTHES",
+    "AllRightsReserved": "All rights reserved",
+    "Back": "Back"
+  }
+}
