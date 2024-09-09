@@ -4,7 +4,7 @@
       v-if="product"
       class="relative"
     >
-      <h1>{{ product.name }}</h1>
+      <h1>{{ product.name[locale] }}</h1>
       <p>{{ product.description }}</p>
       <p>Ціна: {{ product.price }}</p>
 
@@ -31,22 +31,21 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
+import { useI18n } from 'vue-i18n';
 import { fetchProductById } from '@/app/core/plugins/firebase.js'; 
 
-import PageLayout from '@/layouts/PageLayout.vue';
 import ProductPageSlider from '@/components/sliders/ProductPageSlider.vue';
+import PageLayout from '@/layouts/PageLayout.vue';
 
-// Створюємо стейт для збереження даних продукту
+const { locale } = useI18n();
+
 const product = ref(null);
 
-// Отримуємо поточний маршрут
 const route = useRoute();
 
-// Викликаємо функцію при маунті компонента
 onMounted(async () => {
   const productId = route.params.id;
   try {
-    // Отримуємо дані продукту за ID
     const response = await fetchProductById(productId);
     product.value = response;
 
@@ -57,22 +56,16 @@ onMounted(async () => {
 });
 
 function addProductToRecentlyViewed(productId) {
-  // Отримуємо наявні продукти з LocalStorage
   let viewedProducts = JSON.parse(localStorage.getItem('recentlyViewedProducts')) || [];
 
-  // Перевіряємо, чи продукт вже є у списку
   if (!viewedProducts.includes(productId)) {
-    // Якщо продукт не знайдено, додаємо його на початок списку
     viewedProducts.unshift(productId);
     
-    // Обмежуємо кількість останніх продуктів, наприклад, 5
     if (viewedProducts.length > 5) {
       viewedProducts.pop();
     }
 
-    // Зберігаємо оновлений список в LocalStorage
     localStorage.setItem('recentlyViewedProducts', JSON.stringify(viewedProducts));
   }
 }
-
 </script>

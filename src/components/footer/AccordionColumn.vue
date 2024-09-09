@@ -2,7 +2,7 @@
   <div class="accordion-item">
     <!-- Заголовок -->
     <h2
-      class="text-lg cursor-pointer md:cursor-default md:mb-2 text-gray-500 text-[16px]"
+      class="cursor-pointer md:cursor-default md:mb-2 text-gray-500 text-[16px]"
       @click="toggle"
     >
       {{ props.title }}

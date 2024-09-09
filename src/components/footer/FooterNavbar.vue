@@ -3,7 +3,7 @@
     class="bg-white py-12 px-4 shadow-[0px_-4px_10px_0px_rgba(0,0,0,0.1)]"
   >
     <div class="flex justify-between items-center gap-6 py-1">
-      <div class="flex items-center">
+      <div class="flex items-center justify-center flex-col gap-2 text-center">
         <router-link to="/"> 
           <img
             src="@/assets/img/logo.png"
@@ -12,6 +12,11 @@
             height="50px"
           />
         </router-link>
+
+        <span class="text-xs">
+          &copy; {{ new Date().getFullYear() }}. <br />
+          {{ $t('Main.AllRightsReserved') }}
+        </span>
       </div>
 
       <!-- <div class="flex">
