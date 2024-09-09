@@ -14,13 +14,13 @@ import { v4 as uuidv4 } from 'uuid';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: 'AIzaSyAn6bWaWHE7nUxriO5K9BNjmazOa-9Svrw',
-  authDomain: 'products-cataloge.firebaseapp.com',
-  projectId: 'products-cataloge',
-  storageBucket: 'products-cataloge.appspot.com',
-  messagingSenderId: '35426212855',
-  appId: '1:35426212855:web:5e70a934d03d1da6736cf2',
-  measurementId: 'G-9GSYH92P8M',
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
 };
 
 // Initialize Firebase
