@@ -24,7 +24,9 @@
     "Back": "НАЗАД",
     "YouRecentlyBrowsed": "Ви нещодавно переглядали",
     "PageNotFound": "Сторінка не знайдена",
-    "Contacts": "Контакти"
+    "Contacts": "Контакти",
+    "AddToCart": "ДОДАТИ В КОШИК",
+    "InTheCart": "У кошику"
   },
   "Breadcrumbs": {
     "Main": "Головна",

@@ -30,6 +30,7 @@ const changeLanguage = (lang) => {
 
 onMounted(() => {
   const savedLanguage = localStorage.getItem('selectedLanguage');
+  
   if (savedLanguage) {
     selectedLanguage.value = savedLanguage;
     locale.value = savedLanguage;

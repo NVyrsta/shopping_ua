@@ -3,9 +3,15 @@
     :items-to-show="slidesCount"
     wrap-around
   >
-    <slide v-for="(slide, index) in props.slides" :key="index">
+    <slide 
+      v-for="(slide, index) in props.slides" 
+      :key="index"
+    >
       <div class="flex justify-center items-start overflow-hidden">
-        <img :src="slide" class="w-full height-auto">
+        <img 
+          :src="slide" 
+          class="w-full height-auto"
+        >
       </div>
     </slide>
 
@@ -16,7 +22,6 @@
 </template>
 
 <script setup>
-// If you are using PurgeCSS, make sure to whitelist the carousel CSS classes
 import 'vue3-carousel/dist/carousel.css';
 import { ref, onMounted, onBeforeUnmount, computed } from 'vue';
 import { Carousel, Slide, Navigation } from 'vue3-carousel';
@@ -30,32 +35,28 @@ const props = defineProps({
   },
 });
 
-// Функція для оновлення ширини екрану
 const updateScreenWidth = () => {
   screenWidth.value = window.innerWidth;
 };
 
-// Слухаємо зміну розміру екрану
 onMounted(() => {
   window.addEventListener('resize', updateScreenWidth);
 });
 
-// Знімаємо слухач при знищенні компонента
 onBeforeUnmount(() => {
   window.removeEventListener('resize', updateScreenWidth);
 });
 
-// Визначаємо кількість слайдів в залежності від ширини екрану
 const slidesCount = computed(() => {
 
   if (screenWidth.value >= 1100) {
-    return 4; // Для великих екранів показуємо 4 слайди
+    return 4;
   } else if (screenWidth.value >= 768) {
-    return 3; // Для середніх екранів показуємо 2 слайди
+    return 3;
   } else if (screenWidth.value >= 460) {
-    return 2; // Для середніх екранів показуємо 2 слайди
+    return 2;
   } else {
-    return 1; // Для маленьких екранів показуємо 1 слайд
+    return 1;
   }
 });
 </script>

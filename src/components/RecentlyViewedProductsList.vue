@@ -10,7 +10,11 @@
     <div
       v-if="products.length > 0 && !isLoading"
       class="grid xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 px-10 py-5 gap-2">
-      <ProductCard v-for="(product, index) in products" :key="index" :product="product" />
+      <ProductCard 
+        v-for="(product, index) in products" 
+        :key="index" 
+        :product="product" 
+      />
     </div>
   </div>
 </template>

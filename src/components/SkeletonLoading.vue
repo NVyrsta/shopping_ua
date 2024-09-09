@@ -1,6 +1,13 @@
 <template>
-  <div v-if="props.isLoading" class="grid xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 px-10 py-5 gap-2">
-    <div v-for="n in numberOfSkeletons" :key="n" class="animate-pulse skeleton-card h-500 w-full rounded"></div>
+  <div 
+    v-if="props.isLoading" 
+    class="grid xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 px-10 py-5 gap-2"
+  >
+    <div 
+      v-for="n in numberOfSkeletons" 
+      :key="n" 
+      class="animate-pulse skeleton-card h-500 w-full rounded"
+    ></div>
   </div>
 </template>
 

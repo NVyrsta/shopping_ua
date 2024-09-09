@@ -192,26 +192,6 @@ const toggleFavorite = () => {
     emitter.emit('fetch-favorites');
   }
 };
-// Function to toggle favorite status
-// const toggleCartItems = () => {
-//   const productId = props.product.id;
-//   // Fetch the latest favorites from localStorage
-//   const currentCartList = JSON.parse(
-//     localStorage.getItem('cart') || '[]',
-//   );
-
-//   if (currentCartList.includes(productId)) {
-//     // Remove from favorites
-//     cartItems.value = currentCartList.filter((id) => id !== productId);
-//   } else {
-//     // Add to favorites
-//     cartItems.value = [...currentCartList, productId];
-//   }
-
-//   // Update local storage
-//   localStorage.setItem('cart', JSON.stringify(cartItems.value));
-//   emitter.emit('update-cart', cartItems.value.length);
-// };
 
 const toggleCartItems = () => {
   const product = { ...props.product, quantity: 1 };

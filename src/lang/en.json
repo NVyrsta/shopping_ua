@@ -24,7 +24,9 @@
     "Back": "Back",
     "YouRecentlyBrowsed": "You recently browsed",
     "PageNotFound": "Page not found",
-    "Contacts": "Contacts"
+    "Contacts": "Contacts",
+    "AddToCart": "ADD TO CART",
+    "InTheCart": "In the cart"
   },
   "Breadcrumbs": {
     "Main": "Main",

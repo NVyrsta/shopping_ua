@@ -4,8 +4,14 @@
     :autoplay="2000"
     wrap-around
   >
-    <slide v-for="slide in slides" :key="slide">
-      <img :src="slide.src" :alt="slide.title">
+    <slide 
+      v-for="slide in slides" 
+      :key="slide"
+    >
+      <img 
+        :src="slide.src" 
+        :alt="slide.title"
+      >
     </slide>
 
     <template #addons>

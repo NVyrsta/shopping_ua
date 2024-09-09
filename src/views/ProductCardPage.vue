@@ -4,22 +4,14 @@
       v-if="product"
       class="relative"
     >
-      <h1>{{ product.name[locale] }}</h1>
-      <p>{{ product.description }}</p>
-      <p>Ціна: {{ product.price }}</p>
-
       <ProductPageSlider 
         v-if="product.images"
         :slides="product.images"
       />
 
-      <div
-        class="bg-white mx-auto shadow-lg min-[450px]:w-[428px] min-[1100px]:w-[428px] max-w-full static min-[1100px]:absolute top-24 right-14 p-4">
-        Product description
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempora excepturi sunt neque dicta voluptates sed.
-      </div>
-
-      <!-- Додаткові дані про продукт -->
+      <ProductCardDescription 
+        :product="product"
+      />
     </div>
 
     <div v-else>
@@ -31,13 +23,11 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
-import { useI18n } from 'vue-i18n';
 import { fetchProductById } from '@/app/core/plugins/firebase.js'; 
 
 import ProductPageSlider from '@/components/sliders/ProductPageSlider.vue';
+import ProductCardDescription from '@/components/product/ProductCardDescription.vue';
 import PageLayout from '@/layouts/PageLayout.vue';
-
-const { locale } = useI18n();
 
 const product = ref(null);
 

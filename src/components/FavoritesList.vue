@@ -45,16 +45,30 @@
         py-5 
         gap-2"
     >
-      <ProductCard v-for="(product, index) in products" :key="index" :product="product" />
+      <ProductCard 
+        v-for="(product, index) in products" 
+        :key="index"
+        :product="product" 
+       />
     </div>
 
-    <div v-if="!products.length && !isLoading" class="px-4 pt-4 pb-12">
+    <div 
+      v-if="!products.length && !isLoading" 
+      class="px-4 pt-4 pb-12"
+    >
       <h2 class="text-center font-bold uppercase text-lg">{{ $t('Favorites.AddProductsToFavorites') }}</h2>
 
-      <img src="@/assets/img/favorites-empty.png" alt="empty" class="block mx-auto">
+      <img 
+        src="@/assets/img/favorites-empty.png"
+        alt="empty"
+        class="block mx-auto"
+      >
 
       <div class="flex justify-center items-center">
-        <router-link to="/" class="block text-md text-white bg-red-500 hover:bg-red-700 px-14 py-2 mx-auto">
+        <router-link 
+          to="/" 
+          class="block text-md text-white bg-red-500 hover:bg-red-700 px-14 py-2 mx-auto"
+        >
           {{ $t('Favorites.OnTheMainOne') }}
         </router-link>
       </div>
