@@ -1,6 +1,5 @@
 <template>
   <div class="accordion-item">
-    <!-- Заголовок -->
     <h2
       class="cursor-pointer md:cursor-default md:mb-2 text-gray-500 text-[16px]"
       @click="toggle"
@@ -8,7 +7,6 @@
       {{ props.title }}
     </h2>
     
-    <!-- Список лінків -->
     <ul :class="['transition-all', { 'hidden': !isOpen, 'md:block': true }]">
       <li 
         v-for="(link, index) in links" 
@@ -17,7 +15,7 @@
       >
         <router-link 
           :to="link.path" 
-          class="block py-2 text-[16px] text-gray-500 hover:text-black active:text-red-600"
+          class="block text-sm text-gray-500 hover:text-black active:text-red-600"
           active-class="text-red-600"
         >
           {{ link.label }}
@@ -43,9 +41,9 @@ const props = defineProps({
   },
 });  
 
-const isOpen = ref(false); // Відстежує стан відкриття акордеону
+const isOpen = ref(false);
 
 const toggle = () => {
-  isOpen.value = !isOpen.value; // Перемикає стан відкриття
+  isOpen.value = !isOpen.value;
 };
 </script>

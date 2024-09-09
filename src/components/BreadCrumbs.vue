@@ -1,5 +1,8 @@
 <template>
-  <nav aria-label="breadcrumb" class="breadcrumbs flex justify-start items-center px-4 py-4 gap-4">
+  <nav 
+    aria-label="breadcrumb" 
+    class="breadcrumbs flex justify-start items-center px-4 py-4 gap-4"
+  >
     <ol class="breadcrumb flex items-center justify-start gap-4">
       <router-link to="/">{{ $t('Breadcrumbs.Main') }}</router-link> 
   
