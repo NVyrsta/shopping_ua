@@ -20,10 +20,10 @@ import { ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 
 const { locale } = useI18n();
-const availableLanguages = {
-  en: 'English',
-  uk: 'Українська',
-};
+// const availableLanguages = {
+//   en: 'English',
+//   uk: 'Українська',
+// };
 
 const selectedLanguage = ref(locale.value);
 

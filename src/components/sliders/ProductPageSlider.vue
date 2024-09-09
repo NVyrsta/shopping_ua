@@ -1,7 +1,7 @@
 <template>
   <carousel 
     :items-to-show="slidesCount"
-    wrapAround
+    wrap-around
   >
     <slide v-for="(slide, index) in props.slides" :key="index">
       <div class="flex justify-center items-start overflow-hidden">

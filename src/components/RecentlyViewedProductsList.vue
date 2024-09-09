@@ -2,7 +2,10 @@
   <div>
     <SectionSeparator :title="$t('Main.YouRecentlyBrowsed')" />
 
-    <SkeletonLoading :isLoading="isLoading" :numberOfSkeletons="5" />
+    <SkeletonLoading 
+      :is-loading="isLoading" 
+      :number-of-skeletons="5" 
+    />
 
     <div
       v-if="products.length > 0 && !isLoading"
@@ -15,7 +18,7 @@
 <script setup>
 import { ref, onMounted, watch } from 'vue';
 import {
-  fetchProductsByIds
+  fetchProductsByIds,
 } from '@/app/core/plugins/firebase';
 import { useI18n } from 'vue-i18n';
 

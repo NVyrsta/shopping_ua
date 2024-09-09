@@ -50,7 +50,10 @@
       </div>
     </div>
 
-    <SkeletonLoading :isLoading="isLoading" :numberOfSkeletons="5" />
+    <SkeletonLoading 
+      :is-loading="isLoading" 
+      :number-of-skeletons="5" 
+    />
 
     <div
       v-if="products.length > 0 && !isLoading"

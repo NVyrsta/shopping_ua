@@ -14,7 +14,11 @@
         to="/"
         class="flex items-center justify-center"
       >
-        <img src="@/assets/img/logo-light-bg.png" alt="Shopping UA" class="w-[86px] h-[28px] md:w-[114px] md:h-[38px]">
+        <img 
+          src="@/assets/img/logo-light-bg.png" 
+          alt="Shopping UA" 
+          class="w-[86px] h-[28px] md:w-[114px] md:h-[38px]"
+        >
       </router-link>
     </div>
 

@@ -126,7 +126,7 @@
 
 <script setup>
 import { useI18n } from 'vue-i18n';
-import { fromUnixTime, format } from 'date-fns';
+// import { fromUnixTime, format } from 'date-fns';
 import { ref, computed, inject } from 'vue';
 import { useRoute } from 'vue-router';
 
@@ -150,10 +150,10 @@ const props = defineProps({
   },
 });
 
-const formatDate = (v) => {
-  const date = fromUnixTime(v.seconds); // Створює дату напряму з секунд
-  return format(date, 'yyyy-MM-dd HH:mm:ss');
-};
+// const formatDate = (v) => {
+//   const date = fromUnixTime(v.seconds); // Створює дату напряму з секунд
+//   return format(date, 'yyyy-MM-dd HH:mm:ss');
+// };
 
 // Reactive state for favorites
 const favorites = ref(JSON.parse(localStorage.getItem('favorites') || '[]'));

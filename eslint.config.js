@@ -1,46 +1,89 @@
 import globals from 'globals';
-import pluginJs from '@eslint/js';
+import js from '@eslint/js';
 import pluginVue from 'eslint-plugin-vue';
+import eslintConfigPrettier from 'eslint-config-prettier';
 
 export default [
-  { files: ['**/*.{js,mjs,cjs,vue}'] },
-  { languageOptions: { globals: globals.browser } },
-  pluginJs.configs.recommended,
-  ...pluginVue.configs['flat/essential'],
   {
-    rules: {
-      // JavaScript rules
-      eqeqeq: ['error', 'always'], // Enforce the use of === and !==
-      'no-debugger': 'warn', // Warn on debugger statements
-      semi: ['error', 'always'], // Enforce semicolons
-      quotes: ['error', 'single'], // Enforce single quotes
-      indent: ['error', 2], // Enforce 2-space indentation
-      'no-unused-vars': ['warn'], // Warn on unused variables
-      'no-undef': ['error'], // Disallow the use of undeclared variables
-      camelcase: ['error', { properties: 'always' }], // Enforce camelCase naming convention
+    ignores: ['node_modules/**/*', '**/dist/**/*'],
+  },
+  js.configs.recommended,
+  ...pluginVue.configs['flat/strongly-recommended'],
+  // Disable a set of rules that may conflict with prettier
+  // You can safely remove this if you don't use prettier
+  eslintConfigPrettier,
+  {
+    files: ['**/*.js', '**/*.mjs', '**/*.ts', '**/*.mts', '**/*.vue'],
 
-      // Vue.js rules
-      'vue/html-indent': ['error', 2], // Enforce 2-space indentation in HTML
-      'vue/multiline-html-element-content-newline': ['warn', { allowEmptyLines: false }], // Enforce new line for multi-line HTML elements
-      'vue/attributes-order': [
-        'error',
+    languageOptions: {
+      globals: {
+        ...globals.node,
+      },
+    },
+
+    rules: {
+      semi: ['error', 'always'],
+      'comma-dangle': ['warn', 'always-multiline'],
+
+      quotes: [
+        'warn',
+        'single',
         {
-          order: [
-            'DEFINITION',
-            'LIST_RENDERING',
-            'CONDITIONALS',
-            'RENDER_MODIFIERS',
-            'GLOBAL',
-            'UNIQUE',
-            'TWO_WAY_BINDING',
-            'OTHER_DIRECTIVES',
-            'CONTENT',
-            'OTHER_ATTR',
-          ],
+          avoidEscape: true,
         },
-      ], // Enforce attribute order in Vue.js templates
-      'vue/valid-v-slot': ['error'], // Enforce valid `v-slot` directives
-      'vue/no-v-html': ['warn'], // Warn on usage of `v-html`
+      ],
+
+      'no-undef': ['error'],
+      'no-control-regex': ['warn'],
+      'vue/max-attributes-per-line': [
+        'warn',
+        {
+          singleline: 1, // Мінімальна кількість атрибутів на одному рядку для однорядкових тегів
+          multiline: {
+            max: 1, // Максимальна кількість атрибутів на одному рядку для багаторядкових тегів
+          },
+        },
+      ],
+    },
+  },
+
+  {
+    files: ['packages/preload/**'],
+    languageOptions: {
+      globals: {
+        ...globals.node,
+        ...globals.browser,
+      },
+    },
+  },
+
+  {
+    files: ['packages/renderer/**'],
+    languageOptions: {
+      globals: {
+        ...Object.fromEntries(Object.entries(globals.node).map(([key]) => [key, 'off'])),
+        ...globals.browser,
+      },
+    },
+  },
+
+  {
+    files: ['**/tests/**'],
+    languageOptions: {
+      globals: {
+        ...globals.node,
+        ...globals.browser,
+      },
+    },
+  },
+
+  {
+    files: ['**/vite.config.*'],
+    languageOptions: {
+      globals: {
+        ...Object.fromEntries(Object.entries(globals.browser).map(([key]) => [key, 'off'])),
+        ...globals.node,
+      },
     },
   },
 ];

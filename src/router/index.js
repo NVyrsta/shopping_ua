@@ -13,7 +13,7 @@ const routes = [
   { path: '/basket', component: BasketPage, name: 'BasketPage' },
   { path: '/contacts', component: ContactsPage, name: 'ContactsPage' },
   { path: '/product_card/:id', component: ProductCardPage, name: 'ProductCardPage' },
-  { path: '/:pathMatch(.*)*', component: NotFoundPage, name: 'NotFoundPage'}
+  { path: '/:pathMatch(.*)*', component: NotFoundPage, name: 'NotFoundPage'},
 ];
 
 const router = createRouter({

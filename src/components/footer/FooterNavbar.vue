@@ -89,7 +89,7 @@ import { useI18n } from 'vue-i18n';
 const { t } = useI18n();
 
 const customerLinks = computed(() => [
-  { path: '/contacts', label: t('Footer.Contacts') }
+  { path: '/contacts', label: t('Footer.Contacts') },
 ]);
 
 // const serviceLinks = computed(() => [

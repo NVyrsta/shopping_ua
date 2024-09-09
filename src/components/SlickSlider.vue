@@ -2,7 +2,7 @@
   <carousel 
     :items-to-show="1"
     :autoplay="2000"
-    wrapAround
+    wrap-around
   >
     <slide v-for="slide in slides" :key="slide">
       <img :src="slide.src" :alt="slide.title">
@@ -24,18 +24,18 @@ const slides = [
   {
     id: 1,
     title: 'Slide 1',
-    src: 'https://b.shopping.ua/img/slider/c88bbc1300013a4724bede02e724cdd4.webp'
+    src: 'https://b.shopping.ua/img/slider/c88bbc1300013a4724bede02e724cdd4.webp',
   },
   {
     id: 2,
     title: 'Slide 2',
-    src: 'https://b.shopping.ua/img/slider/421d131fc7c876527e032f9f484fbeca.webp'
+    src: 'https://b.shopping.ua/img/slider/421d131fc7c876527e032f9f484fbeca.webp',
   },
   {
     id: 3,
     title: 'Slide 3',
-    src: 'https://b.shopping.ua/img/slider/b685158f4ff66b1af56a2c06df15e344.webp'
-  }
+    src: 'https://b.shopping.ua/img/slider/b685158f4ff66b1af56a2c06df15e344.webp',
+  },
 ];
 </script>
 
