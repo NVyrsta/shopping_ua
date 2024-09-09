@@ -11,7 +11,7 @@
         alt="Shopping UA" 
         class="relative md:absolute top-0 md:top-4 left-0 float-left md:float-none"
       >
-
+      
       <div class="pl-0 md:pl-28 mt-3 ml-8 text-gray-600 md:w-2/3">
         <p>{{ $t('Contacts.ContactsDescription') }}</p>
 
