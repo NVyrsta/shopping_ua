@@ -22,6 +22,29 @@
     "HOMECLOTHES": "HOME CLOTHES",
     "AllRightsReserved": "All rights reserved",
     "Back": "Back",
-    "YouRecentlyBrowsed": "You recently browsed"
+    "YouRecentlyBrowsed": "You recently browsed",
+    "PageNotFound": "Page not found",
+    "Contacts": "Contacts"
+  },
+  "Breadcrumbs": {
+    "Main": "Main",
+    "Favorites": "Chosen",
+    "Contacts": "Contacts"
+  },
+  "Contacts": {
+    "ContactsDescription": "We value every client and value your trust. Therefore, we are ready to quickly solve any of your questions! You can contact our support service using one of the contacts below or by sending us your contact details through the feedback form 'link.'",
+    "Phones": "Phones",
+    "Schedule": "Mon-Fri from 10:00 to 18:00",
+    "Address": "Address",
+    "AddressDescription": "m. Kyiv, 04071 <br /> Yaroslavska St., 30",
+    "DiscountCount": "{count} discount",
+    "SignUpToGetDiscount": "Sign up and get it access to additional",
+    "SignUp": "Sign up"
+  },
+  "Footer": {
+    "Contacts": "Contacts",
+    "Copyright": "Copyright",
+    "AllRightsReserved": "All rights reserved",
+    "ForTheSeller": "For the seller"
   }
 }
