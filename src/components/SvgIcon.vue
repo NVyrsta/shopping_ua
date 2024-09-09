@@ -1,8 +1,6 @@
 <template>
   <svg
-    :width="width"
-    :height="height"
-    :fill="fill"
+    v-bind="svgAttributes"
     role="img"
     aria-hidden="true"
   >
@@ -31,13 +29,31 @@ const props = defineProps({
 
   fill: {
     type: String,
-    default: 'currentColor',
+    default: 'none',
     required: false,
   },
 });
 
 const iconHref = computed(() => `/__spritemap#sprite-${props.id}`);
-// const viewBox = computed(() => `0 0 ${props.width} ${props.height}`);
+
+// Визначте атрибути для SVG лише якщо вони задані
+const svgAttributes = computed(() => {
+  const attrs = {};
+
+  if (props.width) {
+    attrs.width = props.width;
+  }
+
+  if (props.height) {
+    attrs.height = props.height;
+  }
+
+  if (props.fill) {
+    attrs.fill = props.fill;
+  }
+
+  return attrs;
+});
 </script>
 
 <style scoped>
