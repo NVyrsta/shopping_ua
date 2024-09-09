@@ -16,21 +16,25 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 import { useI18n } from 'vue-i18n';
 
 const { locale } = useI18n();
-// const availableLanguages = {
-//   en: 'English',
-//   uk: 'Українська',
-// };
-
 const selectedLanguage = ref(locale.value);
 
 const changeLanguage = (lang) => {
   selectedLanguage.value = lang;
   locale.value = lang;
+  localStorage.setItem('selectedLanguage', lang);
 };
+
+onMounted(() => {
+  const savedLanguage = localStorage.getItem('selectedLanguage');
+  if (savedLanguage) {
+    selectedLanguage.value = savedLanguage;
+    locale.value = savedLanguage;
+  }
+});
 </script>
 
 <style scoped>
