@@ -1,12 +1,37 @@
 <template>
   <div
-    class="bg-white mx-auto shadow-lg min-[450px]:w-[428px] min-[1100px]:w-[428px] max-w-full static min-[1100px]:absolute top-24 right-14 p-8"
+    class="bg-white mx-auto shadow-lg min-[450px]:w-[428px] min-[1100px]:w-[428px] max-w-full static min-[1100px]:absolute z-10 top-24 right-14 p-8"
     >
     <p class="text-lg font-semibold text-black text-center mb-6">
       {{ props.product.name[locale] }}
     </p>
 
     <p class="text-lg text-gray-600 mb-4">Ціна: {{ product.price }}грн</p>
+
+    <div class="mb-4">
+      <select
+        id="size-selector"
+        v-model="selectedSize"
+        name="select"
+        class="block w-full mt-1 p-2 border border-gray-300 rounded-md shadow-sm"
+      >
+        <option 
+          value="" 
+          disabled
+        >
+          Оберіть розмір
+        </option>
+
+        <option 
+          v-for="size in product.sizes" 
+          :key="size.size" 
+          :value="size.size"
+          :selected="product.sizes[0].size === size.size"
+        >
+          {{ size.size }} - {{ size.amount }} в наявності
+        </option>
+      </select>
+    </div>
 
     <ButtonComponent 
       :title="isInCart ? $t('Main.InTheCart') : $t('Main.AddToCart')"
