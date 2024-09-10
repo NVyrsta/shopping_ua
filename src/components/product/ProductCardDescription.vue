@@ -15,6 +15,7 @@
         name="select"
         class="block w-full mt-1 p-2 border border-gray-300 rounded-md shadow-sm"
       >
+        <!-- Плейсхолдер для вибору -->
         <option 
           value="" 
           disabled
@@ -22,13 +23,14 @@
           Оберіть розмір
         </option>
 
+        <!-- Варіанти розмірів -->
         <option 
-          v-for="size in product.sizes" 
+          v-for="size in product.stock" 
           :key="size.size" 
           :value="size.size"
-          :selected="product.sizes[0].size === size.size"
+          :disabled="size.amount === 0"
         >
-          {{ size.size }} - {{ size.amount }} в наявності
+          {{ size.size }}р. -> {{ size.amount }}шт. в наявності
         </option>
       </select>
     </div>
@@ -62,6 +64,7 @@ const emitter = inject('emitter');
 const cartItems = ref(JSON.parse(localStorage.getItem('cart') || '[]'));
 
 const { locale } = useI18n();
+const selectedSize = ref('');
 
 const props = defineProps({
   product: {
