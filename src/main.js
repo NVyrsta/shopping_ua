@@ -5,12 +5,14 @@ import mitt from 'mitt';
 import router from '@/router';
 
 import SvgIcon from '@/components/SvgIcon.vue';
+import VueNumberInput from '@chenfengyuan/vue-number-input';
 
 import '@/style.css';
 
 const app = createApp(App); // Створення додатка
 
 app.component('SvgIcon', SvgIcon);
+app.component(VueNumberInput.name, VueNumberInput);
 
 const emitter = mitt();
 app.config.globalProperties.emitter = emitter; // Додаємо emitter до глобальних властивостей

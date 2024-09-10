@@ -2,9 +2,7 @@
   <div class="flex flex-col min-h-screen">
     <CartHeader />
 
-    <div class="flex-1">
-      cart content
-    </div>
+    <CartBody class="flex-1" />
 
     <CartFooter />
   </div>
@@ -12,5 +10,6 @@
 
 <script setup>
 import CartHeader from '@/components/cart/CartHeader.vue';
+import CartBody from '@/components/cart/CartBody.vue';
 import CartFooter from '@/components/cart/CartFooter.vue';
 </script>
