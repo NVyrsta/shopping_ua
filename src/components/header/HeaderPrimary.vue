@@ -112,12 +112,35 @@ const emitter = inject('emitter');
 const favoritesCount = ref(0);
 const cartCount = ref(0);
 
-const updateFavoritesCount = (count) => {
-  favoritesCount.value = count;
+// const updateFavoritesCount = (count) => {
+//   favoritesCount.value = count;
+// };
+
+const updateFavoritesCount = () => {
+  // Отримати поточний список улюблених з localStorage
+  const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+
+  // Оновити кількість улюблених
+  favoritesCount.value = favorites.length;
 };
 
-const updateCartCount = (count) => {
-  cartCount.value = count;
+// const updateCartCount = (count) => {
+//   cartCount.value = count;
+// };
+
+const updateCartCount = () => {
+  // Отримати поточний кошик з localStorage
+  const selected = JSON.parse(localStorage.getItem('cart') || '[]');
+
+  // Підрахунок загальної кількості товарів у масиві selected
+  cartCount.value = selected.reduce((acc, item) => {
+    if (item.reserved && Array.isArray(item.reserved)) {
+      // Якщо є масив reserved, проходимося по ньому і підраховуємо кількість
+      const totalReservedAmount = item.reserved.reduce((sum, reserved) => sum + (reserved.amount || 0), 0);
+      return acc + totalReservedAmount;
+    }
+    return acc;
+  }, 0);
 };
 
 const handleScroll = () => {
@@ -129,11 +152,11 @@ const handleScroll = () => {
 };
 
 onMounted(() => { 
-  const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
-  favoritesCount.value = favorites.length;
+  // const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+  // favoritesCount.value = favorites.length;
 
-  const selected = JSON.parse(localStorage.getItem('cart') || '[]');
-  cartCount.value = selected.reduce((acc, item) => acc + item.quantity || 0, 0);
+  updateCartCount();
+  updateFavoritesCount();
  
   emitter.on('update-favorites', updateFavoritesCount);
   emitter.on('update-cart', updateCartCount);

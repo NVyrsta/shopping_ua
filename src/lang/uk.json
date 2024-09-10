@@ -26,7 +26,8 @@
     "PageNotFound": "Сторінка не знайдена",
     "Contacts": "Контакти",
     "AddToCart": "ДОДАТИ В КОШИК",
-    "InTheCart": "У кошику"
+    "InTheCart": "У кошику ({count})",
+    "ChooseASize": "Оберіть розмір"
   },
   "Breadcrumbs": {
     "Main": "Головна",

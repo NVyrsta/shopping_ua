@@ -26,7 +26,8 @@
     "PageNotFound": "Page not found",
     "Contacts": "Contacts",
     "AddToCart": "ADD TO CART",
-    "InTheCart": "In the cart"
+    "InTheCart": "In the cart ({count})",
+    "ChooseASize": "Choose a size"
   },
   "Breadcrumbs": {
     "Main": "Main",
