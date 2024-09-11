@@ -52,27 +52,10 @@
        />
     </div>
 
-    <div 
+    <EmptyComponent 
       v-if="!products.length && !isLoading" 
-      class="px-4 pt-4 pb-12"
-    >
-      <h2 class="text-center font-bold uppercase text-lg">{{ $t('Favorites.AddProductsToFavorites') }}</h2>
-
-      <img 
-        src="@/assets/img/favorites-empty.png"
-        alt="empty"
-        class="block mx-auto"
-      >
-
-      <div class="flex justify-center items-center">
-        <router-link 
-          to="/" 
-          class="block text-md text-white bg-red-500 hover:bg-red-700 px-14 py-2 mx-auto"
-        >
-          {{ $t('Favorites.OnTheMainOne') }}
-        </router-link>
-      </div>
-    </div>
+      :title="$t('Favorites.AddProductsToFavorites')"
+    />
   </div>
 </template>
 
@@ -90,6 +73,7 @@ import ProductCard from '@/components/ProductCard.vue';
 import BreadCrumbs from '@/components/BreadCrumbs.vue';
 import SectionSeparator from '@/components/SectionSeparator.vue';
 import SkeletonLoading from '@/components/SkeletonLoading.vue';
+import EmptyComponent from '@/components/empty/EmptyComponent.vue';
 
 const { locale } = useI18n();
 const emitter = inject('emitter');

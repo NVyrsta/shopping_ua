@@ -27,7 +27,15 @@
     "Contacts": "Contacts",
     "AddToCart": "ADD TO CART",
     "InTheCart": "In the cart ({count})",
-    "ChooseASize": "Choose a size"
+    "ChooseASize": "Choose a size",
+    "TotalDue": "Total due",
+    "AddProductsToCart": "Add products to cart",
+    "Product": "Product",
+    "Quantity": "Quantity",
+    "Price": "Price",
+    "Size": "Size",
+    "Producer": "Producer",
+    "MakeAnOrder": "Make an order"
   },
   "Breadcrumbs": {
     "Main": "Main",

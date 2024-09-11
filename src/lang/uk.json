@@ -27,7 +27,15 @@
     "Contacts": "Контакти",
     "AddToCart": "ДОДАТИ В КОШИК",
     "InTheCart": "У кошику ({count})",
-    "ChooseASize": "Оберіть розмір"
+    "ChooseASize": "Оберіть розмір",
+    "TotalDue": "Всього до сплати",
+    "AddProductsToCart": "Додайте товари у кошик",
+    "Product": "Товар",
+    "Quantity": "Кількість",
+    "Price": "Ціна",
+    "Size": "Розмір",
+    "Producer": "Виробник",
+    "MakeAnOrder": "Оформити замовлення"
   },
   "Breadcrumbs": {
     "Main": "Головна",
