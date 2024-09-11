@@ -61,5 +61,15 @@ const slides = [
     left: 50%;
     transform: translateX(-50%);
   }
+
+  & .carousel__pagination-button::after {
+    background: black;    
+    border-radius: 10px;
+    width: 20px;
+  }
+
+  & .carousel__pagination-button.carousel__pagination-button--active::after {
+    background: #f75d5d;    
+  }
 }
 </style>

@@ -79,7 +79,8 @@
       <ProductCard 
         v-for="(product, index) in products" 
         :key="index"
-        :product="product" 
+        :product="product"
+        scale
       />
     </div>
   </div>

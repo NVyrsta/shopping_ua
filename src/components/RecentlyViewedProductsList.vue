@@ -9,13 +9,28 @@
 
     <div
       v-if="products.length > 0 && !isLoading"
-      class="grid xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 px-10 py-5 gap-2">
+      class="grid xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 px-10 py-5 gap-2"
+    >
       <ProductCard 
         v-for="(product, index) in products" 
         :key="index" 
         :product="product" 
       />
     </div>
+
+    <div
+      v-if="false"
+      class="grid xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 px-10 py-5 gap-2"
+    >
+      <ProductsSlider 
+        :products="products" 
+      />
+    </div>
+
+    <ProductsSlider 
+      v-if="products.length > 0 && !isLoading"
+      :products="products" 
+    />
   </div>
 </template>
 
@@ -30,7 +45,7 @@ import ProductCard from '@/components/ProductCard.vue';
 import SkeletonLoading from '@/components/SkeletonLoading.vue';
 import SectionSeparator from '@/components/SectionSeparator.vue';
 
-// import SlickSlider from '@/components/SlickSlider.vue';
+import ProductsSlider from '@/components/sliders/ProductsSlider.vue';
 
 const { locale } = useI18n();
 
@@ -43,6 +58,8 @@ const loadProducts = async () => {
 
   try {
     products.value  = await fetchProductsByIds(productIds);
+    console.log('products.value GGGG:', products.value);
+
   } catch (error) {
     console.error('Error fetching products: ', error);
   } finally {

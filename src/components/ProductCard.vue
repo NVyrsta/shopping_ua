@@ -1,6 +1,9 @@
 <template>
   <div
-    class="bg-white shadow-lg rounded-lg overflow-hidden transition-transform transform hover:scale-105"
+    class="bg-white shadow-lg w-full rounded-lg overflow-hidden"
+    :class="{
+      'transition-transform transform hover:scale-105': scale
+    }"
   >
     <div 
       class="relative cursor-pointer"
@@ -127,6 +130,11 @@ const props = defineProps({
       category: { uk: '', en: '' },
       producer: '',
     }),
+  },
+
+  scale: {
+    type: Boolean,
+    default: false,
   },
 });
 

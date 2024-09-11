@@ -49,6 +49,7 @@
         v-for="(product, index) in products" 
         :key="index"
         :product="product" 
+        scale
        />
     </div>
 
