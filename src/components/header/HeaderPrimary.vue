@@ -6,6 +6,29 @@
     }"
   >
     <div class="flex justify-between items-center py-1">
+      <div class="flex items-center justify-start gap-6">
+        <router-link 
+          to="/"
+          active-class="font-bold"
+        >
+          <span class="underline-effect">
+            {{ $t('Breadcrumbs.women') }}          
+          </span>
+        </router-link>
+
+        <router-link to="/men"> 
+          <span class="underline-effect">
+            {{ $t('Breadcrumbs.men') }}          
+          </span>
+        </router-link>
+
+        <router-link to="/children"> 
+          <span class="underline-effect">
+            {{ $t('Breadcrumbs.children') }}          
+          </span>
+        </router-link>
+      </div>
+
       <div class="flex items-center">
         <router-link to="/"> 
           <img

@@ -6,11 +6,12 @@
     <slide 
       v-for="(slide, index) in props.slides" 
       :key="index"
+      class="flex self-stretch"
     >
-      <div class="flex justify-center items-start overflow-hidden">
+      <div class="flex w-full h-full overflow-hidden">
         <img 
           :src="slide" 
-          class="w-full height-auto"
+          class="w-full h-full object-cover"
         >
       </div>
     </slide>

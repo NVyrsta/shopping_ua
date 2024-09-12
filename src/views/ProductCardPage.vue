@@ -1,9 +1,14 @@
 <template>
-  <PageLayout>
+  <PageLayout>    
     <div 
       v-if="product"
       class="relative"
     >
+      <ProductBreadcrumbs 
+        :categories="product.categories"
+        :product="product"
+      />
+
       <ProductPageSlider 
         v-if="product.images"
         :slides="product.images"
@@ -27,6 +32,7 @@ import { fetchProductById } from '@/app/core/plugins/firebase.js';
 
 import ProductPageSlider from '@/components/sliders/ProductPageSlider.vue';
 import ProductCardDescription from '@/components/product/ProductCardDescription.vue';
+import ProductBreadcrumbs from '@/components/elements/ProductBreadcrumbs.vue';
 import PageLayout from '@/layouts/PageLayout.vue';
 
 const product = ref(null);

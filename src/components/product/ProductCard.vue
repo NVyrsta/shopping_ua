@@ -10,14 +10,14 @@
       @click="() => $router.push({ name: 'ProductCardPage', params: { id: product.id } })"
     >
       <img
-        :src="product.img"
+        :src="product.images[0]"
         :alt="product.name[locale]"
         class="w-full object-cover object-top rounded-t-lg h-80 transition-all duration-300"
       />
 
       <img
-        v-if="product.img2"
-        :src="product.img2"
+        v-if="product.images[1]"
+        :src="product.images[1]"
         :alt="product.name[locale] + ' hover'"
         class="absolute inset-0 w-full h-80 object-cover object-top rounded-t-lg opacity-0 transition-opacity duration-300 hover:opacity-100"
       />

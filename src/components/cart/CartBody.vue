@@ -106,7 +106,7 @@
 <script setup>
 import { ref, onMounted, computed } from 'vue';
 import { useI18n } from 'vue-i18n';
-import SectionSeparator from '@/components/SectionSeparator.vue';
+import SectionSeparator from '@/components/elements/SectionSeparator.vue';
 import ButtonComponent from '@/components/elements/ButtonComponent.vue';
 import EmptyComponent from '@/components/empty/EmptyComponent.vue';
 

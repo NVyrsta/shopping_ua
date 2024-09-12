@@ -31,7 +31,7 @@
 <script setup>
 import 'vue3-carousel/dist/carousel.css';
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel';
-import ProductCard from '@/components/ProductCard.vue';
+import ProductCard from '@/components/product/ProductCard.vue';
 
 defineProps({
   products: {
@@ -46,12 +46,11 @@ defineProps({
 
 .carousel::v-deep {
   .carousel__viewport {
-    width: calc(100vw - 100px);
     margin: 0 auto;
   }
 
   .carousel__prev {
-    left: 0;
+    left: -40px;
     background: white;
 
     &:hover {
@@ -60,7 +59,7 @@ defineProps({
   }
 
   & .carousel__next {
-    right: 0;
+    right: -40px;
     background: white;
 
     &:hover {

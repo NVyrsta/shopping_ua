@@ -4,7 +4,7 @@ import App from '@/App.vue';
 import mitt from 'mitt';
 import router from '@/router';
 
-import SvgIcon from '@/components/SvgIcon.vue';
+import SvgIcon from '@/components/elements/SvgIcon.vue';
 import VueNumberInput from '@chenfengyuan/vue-number-input';
 
 import '@/style.css';

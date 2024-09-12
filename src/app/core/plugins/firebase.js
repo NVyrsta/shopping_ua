@@ -208,3 +208,113 @@ export async function fetchProductByQuery(queryString) {
     return [];
   }
 }
+
+export async function fetchProductsByCategory(category) {
+  try {
+    // Створюємо запит для колекції "goods"
+    const q = query(dbRef);
+
+    // Виконуємо запит
+    const querySnapshot = await getDocs(q);
+
+    // Фільтруємо товари на основі категорії
+    const filteredProducts = querySnapshot.docs
+      .map((doc) => ({ id: doc.id, ...doc.data() }))
+      .filter((product) => {
+        // Перевіряємо, чи продукт належить до потрібної категорії
+        return product.categories?.includes(category);
+      });
+
+    return filteredProducts;
+  } catch (error) {
+    console.error('Error getting documents:', error);
+    return [];
+  }
+}
+
+export async function fetchProductsByCategoriesAndGender(categories, gender) {
+  try {
+    // Створюємо запит для колекції "goods", використовуючи умови array-contains-any та equality
+    const q = query(
+      dbRef,
+      where('categories', 'array-contains-any', categories),
+      where('gender', '==', gender),
+    );
+
+    // Виконуємо запит
+    const querySnapshot = await getDocs(q);
+
+    // Перевіряємо, чи запит повернув документи
+    if (!querySnapshot.empty) {
+      // Маппуємо повернуті документи та витягуємо дані
+      const products = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+
+      console.log('Products fetchProductsByCategoriesAndGender:', products);
+      return products;
+    } else {
+      console.log('No matching documents!');
+      return [];
+    }
+  } catch (error) {
+    console.error('Error getting documents:', error);
+    return [];
+  }
+}
+
+export async function fetchProductsByCategories(categories) {
+  try {
+    // Створюємо запит для колекції "goods", використовуючи умови array-contains-any та equality
+    const q = query(
+      dbRef,
+      where('categories', 'array-contains-any', categories),
+    );
+
+    // Виконуємо запит
+    const querySnapshot = await getDocs(q);
+
+    // Перевіряємо, чи запит повернув документи
+    if (!querySnapshot.empty) {
+      // Маппуємо повернуті документи та витягуємо дані
+      const products = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+
+      console.log('Products fetchProductsByCategories:', products);
+      return products;
+    } else {
+      console.log('No matching documents!');
+      return [];
+    }
+  } catch (error) {
+    console.error('Error getting documents:', error);
+    return [];
+  }
+}
+
+export async function fetchProductsByGender(gender) {
+  try {
+    // Створюємо запит для колекції "goods"
+    const q = query(dbRef);
+
+    // Виконуємо запит
+    const querySnapshot = await getDocs(q);
+
+    // Фільтруємо товари на основі категорії
+    const filteredProducts = querySnapshot.docs
+      .map((doc) => ({ id: doc.id, ...doc.data() }))
+      .filter((product) => {
+        // Перевіряємо, чи продукт належить до потрібної категорії
+        return product.gender?.includes(gender);
+      });
+
+    return filteredProducts;
+  } catch (error) {
+    console.error('Error getting documents:', error);
+    return [];
+  }
+}
+

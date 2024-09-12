@@ -2,6 +2,8 @@
   <div class="flex flex-col min-h-screen">
     <HeaderLayout />
 
+    <ProductSearch />
+
     <main class="flex-1">
       <slot />
     </main>
@@ -14,5 +16,7 @@
 
 <script setup>
 import HeaderLayout from '@/layouts/HeaderLayout.vue';
+import ProductSearch from '@/components/product/ProductSearch.vue';
+
 import FooterLayout from '@/layouts/FooterLayout.vue';
 </script>

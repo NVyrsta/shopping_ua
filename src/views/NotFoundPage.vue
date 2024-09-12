@@ -27,6 +27,7 @@
         </div>
       </div>
     </div>
+
     <RecentlyViewedProductsList />
   </PageLayout>
 </template>
@@ -34,7 +35,7 @@
 <script setup>
 import PageLayout from '@/layouts/PageLayout.vue';
 import RecentlyViewedProductsList from '@/components/RecentlyViewedProductsList.vue';
-import SectionSeparator from '@/components/SectionSeparator.vue';
+import SectionSeparator from '@/components/elements/SectionSeparator.vue';
 
 import { useGoBack } from '@/composables/useGoBack';
 

@@ -73,6 +73,6 @@
 
 <script setup>
 import PageLayout from '@/layouts/PageLayout.vue';
-import SectionSeparator from '@/components/SectionSeparator.vue';
+import SectionSeparator from '@/components/elements/SectionSeparator.vue';
 import BreadCrumbs from '@/components/BreadCrumbs.vue';
 </script>
