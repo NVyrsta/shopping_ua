@@ -26,24 +26,9 @@
         @click="() => $router.push({ name: 'ProductCardPage', params: { id: product.id } })"
       />
 
-      <carousel 
-        :items-to-show="1"
-        wrap-around
-      >
-        <slide 
-          v-for="slide in product.images" 
-          :key="slide"
-        >
-          <img 
-            :src="slide"
-            class="w-full object-cover object-top h-80 transition-all duration-300"
-          >
-        </slide>
-
-        <template #addons>
-          <navigation @click.stop />
-        </template>
-      </carousel>
+      <ProductCardSlider 
+        :images="product.images"
+      />
     </div>
 
     <div class="p-4">
@@ -70,10 +55,9 @@
 
 <script setup>
 import { useI18n } from 'vue-i18n';
-import 'vue3-carousel/dist/carousel.css';
-import { Carousel, Slide, Navigation } from 'vue3-carousel';
 import { ref, computed, inject } from 'vue';
 import { useRoute } from 'vue-router';
+import ProductCardSlider from '@/components/sliders/ProductCardSlider.vue';
 
 const emitter = inject('emitter');
 
@@ -91,6 +75,7 @@ const props = defineProps({
       quantity: 0,
       category: { uk: '', en: '' },
       producer: '',
+      images: [],
     }),
   },
 
