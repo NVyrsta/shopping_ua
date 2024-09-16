@@ -6,7 +6,11 @@
     }"
   >
     <div class="flex justify-between items-center py-1">
-      <div class="flex items-center justify-start gap-6">
+      <BurgerMenu />
+      <div 
+        v-if="false"
+        class="flex items-center justify-start gap-6"
+      >
         <router-link 
           to="/"
           active-class="font-bold"
@@ -135,6 +139,7 @@
 
 <script setup>
 import { ref, inject, onMounted, onUnmounted } from 'vue';
+import BurgerMenu from '@/components/header/BurgerMenu.vue';
 
 const isHeaderSticky = ref(false);
 const emitter = inject('emitter');

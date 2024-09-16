@@ -8,7 +8,9 @@
     <div 
       class="relative cursor-pointer"
     >
-      <div class="absolute top-2 right-2 flex z-20 space-x-2">
+      <div
+        class="absolute top-2 right-2 flex z-20 space-x-2"
+      >
         <button
           @click.stop="toggleFavorite"
         >
@@ -21,13 +23,9 @@
         </button>
       </div>
 
-      <div
-        class="absolute w-full h-full z-10 top-0 left-0" 
-        @click="() => $router.push({ name: 'ProductCardPage', params: { id: product.id } })"
-      />
-
       <ProductCardSlider 
         :images="product.images"
+        :id="product.id"
       />
     </div>
 
