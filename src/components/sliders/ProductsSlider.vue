@@ -1,49 +1,85 @@
 <template>
-  <carousel 
-    :items-to-show="5"
-    wrap-around
-  >
-    <slide 
-      v-for="product in products" 
-      :key="product.id"
+  <div>
+    <carousel
+      v-if="showCarousel"
+      :items-to-show="itemsToShow"
+      wrap-around
     >
-      <div 
-      class="flex w-full h-full py-6"
+      <slide 
+        v-for="product in products" 
+        :key="product.id"
       >
-        <!-- <img 
-          :src="product.images[0]" 
-          class="w-full h-full object-cover"
-        > -->
-        <ProductCard 
-          :product="product"
-          class="self-stretch"
-        />
-      </div>
-    </slide>
+        <div 
+          class="flex w-full h-full py-6"
+        >
+          <ProductCard 
+            :product="product"
+            class="self-stretch"
+          />
+        </div>
+      </slide>
 
-    <template #addons>
-      <navigation />
-      <pagination />
-    </template>
-  </carousel>
+      <template #addons>
+        <navigation />
+        <pagination />
+      </template>
+    </carousel>
+
+    <div 
+      v-else 
+      class="grid xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 px-10 py-5 gap-2">
+      <ProductCard 
+        v-for="(product, index) in products" 
+        :key="index"
+        :product="product"
+        scale
+      />
+    </div>
+  </div>
 </template>
 
 <script setup>
+import { ref, onMounted, computed } from 'vue';
 import 'vue3-carousel/dist/carousel.css';
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel';
 import ProductCard from '@/components/product/ProductCard.vue';
 
-defineProps({
+const props = defineProps({
   products: {
     type: Array,
     default: () => [],
   },
 });
 
+const itemsToShow = ref(5);
+const viewportWidth = ref(window.innerWidth);
+
+const showCarousel = computed(() => props.products.length >= itemsToShow.value);
+
+const calculateItemsToShow = () => {
+  const width = viewportWidth.value;
+  if (width >= 1200) {
+    itemsToShow.value = 5;
+  } else if (width >= 992) {
+    itemsToShow.value = 4;
+  } else if (width >= 768) {
+    itemsToShow.value = 3;
+  } else {
+    itemsToShow.value = 1;
+  }
+};
+
+onMounted(() => {
+  calculateItemsToShow();
+  window.addEventListener('resize', () => {
+    viewportWidth.value = window.innerWidth;
+    calculateItemsToShow();
+  });
+});
+
 </script>
 
 <style lang="scss" scoped>
-
 .carousel::v-deep {
   .carousel__viewport {
     margin: 0 auto;
