@@ -85,7 +85,7 @@
       </div>
 
       <div class="flex w-full items-center justify-center sm:justify-end">
-        <div class="relative -top-[24px] flex flex-col items-center justify-center gap-4 mt-4 bg-slate-50 rounded-lg w-[410px] p-[30px]">
+        <div class="relative -top-[24px] flex flex-col items-center justify-center gap-4 mt-4 bg-slate-50 w-[410px] p-[30px]">
           <p class="text-xl font-semibold">
             {{ $t('Main.TotalDue') }}: {{ grandTotal.toFixed(2) }} грн</p>
   

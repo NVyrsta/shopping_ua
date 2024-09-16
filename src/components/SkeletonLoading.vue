@@ -6,7 +6,7 @@
     <div 
       v-for="n in numberOfSkeletons" 
       :key="n" 
-      class="animate-pulse skeleton-card h-500 w-full rounded"
+      class="animate-pulse skeleton-card h-500 w-full"
     ></div>
   </div>
 </template>
