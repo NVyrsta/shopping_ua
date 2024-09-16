@@ -16,13 +16,19 @@
           </span>
         </router-link>
 
-        <router-link to="/men"> 
+        <router-link 
+          to="/men"
+          active-class="font-bold"
+        > 
           <span class="underline-effect">
             {{ $t('Breadcrumbs.men') }}          
           </span>
         </router-link>
 
-        <router-link to="/children"> 
+        <router-link 
+          to="/children"
+          active-class="font-bold"
+        > 
           <span class="underline-effect">
             {{ $t('Breadcrumbs.children') }}          
           </span>

@@ -65,7 +65,7 @@ const calculateItemsToShow = () => {
   } else if (width >= 768) {
     itemsToShow.value = 3;
   } else {
-    itemsToShow.value = 1;
+    itemsToShow.value = 2;
   }
 };
 
