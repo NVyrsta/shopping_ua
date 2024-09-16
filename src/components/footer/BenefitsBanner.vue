@@ -136,7 +136,7 @@
   </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 .banner {
   padding: 3px 10px;
 }
@@ -159,5 +159,9 @@
   visibility: hidden;
   transition: 0.3s ease-in-out;
   width: 200px;
+
+  @media (max-width: 768px) {
+    width: 120px;
+  }
 }
 </style>

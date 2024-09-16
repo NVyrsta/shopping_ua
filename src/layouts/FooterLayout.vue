@@ -1,6 +1,6 @@
 <template>
   <div>
-    <BenefitsBanner v-if="false"/>
+    <BenefitsBanner />
 
     <FooterNavbar />
 
