@@ -34,7 +34,8 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-const dbRef = collection(db, 'goods');
+const dbRefGoods = collection(db, 'goods');
+const dbRefBrands = collection(db, 'producers');
 
 export async function fetchProducts() {
   try {
@@ -95,7 +96,7 @@ export async function updateProduct(product) {
 export async function fetchProductById(id) {
   try {
     // Create a query against the "goods" collection
-    const q = query(dbRef, where('id', '==', id));
+    const q = query(dbRefGoods, where('id', '==', id));
 
     // Execute the query
     const querySnapshot = await getDocs(q);
@@ -120,7 +121,7 @@ export async function fetchProductById(id) {
 export async function fetchProductsByIds(ids) {
   try {
     // Create a query to find products where the 'id' field matches any of the ids in the array
-    const q = query(dbRef, where('id', 'in', ids));
+    const q = query(dbRefGoods, where('id', 'in', ids));
 
     // Execute the query
     const querySnapshot = await getDocs(q);
@@ -156,7 +157,7 @@ export async function fetchFavoritesProducts() {
 
   try {
     // Створити запит до колекції "goods" з умовою наявності ідентифікаторів у "ids"
-    const q = query(dbRef, where('id', 'in', ids));
+    const q = query(dbRefGoods, where('id', 'in', ids));
 
     // Виконати запит
     const querySnapshot = await getDocs(q);
@@ -185,7 +186,7 @@ export async function fetchFavoritesProducts() {
 export async function fetchProductByQuery(queryString) {
   try {
     // Create a query against the "goods" collection
-    const q = query(dbRef);
+    const q = query(dbRefGoods);
 
     // Execute the query
     const querySnapshot = await getDocs(q);
@@ -212,7 +213,7 @@ export async function fetchProductByQuery(queryString) {
 export async function fetchProductsByCategory(category) {
   try {
     // Створюємо запит для колекції "goods"
-    const q = query(dbRef);
+    const q = query(dbRefGoods);
 
     // Виконуємо запит
     const querySnapshot = await getDocs(q);
@@ -236,7 +237,7 @@ export async function fetchProductsByCategoriesAndGender(categories, gender) {
   try {
     // Створюємо запит для колекції "goods", використовуючи умови array-contains-any та equality
     const q = query(
-      dbRef,
+      dbRefGoods,
       where('categories', 'array-contains-any', categories),
       where('gender', '==', gender),
     );
@@ -268,7 +269,7 @@ export async function fetchProductsByCategories(categories) {
   try {
     // Створюємо запит для колекції "goods", використовуючи умови array-contains-any та equality
     const q = query(
-      dbRef,
+      dbRefGoods,
       where('categories', 'array-contains-any', categories),
     );
 
@@ -298,7 +299,7 @@ export async function fetchProductsByCategories(categories) {
 export async function fetchProductsByGender(gender) {
   try {
     // Створюємо запит для колекції "goods"
-    const q = query(dbRef);
+    const q = query(dbRefGoods);
 
     // Виконуємо запит
     const querySnapshot = await getDocs(q);
@@ -318,3 +319,40 @@ export async function fetchProductsByGender(gender) {
   }
 }
 
+// --- Brands ---
+
+export async function fetchBrands() {
+  try {
+    const querySnapshot = await getDocs(collection(db, 'producers'));
+  
+    const brands = [];
+    
+    querySnapshot.forEach((doc) => {
+      brands.push({ id: doc.id, ...doc.data() });
+    });
+
+    return brands;
+  } catch (error) {
+    console.log('Error fetching brands', error);
+  }
+}
+
+export async function fetchBrandById(id) {
+  try {
+    const q = query(dbRefBrands, where('id', '==', id));
+
+    const querySnapshot = await getDocs(q);
+
+    if (!querySnapshot.empty) {
+      const doc = querySnapshot.docs[0];
+
+      return { id: doc.id, ...doc.data() };
+    } else {
+      console.log('No such document!');
+      return null;
+    }
+  } catch (error) {
+    console.error('Error getting document:', error);
+    return null;
+  }
+}

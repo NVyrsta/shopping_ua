@@ -7,7 +7,7 @@
 
     <div
       v-if="products.length > 0 && !isLoading"
-      class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 px-10 py-5 gap-2">
+      class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 px-2 sm:px-10 py-5 gap-2">
       <ProductCard 
         v-for="(product, index) in products" 
         :key="index"

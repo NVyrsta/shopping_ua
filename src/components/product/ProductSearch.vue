@@ -1,6 +1,10 @@
 <template>
   <div class="flex justify-between items-center gap-2 bg-orange-100 px-4">
-    <div />
+    <div class="flex items-center">
+      <router-link to="/brands"> 
+        {{ $t('Breadcrumbs.Brands') }}
+      </router-link>
+    </div>
 
     <div class="relative py-2">
       <input 

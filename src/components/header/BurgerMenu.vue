@@ -48,6 +48,14 @@
       >
         <span>{{ $t('Breadcrumbs.children') }}</span>
       </router-link>
+
+      <router-link 
+        to="/brands" 
+        class="text-xl"
+        @click="isMenuOpen = false"
+      >
+        <span>{{ $t('Breadcrumbs.Brands') }}</span>
+      </router-link>
     </div>
 
     <!-- Десктопне меню -->

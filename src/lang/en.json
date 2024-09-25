@@ -35,7 +35,10 @@
     "Price": "Price",
     "Size": "Size",
     "Producer": "Producer",
-    "MakeAnOrder": "Make an order"
+    "MakeAnOrder": "Make an order",
+    "AboutBrand": "About the brand",
+    "SellerID": "Seller ID",
+    "WatchAll": "Watch all"
   },
   "Breadcrumbs": {
     "Main": "Main",
@@ -53,7 +56,8 @@
     "for_girls": "For girls",
     "dresses": "Dresses",
     "children": "To children",
-    "SearchResults": "Search results"
+    "SearchResults": "Search results",
+    "Brands": "Brands"
   },
   "Contacts": {
     "ContactsDescription": "We value every client and value your trust. Therefore, we are ready to quickly solve any of your questions! You can contact our support service using one of the contacts below or by sending us your contact details through the feedback form 'link.'",
