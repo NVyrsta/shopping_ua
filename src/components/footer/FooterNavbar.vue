@@ -58,6 +58,7 @@ const sellerLinks = computed(() => [
 const customerLinks = computed(() => [
   { path: '/basket', label: t('Header.Cart') },
   { path: '/favorites', label: t('Header.Chosen') },
+  { path: '/return', label: t('Breadcrumbs.Return') },
 ]);
 
 // const companyLinks = computed(() => [

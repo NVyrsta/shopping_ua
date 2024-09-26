@@ -57,7 +57,8 @@
     "dresses": "Dresses",
     "children": "To children",
     "SearchResults": "Search results",
-    "Brands": "Brands"
+    "Brands": "Brands",
+    "Return": "Return"
   },
   "Contacts": {
     "ContactsDescription": "We value every client and value your trust. Therefore, we are ready to quickly solve any of your questions! You can contact our support service using one of the contacts below or by sending us your contact details through the feedback form 'link.'",
@@ -86,5 +87,8 @@
     "CooperationWithUs": "Cooperation with us",
     "ForTheBuyer": "For the buyer",
     "Catalogue": "Catalogue"
+  },
+  "Return": {
+    "PageContent": "<section class='mb-6'><h2 class='text-lg font-bold mb-4'>Return of goods in accordance with the Law of Ukraine</h2><p class='mb-4'>According to the Law of Ukraine 'On Consumer Protection', you can return or exchange goods within 14 days of receipt, provided the tags, packaging materials, full product set are present, and there are no signs of use.</p><h3 class='text-md font-semibold mb-2'>Procedure for returning goods</h3><ol class='list-decimal ml-5 mb-4'><li class='mb-2'>Cancel the order and specify the reason for return in your personal account on the website.</li><li class='mb-2'>Pack the goods to be returned in the original packaging of our online store, as well as in packaging according to the requirements of the delivery service.</li><li class='mb-2'>Include the completed return form received in the package and a document confirming the purchase (postal declaration, sales or fiscal receipt).</li></ol><p class='mb-4'>The cost of return shipping is paid by the sender. In case of delivery of defective or non-compliant goods, the shipping costs to the customer and the return shipping costs are covered by us.</p><h3 class='text-md font-semibold mb-2'>Refunds</h3><p class='mb-4'>The refund corresponding to the order amount will be made within 7 working days to your payment card. Refunds are only made for the product. The cost of delivery, payment system fees, and bank commissions are not reimbursed.</p><p class='mb-4'>For questions regarding the return of goods and refunds, please contact the product manufacturer.</p></section>"
   }
 }

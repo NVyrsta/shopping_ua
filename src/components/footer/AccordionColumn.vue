@@ -4,17 +4,30 @@
       class="flex justify-between items-center gap-4 cursor-pointer md:cursor-default mb-2 md:mb-4 text-gray-500 text-[16px]"
       @click="toggle"
     >
-      {{ props.title }}
+      <span  class="block md:hidden" />
 
-      <SvgIcon 
-        id="accordion-arrow"
-        width="7"
-        height="4"
-        class="flex-shrink-0 transform rotate-180"
-      />
+      <span>{{ props.title }}</span>
+
+      <div
+        class="block flex-shrink-0 md:hidden w-[16px] h-[16px]"
+        :class="{'transform rotate-180 transition ease-in-out duration-300': isOpen}"
+      >
+        <SvgIcon 
+          id="accordion-arrow"
+          width="16"
+          height="16"
+        />
+      </div>
+
     </h2>
     
-    <ul :class="['transition-all', { 'hidden': !isOpen, 'md:block': true }]">
+    <ul 
+      ref="menu"
+      :class="[
+        'transition-all duration-300 ease-in-out overflow-hidden md:max-h-[1000px] md:opacity-100', 
+        { 'max-h-0 opacity-0': !isOpen, 'max-h-[1000px] opacity-100': isOpen }
+      ]"
+    >     
       <li 
         v-for="(link, index) in links" 
         :key="index" 
@@ -22,7 +35,7 @@
       >
         <router-link 
           :to="link.path" 
-          class="block text-sm text-gray-500 hover:text-black active:text-red-600"
+          class="block text-sm text-gray-400 hover:text-black active:text-red-600"
           active-class="text-red-600"
         >
           {{ link.label }}

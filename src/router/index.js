@@ -6,6 +6,7 @@ import ProductCardPage from '@/views/ProductCardPage.vue';
 import BasketPage from '@/views/BasketPage.vue';
 import NotFoundPage from '@/views/NotFoundPage.vue';
 import ContactsPage from '@/views/ContactsPage.vue';
+import ReturnPage from '@/views/ReturnPage.vue';
 import BrandsPage from '@/views/BrandsPage.vue';
 import BrandPage from '@/views/BrandPage.vue';
 import CategoryPage from '@/views/CategoryPage.vue';
@@ -27,6 +28,7 @@ const routes = [
   { path: '/favorites', component: FavoritesPage, name: 'FavoritesPage' },
   { path: '/basket', component: BasketPage, name: 'BasketPage' },
   { path: '/contacts', component: ContactsPage, name: 'ContactsPage' },
+  { path: '/return', component: ReturnPage, name: 'ReturnPage' },
   { path: '/brands', component: BrandsPage, name: 'BrandsPage' },
   { path: '/brands/:brandId', component: BrandPage, name: 'BrandPage' },
   { path: '/cooperation', component: CooperationPage, name: 'CooperationPage' },
