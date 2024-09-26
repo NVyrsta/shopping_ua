@@ -29,7 +29,7 @@
         <!-- Колонка 2 -->
         <AccordionColumn
           :title="$t('Footer.ForTheBuyer')"
-          :links="sellerLinks"
+          :links="customerLinks"
         />   
 
         <!-- Колонка 3 -->
@@ -55,10 +55,10 @@ const sellerLinks = computed(() => [
   { path: '/cooperation', label: t('Footer.CooperationWithUs') },
 ]);
 
-// const serviceLinks = computed(() => [
-//   { path: '/faq', label: t('Footer.FAQ') },
-//   { path: '/delivery', label: t('Footer.Delivery') },
-// ]);
+const customerLinks = computed(() => [
+  { path: '/basket', label: t('Header.Cart') },
+  { path: '/favorites', label: t('Header.Chosen') },
+]);
 
 // const companyLinks = computed(() => [
 //   { path: '/about', label: t('Footer.About') },

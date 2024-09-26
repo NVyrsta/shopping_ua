@@ -33,6 +33,8 @@ import {
   fetchProducts,
   fetchProductByQuery,
   fetchProductsByCategories,
+  fetchProductsByBrand,
+  fetchBrandById,
 } from '@/app/core/plugins/firebase';
 import { useI18n } from 'vue-i18n';
 import { useRoute } from 'vue-router';
@@ -49,52 +51,92 @@ const products = ref([]);
 const isLoading = ref(false);
 const hasSearchQuery = computed(() => !!route.query.search);
 
+// const loadProducts = async () => {
+//   isLoading.value = true;
+
+//   // Отримуємо параметри з URL
+//   const categories = (route.params.categories?.split('/') || []).filter(Boolean);
+//   const gender = route.params.gender ? [route.params.gender] : [];
+//   const searchQuery = route.query.search;
+
+//   // Об'єднуємо gender та categories в один масив
+//   const filters = [...gender, ...categories];
+
+//   console.log('Products list categories:', filters);
+
+//   try {
+//     if (searchQuery) {
+//       // Завантажуємо продукти за запитом
+//       products.value = await fetchProductByQuery(searchQuery);
+//       console.log('fetchProductByQuery works');
+//     } else if (filters.length > 0) {
+//       // Завантажуємо продукти за категоріями і gender
+//       products.value = await fetchProductsByCategories(filters);
+//       console.log('fetchProductsByCategories works');
+//     } else {
+//       // Завантажуємо всі продукти
+//       products.value = await fetchProducts();
+//       console.log('fetchProducts works');
+//     }
+//   } catch (error) {
+//     console.error('Error fetching products:', error);
+//   } finally {
+//     isLoading.value = false;
+//   }
+// };
+
 const loadProducts = async () => {
   isLoading.value = true;
 
-  // Отримуємо параметри з URL
   const categories = (route.params.categories?.split('/') || []).filter(Boolean);
   const gender = route.params.gender ? [route.params.gender] : [];
   const searchQuery = route.query.search;
+  const brandId = route.params.brandId;
 
-  // Об'єднуємо gender та categories в один масив
   const filters = [...gender, ...categories];
 
-  console.log('Products list categories:', filters);
-
   try {
-    if (searchQuery) {
-      // Завантажуємо продукти за запитом
+    if (route.name === 'BrandPage' && brandId) {
+      const brand = await fetchBrandById(brandId);
+
+      if (brand?.name) {
+        products.value = await fetchProductsByBrand(brand.name);
+        console.log('fetchProductsByBrand works  products.value.length', products.value);
+      } else {
+        console.error('Brand not found or missing name');
+      }
+
+    } else if (searchQuery) {
       products.value = await fetchProductByQuery(searchQuery);
-      console.log('fetchProductByQuery works');
+      console.log('fetchProductByQuery works', products.value);
+
     } else if (filters.length > 0) {
-      // Завантажуємо продукти за категоріями і gender
       products.value = await fetchProductsByCategories(filters);
-      console.log('fetchProductsByCategories works');
+      console.log('fetchProductsByCategories works', products.value);
+
     } else {
-      // Завантажуємо всі продукти
       products.value = await fetchProducts();
-      console.log('fetchProducts works');
+      console.log('fetchProducts works', products.value);
     }
   } catch (error) {
     console.error('Error fetching products:', error);
   } finally {
     isLoading.value = false;
   }
+
+  console.log('products.value.length > 0', products.value.length > 0);
+  console.log('isLoading:', isLoading.value);
+  console.log('products.length > 0 && !isLoading":', products.value.length > 0 && !isLoading.value);
 };
 
-
-// Виклик функції при монтуванні компонента
 onMounted(() => {
   loadProducts();
 });
 
-// Відстеження змін в параметрах маршруту
 watch([() => route.query.search, () => route.params], () => {
   loadProducts();
 });
 
-// Відстеження змін в локалі
 watch(locale, () => {
   loadProducts();
 });

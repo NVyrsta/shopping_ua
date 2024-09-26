@@ -4,35 +4,33 @@
       v-if="brand"
       class="relative"
     >
-      <SectionSeparator :title="brand.name" />
-
-      <hr class="my-8">
-
-      <div class="flex justify-between items-center px-4">
-        <img 
-          :src="brand.logo"
-          :alt="brand.name"
-          class="max-h-[100px] max-w-[100px] min-h-[100px] min-w-[100px] object-contain"
-        >
-
-        <p>{{ $t('Main.SellerID')}}: {{ brand.id }}</p>
+      <div>        
+        <SectionSeparator :title="brand.name" />
+  
+        <hr class="my-8">
+  
+        <div class="flex justify-between items-center px-4">
+          <img 
+            :src="brand.logo"
+            :alt="brand.name"
+            class="max-h-[100px] max-w-[100px] min-h-[100px] min-w-[100px] object-contain"
+          >
+  
+          <p>{{ $t('Main.SellerID')}}: {{ brand.id }}</p>
+        </div>
+  
+        <hr class="my-8">
+  
+        <div>
+          <SectionSeparator :title="$t('Main.AboutBrand')" />
+  
+          <p class="text-[#353535] text-[15px] leading-[22px] px-4 py-4">
+            {{ brand.desc[locale] }}
+          </p>
+        </div>
       </div>
 
-      <hr class="my-8">
-
-      <div>
-        <SectionSeparator :title="$t('Main.AboutBrand')" />
-
-        <p class="text-[#353535] text-[15px] leading-[22px] px-4 py-4">
-          {{ brand.desc[locale] }}
-        </p>
-      </div>
-
-      <!-- <ProductBreadcrumbs 
-        :categories="brand.categories"
-        :product="product"
-      /> -->
-
+      <ProductsList />
     </div>
 
     <div v-else>
@@ -46,6 +44,7 @@ import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 import { fetchBrandById } from '@/app/core/plugins/firebase.js'; 
 import SectionSeparator from '@/components/elements/SectionSeparator.vue';
+import ProductsList from '@/components/product/ProductsList.vue';
 
 import PageLayout from '@/layouts/PageLayout.vue';
 import { useI18n } from 'vue-i18n';
@@ -57,7 +56,8 @@ const brand = ref(null);
 const route = useRoute();
 
 onMounted(async () => {
-  const brandId = route.params.id;
+  const brandId = route.params.brandId;
+
   try {
     const response = await fetchBrandById(brandId);
     brand.value = response;

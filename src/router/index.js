@@ -28,7 +28,7 @@ const routes = [
   { path: '/basket', component: BasketPage, name: 'BasketPage' },
   { path: '/contacts', component: ContactsPage, name: 'ContactsPage' },
   { path: '/brands', component: BrandsPage, name: 'BrandsPage' },
-  { path: '/brands/:id', component: BrandPage, name: 'BrandPage' },
+  { path: '/brands/:brandId', component: BrandPage, name: 'BrandPage' },
   { path: '/cooperation', component: CooperationPage, name: 'CooperationPage' },
   { path: '/product_card/:id', component: ProductCardPage, name: 'ProductCardPage' },
 

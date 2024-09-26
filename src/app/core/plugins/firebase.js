@@ -296,6 +296,31 @@ export async function fetchProductsByCategories(categories) {
   }
 }
 
+export async function fetchProductsByBrand(brand) {
+  try {
+    const q = query(dbRefGoods, where('producer', '==', brand));
+
+    const querySnapshot = await getDocs(q);
+
+    if (!querySnapshot.empty) {
+      // Збираємо всі документи в масив
+      const products = querySnapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+
+      return products; // Повертаємо масив продуктів
+    } else {
+      console.log('No products found for this brand!');
+      return []; // Повертаємо порожній масив, якщо продуктів немає
+    }
+  } catch (error) {
+    console.error('Error getting products:', error);
+    return []; // Повертаємо порожній масив у випадку помилки
+  }
+}
+
+
 export async function fetchProductsByGender(gender) {
   try {
     // Створюємо запит для колекції "goods"

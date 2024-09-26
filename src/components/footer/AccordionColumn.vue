@@ -1,10 +1,17 @@
 <template>
   <div class="accordion-item">
     <h2
-      class="cursor-pointer md:cursor-default md:mb-2 text-gray-500 text-[16px]"
+      class="flex justify-between items-center gap-4 cursor-pointer md:cursor-default mb-2 md:mb-4 text-gray-500 text-[16px]"
       @click="toggle"
     >
       {{ props.title }}
+
+      <SvgIcon 
+        id="accordion-arrow"
+        width="7"
+        height="4"
+        class="flex-shrink-0 transform rotate-180"
+      />
     </h2>
     
     <ul :class="['transition-all', { 'hidden': !isOpen, 'md:block': true }]">
