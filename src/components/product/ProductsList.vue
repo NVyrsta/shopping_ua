@@ -51,47 +51,14 @@ const products = ref([]);
 const isLoading = ref(false);
 const hasSearchQuery = computed(() => !!route.query.search);
 
-// const loadProducts = async () => {
-//   isLoading.value = true;
-
-//   // Отримуємо параметри з URL
-//   const categories = (route.params.categories?.split('/') || []).filter(Boolean);
-//   const gender = route.params.gender ? [route.params.gender] : [];
-//   const searchQuery = route.query.search;
-
-//   // Об'єднуємо gender та categories в один масив
-//   const filters = [...gender, ...categories];
-
-//   console.log('Products list categories:', filters);
-
-//   try {
-//     if (searchQuery) {
-//       // Завантажуємо продукти за запитом
-//       products.value = await fetchProductByQuery(searchQuery);
-//       console.log('fetchProductByQuery works');
-//     } else if (filters.length > 0) {
-//       // Завантажуємо продукти за категоріями і gender
-//       products.value = await fetchProductsByCategories(filters);
-//       console.log('fetchProductsByCategories works');
-//     } else {
-//       // Завантажуємо всі продукти
-//       products.value = await fetchProducts();
-//       console.log('fetchProducts works');
-//     }
-//   } catch (error) {
-//     console.error('Error fetching products:', error);
-//   } finally {
-//     isLoading.value = false;
-//   }
-// };
-
 const loadProducts = async () => {
   isLoading.value = true;
 
   const categories = (route.params.categories?.split('/') || []).filter(Boolean);
-  const gender = route.params.gender ? [route.params.gender] : [];
+  const gender = route.params.gender ? [route.params.gender] : ['women'];
   const searchQuery = route.query.search;
   const brandId = route.params.brandId;
+  console.log('gender', gender);
 
   const filters = [...gender, ...categories];
 

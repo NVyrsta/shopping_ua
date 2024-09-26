@@ -4,10 +4,11 @@
       v-if="!hasSearchQuery"
     />
 
-    <div class="pb-8">
-      <TopBrandsList 
-        v-if="!hasSearchQuery"
-      />
+    <div 
+      v-if="!hasSearchQuery"
+      class="pb-8"
+    >
+      <TopBrandsList />
 
       <router-link
         to="/brands"
