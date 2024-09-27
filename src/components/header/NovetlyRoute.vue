@@ -1,7 +1,7 @@
 <template>
   <router-link 
     :to="noveltyRoute"
-    active-class="font-bold"
+    :class="{ 'font-bold': isNoveltyRouteActive }"
   >
     {{ $t('Breadcrumbs.Novelty') }}
   </router-link>
@@ -22,5 +22,9 @@ const noveltyRoute = computed(() => {
     default:
       return '/women/new-products';
   }
+});
+
+const isNoveltyRouteActive = computed(() => {
+  return route.path.includes('new-products');
 });
 </script>

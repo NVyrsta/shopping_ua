@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- Кнопка для відкриття/закриття мобільного меню -->
+    <!-- Burger Button -->
     <input 
       type="checkbox" 
       id="burger-menu" 
@@ -20,7 +20,7 @@
       </div>
     </label>
 
-    <!-- Мобільне меню -->
+    <!-- Mobile Menu -->
     <div 
       v-if="isMenuOpen" 
       class="fixed top-0 left-0 z-20 w-full h-full bg-white flex flex-col items-center justify-center text-gray-700 gap-4 lg:hidden"
@@ -28,6 +28,7 @@
       <router-link 
         to="/"
         class="text-xl"
+        :class="{ 'font-bold': isHomePageActive }"
         @click="isMenuOpen = false"
       >
         <span>{{ $t('Breadcrumbs.women') }}</span>
@@ -36,6 +37,7 @@
       <router-link 
         to="/men" 
         class="text-xl"
+        active-class="font-bold"
         @click="isMenuOpen = false"
       >
         <span>{{ $t('Breadcrumbs.men') }}</span>
@@ -44,6 +46,7 @@
       <router-link 
         to="/children" 
         class="text-xl"
+        active-class="font-bold"
         @click="isMenuOpen = false"
       >
         <span>{{ $t('Breadcrumbs.children') }}</span>
@@ -52,6 +55,7 @@
       <router-link 
         to="/brands" 
         class="text-xl"
+        active-class="font-bold"
         @click="isMenuOpen = false"
       >
         <span>{{ $t('Breadcrumbs.Brands') }}</span>
@@ -62,11 +66,11 @@
       />
     </div>
 
-    <!-- Десктопне меню -->
+    <!-- Desktop Menu -->
     <div class="hidden lg:flex items-center justify-start gap-6">
       <router-link 
         to="/"
-        active-class="font-bold"
+        :class="{ 'font-bold': isHomePageActive }"
       >
         <span class="underline-effect">
           {{ $t('Breadcrumbs.women') }}          
@@ -96,10 +100,16 @@
 
 
 <script setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
+import { useRoute } from 'vue-router';
 import NovetlyRoute from '@/components/header/NovetlyRoute.vue';
 
 const isMenuOpen = ref(false);
+const route = useRoute();
+
+const isHomePageActive = computed(() => {
+  return route.path === '/' || route.path === '/women';
+});
 </script>
 
 

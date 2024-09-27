@@ -10,18 +10,8 @@ import ReturnPage from '@/views/ReturnPage.vue';
 import BrandsPage from '@/views/BrandsPage.vue';
 import BrandPage from '@/views/BrandPage.vue';
 import CategoryPage from '@/views/CategoryPage.vue';
+import NewProductsPage from '@/views/NewProductsPage.vue';
 import CooperationPage from '@/views/CooperationPage.vue';
-
-// const routes = [
-//   { path: '/', component: ProductsPage, name: 'ProductsPage' },
-//   { path: '/favorites', component: FavoritesPage, name: 'FavoritesPage' },
-//   { path: '/basket', component: BasketPage, name: 'BasketPage' },
-//   { path: '/contacts', component: ContactsPage, name: 'ContactsPage' },
-//   { path: '/cooperation', component: CooperationPage, name: 'CooperationPage' },
-//   { path: '/product_card/:id', component: ProductCardPage, name: 'ProductCardPage' },
-//   { path: '/:gender(.*)?/:categories(.*)?/:id', component: CategoryPage, name: 'CategoryPage' },
-//   { path: '/:pathMatch(.*)*', component: NotFoundPage, name: 'NotFoundPage'},
-// ];
 
 const routes = [
   { path: '/', component: ProductsPage, name: 'ProductsPage' }, // Home page
@@ -34,7 +24,6 @@ const routes = [
   { path: '/cooperation', component: CooperationPage, name: 'CooperationPage' },
   { path: '/product_card/:id', component: ProductCardPage, name: 'ProductCardPage' },
 
-  // Gender-specific product listings route (without categories)
   {
     path: '/:gender(women|men|children)', 
     component: ProductsPage,
@@ -42,18 +31,15 @@ const routes = [
   },
 
   {
-    path: '/:gender?(women|men|children)/new-products', 
-    component: CategoryPage,
+    path: '/:gender(women|men|children)/new-products',
+    component: NewProductsPage,
     name: 'NewProductsPage',
   },
 
-  // Dynamic category route with unknown depth after gender
   { path: '/:categories(.*)?', component: CategoryPage, name: 'CategoryPage' },
 
-  // Catch-all for unknown routes (404 page)
   { path: '/:pathMatch(.*)*', component: NotFoundPage, name: 'NotFoundPage' },
 ];
-
 
 const router = createRouter({
   history: createWebHistory(),
