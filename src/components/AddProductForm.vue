@@ -1,89 +1,161 @@
 <template>
-  <div>
-    <h1>Add New Product</h1>
-    <form @submit.prevent="submitForm">
-      <label for="name-uk">Name (Ukrainian):</label>
-      <input 
-        id="name-uk" 
-        v-model="productName.uk"
-        type="text" 
-        required 
-      />
-      <br />
+  <div class="max-w-lg mx-auto p-6 bg-white rounded-lg shadow-lg">
+    <h1 class="text-2xl font-bold mb-6 text-gray-800">
+      {{ isEditing ? 'Update Product' : 'Add New Product' }}
+    </h1>
 
-      <label for="name-en">Name (English):</label>
+    <form
+      @submit.prevent="submitForm" 
+      class="space-y-4"
+    >
+      <div>
+        <label 
+          for="name-uk" 
+          class="block text-sm font-medium text-gray-700"
+        >
+          Name (Ukrainian):
+        </label>
 
-      <input 
-        id="name-en"
-        v-model="productName.en" 
-        type="text"
-        required 
-      />
-      <br />
+        <input 
+          id="name-uk" 
+          v-model="productName.uk"
+          type="text" 
+          required 
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+        />
+      </div>
 
-      <label for="img">IMG:</label>
+      <div>
+        <label 
+          for="name-en" 
+          class="block text-sm font-medium text-gray-700"
+        >
+          Name (English):
+        </label>
 
-      <input 
-        id="img"
-        v-model="productImg"
-        type="text"
-        required 
-      />
-      <br />
+        <input 
+          id="name-en"
+          v-model="productName.en" 
+          type="text"
+          required 
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+        />
+      </div>
 
-      <label for="price">Price:</label>
-      <input 
-        id="price" 
-        v-model.number="productPrice" 
-        type="number" 
-        step="0.01" 
-        required 
-      />
-      <br />
+      <div>
+        <label 
+          for="img" 
+          class="block text-sm font-medium text-gray-700"
+        >
+          IMG:
+        </label>
+        
+        <input 
+          id="img"
+          v-model="productImg"
+          type="text"
+          required 
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+        />
+      </div>
 
-      <label for="quantity">Quantity:</label>
-      <input 
-        id="quantity" 
-        v-model.number="productQuantity" 
-        type="number" 
-        required 
-      />
-      <br />
+      <div>
+        <label 
+          for="price" 
+          class="block text-sm font-medium text-gray-700"
+        >
+          Price:
+        </label>
 
-      <label for="category-uk">Category (Ukrainian):</label>
-      <input 
-        id="category-uk" 
-        v-model="productCategory.uk" 
-        type="text" 
-        required 
-      />
-      <br />
+        <input 
+          id="price" 
+          v-model.number="productPrice" 
+          type="number" 
+          step="0.01" 
+          required 
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+        />
+      </div>
 
-      <label for="category-en">Category (English):</label>
-      <input 
-        id="category-en" 
-        v-model="productCategory.en" 
-        type="text" 
-        required 
-      />
-      <br />
+      <div>
+        <label 
+          for="quantity" 
+          class="block text-sm font-medium text-gray-700"
+        >
+          Quantity:
+        </label>
+        <input 
+          id="quantity" 
+          v-model.number="productQuantity" 
+          type="number" 
+          required 
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+        />
+      </div>
 
-      <label for="producer">Producer:</label>
-      <input 
-        id="producer"
-        v-model="productProducer.en" 
-        type="text" 
-        required 
-      />
-      <br />
+      <div>
+        <label 
+          for="category-uk" 
+          class="block text-sm font-medium text-gray-700"
+        >
+          Category (Ukrainian):
+        </label>
 
-      <button type="submit">
-        {{ isEditing ? 'Update Product' : 'Add Product' }}
-      </button>
-      <br />
+        <input 
+          id="category-uk" 
+          v-model="productCategory.uk" 
+          type="text" 
+          required 
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+        />
+      </div>
+
+      <div>
+        <label 
+          for="category-en" 
+          class="block text-sm font-medium text-gray-700"
+        >
+          Category (English):
+        </label>
+
+        <input 
+          id="category-en" 
+          v-model="productCategory.en" 
+          type="text" 
+          required 
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+        />
+      </div>
+
+      <div>
+        <label 
+          for="producer" 
+          class="block text-sm font-medium text-gray-700"
+        >
+          Producer:
+        </label>
+
+        <input 
+          id="producer"
+          v-model="productProducer.en" 
+          type="text" 
+          required 
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+        />
+      </div>
+
+      <div>
+        <button 
+          type="submit" 
+          class="w-full py-2 px-4 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+        >
+          {{ isEditing ? 'Update Product' : 'Add Product' }}
+        </button>
+      </div>
     </form>
   </div>
 </template>
+
 
 <script setup>
 import { ref } from 'vue';

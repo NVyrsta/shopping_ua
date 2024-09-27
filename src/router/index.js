@@ -11,6 +11,7 @@ import BrandsPage from '@/views/BrandsPage.vue';
 import BrandPage from '@/views/BrandPage.vue';
 import CategoryPage from '@/views/CategoryPage.vue';
 import NewProductsPage from '@/views/NewProductsPage.vue';
+import AdminPage from '@/views/AdminPage.vue';
 import CooperationPage from '@/views/CooperationPage.vue';
 
 const routes = [
@@ -23,21 +24,10 @@ const routes = [
   { path: '/brands/:brandId', component: BrandPage, name: 'BrandPage' },
   { path: '/cooperation', component: CooperationPage, name: 'CooperationPage' },
   { path: '/product_card/:id', component: ProductCardPage, name: 'ProductCardPage' },
-
-  {
-    path: '/:gender(women|men|children)', 
-    component: ProductsPage,
-    name: 'GenderProductsPage', 
-  },
-
-  {
-    path: '/:gender(women|men|children)/new-products',
-    component: NewProductsPage,
-    name: 'NewProductsPage',
-  },
-
+  // { path: '/:gender(women|men|children)', component: ProductsPage, name: 'GenderProductsPage' },
+  { path: '/admin', component: AdminPage, name: 'AdminPage' },
+  { path: '/:gender(women|men|children)/new-products', component: NewProductsPage, name: 'NewProductsPage' },
   { path: '/:categories(.*)?', component: CategoryPage, name: 'CategoryPage' },
-
   { path: '/:pathMatch(.*)*', component: NotFoundPage, name: 'NotFoundPage' },
 ];
 
