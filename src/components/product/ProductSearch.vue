@@ -1,16 +1,17 @@
 <template>
   <div class="flex justify-between items-center flex-wrap sm:flex-nowrap gap-2 bg-orange-100 px-4">
     <div class="flex justify-center sm:justify-start items-center gap-2 order-2 sm:order-1 w-full sm:w-auto pb-2 sm:pb-0">
-      <div class="flex items-center">
-        <router-link 
-          to="/brands"
-          active-class="font-bold"
-        >
-          {{ $t('Breadcrumbs.Brands') }}
-        </router-link>
-      </div>
+      <router-link 
+        to="/brands"
+        active-class="font-bold"
+        class="underline-effect"
+      >
+        {{ $t('Breadcrumbs.Brands') }}
+      </router-link>
 
-      <NovetlyRoute />
+      <NovetlyRoute 
+        class="underline-effect"
+      />
     </div>
 
     <div class="relative py-2 w-full sm:w-auto order-1 sm:order-2">

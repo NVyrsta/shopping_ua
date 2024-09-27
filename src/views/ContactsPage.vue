@@ -38,7 +38,6 @@
     </div>
 
     <DiscountBlock />
-
   </PageLayout>
 </template>
 
