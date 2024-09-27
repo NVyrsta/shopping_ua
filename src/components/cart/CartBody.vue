@@ -32,10 +32,9 @@
           <img 
             :src="item.images[0]" 
             alt="Product Image" 
-            class="w-16 h-16 object-cover mr-4"
-            width="93px"
-            height="93px"
+            class="w-16 h-16 object-cover object-top mr-4 flex-shrink-0"
           />
+
           <div>
             <h3 
               class="text-xl font-semibold cursor-pointer hover:underline"

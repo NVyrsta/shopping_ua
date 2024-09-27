@@ -41,6 +41,12 @@ const routes = [
     name: 'GenderProductsPage', 
   },
 
+  {
+    path: '/:gender?(women|men|children)/new-products', 
+    component: CategoryPage,
+    name: 'NewProductsPage',
+  },
+
   // Dynamic category route with unknown depth after gender
   { path: '/:categories(.*)?', component: CategoryPage, name: 'CategoryPage' },
 

@@ -9,7 +9,7 @@
       class="relative cursor-pointer"
     >
       <div
-        class="absolute top-2 right-2 flex z-20 space-x-2"
+        class="absolute top-2 right-2 flex z-10 space-x-2"
       >
         <button
           @click.stop="toggleFavorite"
@@ -27,6 +27,15 @@
         :images="product.images"
         :id="product.id"
       />
+
+      <div 
+        v-if="isWithinLastTwoWeeks(product?.date)"
+        class="absolute top-0 left-0"
+      >
+        <span class="text-white text-xs tracking-wider leading-[10px] px-2 py-1 w-[50px] bg-[#9baef0]">
+          {{ $t('Main.Novelty') }}
+        </span>
+      </div>
     </div>
 
     <div class="p-4">
@@ -89,6 +98,15 @@ const isFavorited = computed(() => {
   return favorites.value.includes(props.product.id);
 });
 
+
+const isWithinLastTwoWeeks = (date) => {
+  if (!date) return false; // Ensure the date is provided
+  
+  const productDate = new Date(date.seconds * 1000); // Convert seconds to milliseconds
+  const twoWeeksAgo = new Date(Date.now() - 14 * 24 * 60 * 60 * 1000); // Calculate the date for two weeks ago
+  
+  return productDate >= twoWeeksAgo; // Check if the product date is within the last two weeks
+};
 
 const toggleFavorite = () => {
   const productId = props.product.id;

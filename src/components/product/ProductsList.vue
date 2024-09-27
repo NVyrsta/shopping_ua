@@ -35,6 +35,7 @@ import {
   fetchProductsByCategories,
   fetchProductsByBrand,
   fetchBrandById,
+  fetchNewProductsByCategory,
 } from '@/app/core/plugins/firebase';
 import { useI18n } from 'vue-i18n';
 import { useRoute } from 'vue-router';
@@ -58,7 +59,6 @@ const loadProducts = async () => {
   const gender = route.params.gender ? [route.params.gender] : ['women'];
   const searchQuery = route.query.search;
   const brandId = route.params.brandId;
-  console.log('gender', gender);
 
   const filters = [...gender, ...categories];
 
@@ -77,8 +77,16 @@ const loadProducts = async () => {
       products.value = await fetchProductByQuery(searchQuery);
       console.log('fetchProductByQuery works', products.value);
 
+    } else if (
+      route.name === 'NewProductsPage'
+    ) {
+      const category = route.path.split('/')[1]; // This gets the segment before 'new-products'
+      products.value = await fetchNewProductsByCategory(category);
+      console.log('fetchNewProductsByCategory works', products.value);
+
     } else if (filters.length > 0) {
-      products.value = await fetchProductsByCategories(filters);
+      console.log('filters', filters);
+      products.value = await fetchProductsByCategories(filters[filters.length - 1]);
       console.log('fetchProductsByCategories works', products.value);
 
     } else {
@@ -87,13 +95,9 @@ const loadProducts = async () => {
     }
   } catch (error) {
     console.error('Error fetching products:', error);
-  } finally {
+  } finally {    
     isLoading.value = false;
   }
-
-  console.log('products.value.length > 0', products.value.length > 0);
-  console.log('isLoading:', isLoading.value);
-  console.log('products.length > 0 && !isLoading":', products.value.length > 0 && !isLoading.value);
 };
 
 onMounted(() => {

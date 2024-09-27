@@ -9,8 +9,8 @@
     >
 
     <label 
-    for="burger-menu"
-    class="relative z-20 cursor-pointer lg:hidden"
+      for="burger-menu"
+      class="relative z-30 cursor-pointer lg:hidden"
     >
       <div class="hamburger hamburger2">
         <span class="bar bar1"></span>
@@ -23,7 +23,7 @@
     <!-- Мобільне меню -->
     <div 
       v-if="isMenuOpen" 
-      class="fixed top-0 left-0 z-10 w-full h-full bg-white flex flex-col items-center justify-center text-gray-700 gap-4 lg:hidden"
+      class="fixed top-0 left-0 z-20 w-full h-full bg-white flex flex-col items-center justify-center text-gray-700 gap-4 lg:hidden"
     >
       <router-link 
         to="/"
@@ -56,6 +56,10 @@
       >
         <span>{{ $t('Breadcrumbs.Brands') }}</span>
       </router-link>
+
+      <NovetlyRoute 
+        class="text-xl"
+      />
     </div>
 
     <!-- Десктопне меню -->
@@ -93,6 +97,7 @@
 
 <script setup>
 import { ref } from 'vue';
+import NovetlyRoute from '@/components/header/NovetlyRoute.vue';
 
 const isMenuOpen = ref(false);
 </script>

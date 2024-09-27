@@ -9,6 +9,7 @@ import {
   query,
   where,
   updateDoc,
+  Timestamp,
 } from 'firebase/firestore';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -266,11 +267,12 @@ export async function fetchProductsByCategoriesAndGender(categories, gender) {
 }
 
 export async function fetchProductsByCategories(categories) {
+  console.log('fetchProductsByCategories categories:', categories);
   try {
     // Створюємо запит для колекції "goods", використовуючи умови array-contains-any та equality
     const q = query(
       dbRefGoods,
-      where('categories', 'array-contains-any', categories),
+      where('categories', 'array-contains', categories),
     );
 
     // Виконуємо запит
@@ -320,7 +322,6 @@ export async function fetchProductsByBrand(brand) {
   }
 }
 
-
 export async function fetchProductsByGender(gender) {
   try {
     // Створюємо запит для колекції "goods"
@@ -338,6 +339,38 @@ export async function fetchProductsByGender(gender) {
       });
 
     return filteredProducts;
+  } catch (error) {
+    console.error('Error getting documents:', error);
+    return [];
+  }
+}
+
+export async function fetchNewProductsByCategory(category) {
+  try {
+    const currentDate = new Date();
+    const twoWeeksAgo = new Date(currentDate.setDate(currentDate.getDate() - 14));
+
+    const timestamp = Timestamp.fromDate(twoWeeksAgo);
+    
+    const q = query(
+      dbRefGoods,
+      where('categories', 'array-contains', category),
+      where('date', '>', timestamp),
+    );
+
+    const querySnapshot = await getDocs(q);
+
+    if (!querySnapshot.empty) {
+      const products = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+
+      return products;
+    } else {
+      console.log('No matching documents!');
+      return [];
+    }
   } catch (error) {
     console.error('Error getting documents:', error);
     return [];
