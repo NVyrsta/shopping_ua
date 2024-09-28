@@ -23,7 +23,7 @@
         <!-- Колонка 1 -->
         <AccordionColumn
           :title="$t('Footer.Catalogue')"
-          :links="sellerLinks"
+          :links="catalogueLinks"
         />      
 
         <!-- Колонка 2 -->
@@ -61,8 +61,9 @@ const customerLinks = computed(() => [
   { path: '/return', label: t('Breadcrumbs.Return') },
 ]);
 
-// const companyLinks = computed(() => [
-//   { path: '/about', label: t('Footer.About') },
-//   { path: '/careers', label: t('Footer.Careers') },
-// ]);
+const catalogueLinks = computed(() => [
+  { path: '/women', label: t('Breadcrumbs.women_clothing') },
+  { path: '/men', label: t('Breadcrumbs.menswear') },
+  { path: '/children', label: t('Breadcrumbs.childrens-clothes') },
+]);
 </script>
