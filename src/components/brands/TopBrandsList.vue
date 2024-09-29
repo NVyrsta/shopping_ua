@@ -2,6 +2,13 @@
   <div>
     <SectionSeparator :title="$t('Breadcrumbs.Brands')" />
 
+    <h2
+      v-if="title"
+      class="text-center text-lg uppercase"
+    >
+      {{ title }}
+    </h2>
+
     <div
       v-if="brands.length > 0 && !isLoading"
       class="mx-auto mb-0 mt-7 flex flex-wrap items-center justify-center gap-7 px-2 py-5 sm:px-10"
@@ -39,6 +46,13 @@
 
   const brands = ref([]);
   const isLoading = ref(false);
+
+  defineProps({
+    title: {
+      type: String,
+      default: ''
+    }
+  });
 
   const loadBrands = async () => {
     isLoading.value = true;
