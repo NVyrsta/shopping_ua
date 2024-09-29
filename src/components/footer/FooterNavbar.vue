@@ -20,19 +20,16 @@
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4 p-4 w-full sm:w-2/3 text-center sm:text-left">
-        <!-- Колонка 1 -->
         <AccordionColumn
           :title="$t('Footer.Catalogue')"
           :links="catalogueLinks"
         />      
 
-        <!-- Колонка 2 -->
         <AccordionColumn
           :title="$t('Footer.ForTheBuyer')"
           :links="customerLinks"
         />   
 
-        <!-- Колонка 3 -->
         <AccordionColumn
           :title="$t('Footer.ForTheSeller')"
           :links="sellerLinks"
@@ -43,11 +40,11 @@
 </template>
 
 <script setup>
-import AccordionColumn from '@/components/footer/AccordionColumn.vue';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 
-// Ініціалізуємо переклади
+import AccordionColumn from '@/components/footer/AccordionColumn.vue';
+
 const { t } = useI18n();
 
 const sellerLinks = computed(() => [
