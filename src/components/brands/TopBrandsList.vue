@@ -4,7 +4,7 @@
 
     <div
       v-if="brands.length > 0 && !isLoading"
-      class="px-2 sm:px-10 py-5 mt-7 mx-auto mb-0 flex flex-wrap gap-7 items-center justify-center"
+      class="mx-auto mb-0 mt-7 flex flex-wrap items-center justify-center gap-7 px-2 py-5 sm:px-10"
     >
       <div
         v-for="brand in brands"
@@ -12,7 +12,7 @@
       >
         <router-link :to="`/brands/${brand.id}`">
           <div
-            class="p-2 border border-gray-200 w-32 h-32 flex justify-center items-center mx-auto cursor-pointer"
+            class="mx-auto flex h-32 w-32 cursor-pointer items-center justify-center border border-gray-200 p-2"
           >
             <img
               :src="brand.logo"
@@ -21,7 +21,7 @@
           </div>
 
           <div
-            class="mt-1 text-center font-medium text-sm leading-4 tracking-wide text-gray-700"
+            class="mt-1 text-center text-sm font-medium leading-4 tracking-wide text-gray-700"
           >
             {{ brand.name }}
           </div>

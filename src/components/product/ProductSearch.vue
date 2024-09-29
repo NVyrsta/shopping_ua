@@ -1,9 +1,9 @@
 <template>
   <div
-    class="flex justify-between items-center flex-wrap sm:flex-nowrap gap-2 bg-orange-100 px-4"
+    class="flex flex-wrap items-center justify-between gap-2 bg-orange-100 px-4 sm:flex-nowrap"
   >
     <div
-      class="flex justify-center sm:justify-start items-center gap-2 order-2 sm:order-1 w-full sm:w-auto pb-2 sm:pb-0"
+      class="order-2 flex w-full items-center justify-center gap-2 pb-2 sm:order-1 sm:w-auto sm:justify-start sm:pb-0"
     >
       <router-link
         to="/brands"
@@ -16,18 +16,18 @@
       <NovetlyRoute class="underline-effect" />
     </div>
 
-    <div class="relative py-2 w-full sm:w-auto order-1 sm:order-2">
+    <div class="relative order-1 w-full py-2 sm:order-2 sm:w-auto">
       <input
         v-model="searchQuery"
         :placeholder="$t('Header.Search')"
         type="text"
-        class="bg-orange-100 outline-none pt-1 pr-6 pb-1 pl-2 text-sm border-b border-gray-300 w-full"
+        class="w-full border-b border-gray-300 bg-orange-100 pb-1 pl-2 pr-6 pt-1 text-sm outline-none"
         @input="debouncedSearch"
       />
 
       <SvgIcon
         id="search"
-        class="absolute top-2 right-0"
+        class="absolute right-0 top-2"
         width="21"
         height="21"
         fill="#353535"

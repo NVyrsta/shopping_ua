@@ -7,20 +7,20 @@
         <img
           src="@/assets/img/404.png"
           alt="not found"
-          class="block mx-auto"
+          class="mx-auto block"
         />
 
-        <div class="flex justify-center items-center flex-wrap gap-4 mt-10">
+        <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
           <router-link
             to="/"
-            class="block text-md text-white bg-red-500 hover:bg-red-700 px-14 py-2"
+            class="text-md block bg-red-500 px-14 py-2 text-white hover:bg-red-700"
           >
             {{ $t('Favorites.OnTheMainOne') }}
           </router-link>
 
           <button
             @click="goBack"
-            class="block text-md text-white bg-red-500 hover:bg-red-700 px-14 py-2"
+            class="text-md block bg-red-500 px-14 py-2 text-white hover:bg-red-700"
           >
             {{ $t('Main.Back') }}
           </button>

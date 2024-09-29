@@ -6,10 +6,10 @@
 </script>
 
 <template>
-  <div class="banner flex justify-between items-center gap-2">
+  <div class="banner flex items-center justify-between gap-2">
     <div class="flex-1">
       <a
-        class="flex items-center gap-2 cursor-pointer"
+        class="flex cursor-pointer items-center gap-2"
         @click.prevent="goBack"
       >
         <SvgIcon
@@ -19,7 +19,7 @@
           fill="white"
         />
 
-        <span class="text-sm text-white font-medium uppercase">
+        <span class="text-sm font-medium uppercase text-white">
           {{ $t('Main.Back') }}
         </span>
       </a>
@@ -33,7 +33,7 @@
         <img
           src="@/assets/img/logo-dark-bg.png"
           alt="Shopping UA"
-          class="w-[86px] h-[28px] md:w-[114px] md:h-[38px]"
+          class="h-[28px] w-[86px] md:h-[38px] md:w-[114px]"
         />
       </router-link>
     </div>

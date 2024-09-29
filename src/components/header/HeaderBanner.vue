@@ -3,8 +3,8 @@
 </script>
 
 <template>
-  <div class="banner flex justify-between items-center gap-2">
-    <div class="flex items-center gap-1 justify-start">
+  <div class="banner flex items-center justify-between gap-2">
+    <div class="flex items-center justify-start gap-1">
       <a href="#">
         <SvgIcon
           id="social-instagram"
@@ -33,10 +33,10 @@
       </a>
     </div>
 
-    <div class="hidden lg:flex items-center gap-4 justify-center">
-      <div class="relative btn">
+    <div class="hidden items-center justify-center gap-4 lg:flex">
+      <div class="btn relative">
         <div
-          class="flex items-center gap-2 cursor-pointer uppercase font-semibold"
+          class="flex cursor-pointer items-center gap-2 font-semibold uppercase"
         >
           <svg
             width="23"
@@ -65,9 +65,9 @@
         </div>
       </div>
 
-      <div class="relative btn">
+      <div class="btn relative">
         <div
-          class="flex items-center gap-2 cursor-pointer uppercase font-semibold"
+          class="flex cursor-pointer items-center gap-2 font-semibold uppercase"
         >
           <svg
             width="15"
@@ -104,9 +104,9 @@
         </div>
       </div>
 
-      <div class="relative btn">
+      <div class="btn relative">
         <div
-          class="flex items-center gap-2 cursor-pointer uppercase font-semibold"
+          class="flex cursor-pointer items-center gap-2 font-semibold uppercase"
         >
           <svg
             width="16"
@@ -131,9 +131,9 @@
         </div>
       </div>
 
-      <div class="relative btn">
+      <div class="btn relative">
         <div
-          class="flex items-center gap-2 cursor-pointer uppercase font-semibold"
+          class="flex cursor-pointer items-center gap-2 font-semibold uppercase"
         >
           <svg
             width="16"

@@ -1,7 +1,7 @@
 <script setup></script>
 
 <template>
-  <div class="banner flex justify-between items-center gap-2">
+  <div class="banner flex items-center justify-between gap-2">
     <div class="flex-1">
       <span class="text-xs">
         {{ new Date().getFullYear() }}. {{ $t('Main.AllRightsReserved') }}
@@ -16,7 +16,7 @@
         <img
           src="@/assets/img/logo-light-bg.png"
           alt="Shopping UA"
-          class="w-[86px] h-[28px] md:w-[114px] md:h-[38px]"
+          class="h-[28px] w-[86px] md:h-[38px] md:w-[114px]"
         />
       </router-link>
     </div>

@@ -9,12 +9,12 @@
       <img
         src="@/assets/img/return-decor.png"
         alt="Shopping UA"
-        class="relative md:absolute top-0 left-0 float-left md:float-none"
+        class="relative left-0 top-0 float-left md:absolute md:float-none"
       />
 
       <div
         v-html="$t('Return.PageContent')"
-        class="pl-0 md:pl-28 mt-3 ml-8 text-gray-600"
+        class="ml-8 mt-3 pl-0 text-gray-600 md:pl-28"
       />
     </div>
 

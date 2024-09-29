@@ -9,11 +9,11 @@
 
         <hr class="my-8" />
 
-        <div class="flex justify-between items-center px-4">
+        <div class="flex items-center justify-between px-4">
           <img
             :src="brand.logo"
             :alt="brand.name"
-            class="max-h-[100px] max-w-[100px] min-h-[100px] min-w-[100px] object-contain"
+            class="max-h-[100px] min-h-[100px] min-w-[100px] max-w-[100px] object-contain"
           />
 
           <p>{{ $t('Main.SellerID') }}: {{ brand.id }}</p>
@@ -24,7 +24,7 @@
         <div>
           <SectionSeparator :title="$t('Main.AboutBrand')" />
 
-          <p class="text-[#353535] text-[15px] leading-[22px] px-4 py-4">
+          <p class="px-4 py-4 text-[15px] leading-[22px] text-[#353535]">
             {{ brand.desc[locale] }}
           </p>
         </div>

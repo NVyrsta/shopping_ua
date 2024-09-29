@@ -23,7 +23,7 @@
     <!-- Mobile Menu -->
     <div
       v-if="isMenuOpen"
-      class="fixed top-0 left-0 z-20 w-full h-full bg-white flex flex-col items-center justify-center text-gray-700 gap-4 lg:hidden"
+      class="fixed left-0 top-0 z-20 flex h-full w-full flex-col items-center justify-center gap-4 bg-white text-gray-700 lg:hidden"
     >
       <router-link
         to="/"
@@ -65,7 +65,7 @@
     </div>
 
     <!-- Desktop Menu -->
-    <div class="hidden lg:flex items-center justify-start gap-6">
+    <div class="hidden items-center justify-start gap-6 lg:flex">
       <router-link
         to="/"
         :class="{ 'font-bold': isHomePageActive }"

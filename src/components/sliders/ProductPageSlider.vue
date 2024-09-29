@@ -8,10 +8,10 @@
       :key="index"
       class="flex self-stretch"
     >
-      <div class="flex w-full h-full overflow-hidden">
+      <div class="flex h-full w-full overflow-hidden">
         <img
           :src="slide"
-          class="w-full h-full object-cover"
+          class="h-full w-full object-cover"
         />
       </div>
     </slide>

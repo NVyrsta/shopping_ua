@@ -1,7 +1,7 @@
 <template>
   <nav
     aria-label="breadcrumb"
-    class="breadcrumbs flex justify-start items-center px-4 py-4 gap-4"
+    class="breadcrumbs flex items-center justify-start gap-4 px-4 py-4"
   >
     <ol class="breadcrumb flex items-center justify-start gap-4">
       <router-link to="/">{{ $t('Breadcrumbs.Main') }}</router-link>
@@ -12,7 +12,7 @@
           width="6"
           height="10"
           fill="#6d6d6d"
-          class="transform rotate-180"
+          class="rotate-180 transform"
         />
       </span>
     </ol>
@@ -35,14 +35,14 @@
               width="6"
               height="10"
               fill="#6d6d6d"
-              class="transform rotate-180"
+              class="rotate-180 transform"
             />
           </span>
         </div>
 
         <span
           v-else
-          class="text-gray-400 text-sm tracking-wide leading-4 whitespace-nowrap"
+          class="whitespace-nowrap text-sm leading-4 tracking-wide text-gray-400"
         >
           {{ $t(`Breadcrumbs.${breadcrumb.name}`) }}
         </span>

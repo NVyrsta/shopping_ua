@@ -1,10 +1,10 @@
 <template>
-  <div class="bg-white py-12 px-4 shadow-[0px_-4px_10px_0px_rgba(0,0,0,0.1)]">
+  <div class="bg-white px-4 py-12 shadow-[0px_-4px_10px_0px_rgba(0,0,0,0.1)]">
     <div
-      class="flex justify-between items-center flex-wrap text-center gap-6 py-1"
+      class="flex flex-wrap items-center justify-between gap-6 py-1 text-center"
     >
       <div
-        class="flex items-center justify-center flex-col gap-2 text-center w-full sm:w-fit"
+        class="flex w-full flex-col items-center justify-center gap-2 text-center sm:w-fit"
       >
         <router-link to="/">
           <img
@@ -22,7 +22,7 @@
       </div>
 
       <div
-        class="grid grid-cols-1 md:grid-cols-3 gap-4 p-4 w-full sm:w-2/3 text-center sm:text-left"
+        class="grid w-full grid-cols-1 gap-4 p-4 text-center sm:w-2/3 sm:text-left md:grid-cols-3"
       >
         <AccordionColumn
           :title="$t('Footer.Catalogue')"

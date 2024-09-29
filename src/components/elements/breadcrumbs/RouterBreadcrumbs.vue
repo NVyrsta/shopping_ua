@@ -1,7 +1,7 @@
 <template>
   <nav
     aria-label="breadcrumb"
-    class="breadcrumbs flex justify-start items-center px-4 py-4 gap-4 overflow-x-auto"
+    class="breadcrumbs flex items-center justify-start gap-4 overflow-x-auto px-4 py-4"
   >
     <ol class="breadcrumb flex items-center justify-start gap-4">
       <router-link to="/">{{ $t('Breadcrumbs.Main') }}</router-link>
@@ -21,7 +21,7 @@
               width="6"
               height="10"
               fill="#6d6d6d"
-              class="transform rotate-180"
+              class="rotate-180 transform"
             />
           </span>
 

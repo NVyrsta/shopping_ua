@@ -1,19 +1,19 @@
 <template>
   <div
-    class="bg-white mx-auto shadow-lg min-[450px]:w-[428px] min-[1100px]:w-[428px] max-w-full static min-[1100px]:absolute z-10 top-24 right-14 p-8"
+    class="static right-14 top-24 z-10 mx-auto max-w-full bg-white p-8 shadow-lg min-[450px]:w-[428px] min-[1100px]:absolute min-[1100px]:w-[428px]"
   >
-    <p class="text-lg font-semibold text-black text-center mb-6">
+    <p class="mb-6 text-center text-lg font-semibold text-black">
       {{ product.name[locale] }}
     </p>
 
-    <p class="text-lg text-gray-600 mb-4">Ціна: {{ product.price }}грн</p>
+    <p class="mb-4 text-lg text-gray-600">Ціна: {{ product.price }}грн</p>
 
     <div class="mb-4">
       <select
         id="size-selector"
         v-model="selectedSize"
         name="select"
-        class="block w-full mt-1 p-2 border border-gray-300 rounded-md shadow-sm"
+        class="mt-1 block w-full rounded-md border border-gray-300 p-2 shadow-sm"
       >
         <option
           value=""

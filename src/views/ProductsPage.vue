@@ -13,10 +13,10 @@
         class="block"
       >
         <button
-          class="flex items-center justify-center relative box-border select-none align-middle appearance-none min-w-[64px] font-['Proxima Nova'] shadow-none leading-[1.5] text-white bg-[#353535] cursor-pointer h-10 w-full text-center font-medium text-lg tracking-[0.1em] max-w-[230px] outline-0 mx-auto no-underline transition-all duration-250 ease-[cubic-bezier(0.4, 0, 0.2, 1)] border-2 border-solid border-[#353535] rounded-none p-2"
+          class="font-['Proxima Nova'] duration-250 ease-[cubic-bezier(0.4, 0, 0.2, 1)] relative mx-auto box-border flex h-10 w-full min-w-[64px] max-w-[230px] cursor-pointer select-none appearance-none items-center justify-center rounded-none border-2 border-solid border-[#353535] bg-[#353535] p-2 text-center align-middle text-lg font-medium leading-[1.5] tracking-[0.1em] text-white no-underline shadow-none outline-0 transition-all"
         >
           <p
-            class="flex justify-center gap-2 items-center mx-auto relative before:content-[''] before:bg-white before:block before:absolute before:top-1/2 before:transform before:-translate-y-1/2 before:left-[-30px] before:opacity-50 before:rounded-[5px] before:w-[21px] before:h-[1px]"
+            class="relative mx-auto flex items-center justify-center gap-2 before:absolute before:left-[-30px] before:top-1/2 before:block before:h-[1px] before:w-[21px] before:-translate-y-1/2 before:transform before:rounded-[5px] before:bg-white before:opacity-50 before:content-['']"
           >
             {{ $t('Main.WatchAll') }}
           </p>

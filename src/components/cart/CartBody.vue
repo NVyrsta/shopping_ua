@@ -12,11 +12,11 @@
       class="bg-white"
     >
       <div
-        class="hidden lg:grid grid-cols-[1fr_2fr] gap-4 font-semibold text-md border-b-2 pb-2"
+        class="text-md hidden grid-cols-[1fr_2fr] gap-4 border-b-2 pb-2 font-semibold lg:grid"
       >
         <div>{{ $t('Main.Product') }}</div>
 
-        <div class="grid grid-cols-[1fr_2fr_1fr] gap-4 items-center">
+        <div class="grid grid-cols-[1fr_2fr_1fr] items-center gap-4">
           <div>{{ $t('Main.Size') }}</div>
 
           <div>{{ $t('Main.Quantity') }}</div>
@@ -28,18 +28,18 @@
       <div
         v-for="item in cartItems"
         :key="item.id"
-        class="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-4 border-b-2 py-4"
+        class="grid grid-cols-1 gap-4 border-b-2 py-4 lg:grid-cols-[1fr_2fr]"
       >
         <div class="flex items-center">
           <img
             :src="item.images[0]"
             alt="Product Image"
-            class="w-16 h-16 object-cover object-top mr-4 flex-shrink-0"
+            class="mr-4 h-16 w-16 flex-shrink-0 object-cover object-top"
           />
 
           <div>
             <h3
-              class="text-xl font-semibold cursor-pointer hover:underline"
+              class="cursor-pointer text-xl font-semibold hover:underline"
               @click="
                 () =>
                   $router.push({
@@ -65,7 +65,7 @@
           <div
             v-for="reserved in item.reserved"
             :key="reserved.size"
-            class="grid grid-cols-1 sm:grid-cols-[1fr_2fr_1fr] gap-4 items-center"
+            class="grid grid-cols-1 items-center gap-4 sm:grid-cols-[1fr_2fr_1fr]"
           >
             <p>{{ $t('Main.Size') }}: {{ reserved.size }}</p>
 
@@ -87,7 +87,7 @@
             <div class="relative">
               <button
                 @click="removeItem(item.id, reserved.size)"
-                class="absolute top-1/2 transform -translate-y-1/2 right-0 text-gray-500 hover:text-gray-700 text-2xl"
+                class="absolute right-0 top-1/2 -translate-y-1/2 transform text-2xl text-gray-500 hover:text-gray-700"
               >
                 &times;
               </button>
@@ -100,7 +100,7 @@
 
       <div class="flex w-full items-center justify-center sm:justify-end">
         <div
-          class="relative -top-[24px] flex flex-col items-center justify-center gap-4 mt-4 bg-slate-50 w-[410px] p-[30px]"
+          class="relative -top-[24px] mt-4 flex w-[410px] flex-col items-center justify-center gap-4 bg-slate-50 p-[30px]"
         >
           <p class="text-xl font-semibold">
             {{ $t('Main.TotalDue') }}: {{ grandTotal.toFixed(2) }} грн

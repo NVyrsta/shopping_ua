@@ -1,11 +1,11 @@
 <script setup></script>
 
 <template>
-  <div class="banner flex justify-center items-center m-auto gap-2 text-black">
-    <div class="flex flex-wrap items-center gap-4 justify-center py-4">
-      <div class="relative btn">
+  <div class="banner m-auto flex items-center justify-center gap-2 text-black">
+    <div class="flex flex-wrap items-center justify-center gap-4 py-4">
+      <div class="btn relative">
         <div
-          class="flex items-center gap-2 cursor-pointer uppercase font-semibold"
+          class="flex cursor-pointer items-center gap-2 font-semibold uppercase"
         >
           <svg
             width="23"
@@ -34,9 +34,9 @@
         </div>
       </div>
 
-      <div class="relative btn">
+      <div class="btn relative">
         <div
-          class="flex items-center gap-2 cursor-pointer uppercase font-semibold"
+          class="flex cursor-pointer items-center gap-2 font-semibold uppercase"
         >
           <svg
             width="15"
@@ -73,9 +73,9 @@
         </div>
       </div>
 
-      <div class="relative btn">
+      <div class="btn relative">
         <div
-          class="flex items-center gap-2 cursor-pointer uppercase font-semibold"
+          class="flex cursor-pointer items-center gap-2 font-semibold uppercase"
         >
           <svg
             width="16"
@@ -100,9 +100,9 @@
         </div>
       </div>
 
-      <div class="relative btn">
+      <div class="btn relative">
         <div
-          class="flex items-center gap-2 cursor-pointer uppercase font-semibold"
+          class="flex cursor-pointer items-center gap-2 font-semibold uppercase"
         >
           <svg
             width="16"

@@ -1,9 +1,9 @@
 <template>
-  <div class="relative carousel-wrapper">
+  <div class="carousel-wrapper relative">
     <img
       v-if="images[1]"
       :src="images[1]"
-      class="absolute secondary-image top-0 left-0 w-full object-cover object-top h-80"
+      class="secondary-image absolute left-0 top-0 h-80 w-full object-cover object-top"
     />
 
     <carousel
@@ -16,7 +16,7 @@
       >
         <img
           :src="slide"
-          class="w-full object-cover object-top h-80 transition-all duration-300"
+          class="h-80 w-full object-cover object-top transition-all duration-300"
           @click="
             () => $router.push({ name: 'ProductCardPage', params: { id } })
           "

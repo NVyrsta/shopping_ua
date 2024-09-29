@@ -9,7 +9,7 @@
         v-for="product in products"
         :key="product.id"
       >
-        <div class="flex w-full h-full py-6">
+        <div class="flex h-full w-full py-6">
           <ProductCard
             :product="product"
             class="self-stretch"
@@ -25,7 +25,7 @@
 
     <div
       v-else
-      class="grid xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 px-10 py-5 gap-2"
+      class="xs:grid-cols-1 grid gap-2 px-10 py-5 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5"
     >
       <ProductCard
         v-for="(product, index) in products"

@@ -1,12 +1,12 @@
 <template>
   <div
-    class="card bg-white border border-gray-200 w-full overflow-hidden"
+    class="card w-full overflow-hidden border border-gray-200 bg-white"
     :class="{
-      'transition-transform transform hover:scale-105': scale
+      'transform transition-transform hover:scale-105': scale
     }"
   >
     <div class="relative cursor-pointer">
-      <div class="absolute top-2 right-2 flex z-10 space-x-2">
+      <div class="absolute right-2 top-2 z-10 flex space-x-2">
         <button @click.stop="toggleFavorite">
           <SvgIcon
             id="favorite"
@@ -24,10 +24,10 @@
 
       <div
         v-if="isWithinLastTwoWeeks(product?.date)"
-        class="absolute top-0 left-0"
+        class="absolute left-0 top-0"
       >
         <span
-          class="text-white text-xs tracking-wider leading-[10px] px-2 py-1 w-[50px] bg-[#9baef0]"
+          class="w-[50px] bg-[#9baef0] px-2 py-1 text-xs leading-[10px] tracking-wider text-white"
         >
           {{ $t('Main.Novelty') }}
         </span>
@@ -35,13 +35,13 @@
     </div>
 
     <div class="p-4">
-      <strong class="block text-sm font-semibold truncate text-gray-800">
+      <strong class="block truncate text-sm font-semibold text-gray-800">
         {{ product.name[locale] }}
       </strong>
-      <p class="font-bold text-sm text-gray-800">{{ product.price }} грн</p>
+      <p class="text-sm font-bold text-gray-800">{{ product.price }} грн</p>
 
       <p>
-        <span class="text-sm inline-block mr-1">
+        <span class="mr-1 inline-block text-sm">
           {{ product.producer ? product.producer : '' }}
         </span>
         <span class="text-sm text-gray-500">

@@ -1,11 +1,11 @@
 <template>
   <button
     @click="handleClick"
-    class="text-md text-white px-14 py-2 flex items-center justify-center space-x-2"
+    class="text-md flex items-center justify-center space-x-2 px-14 py-2 text-white"
     :class="{
       'bg-green-500 hover:bg-green-700': green,
       'bg-red-500 hover:bg-red-700': red,
-      'opacity-30 pointer-events-none': disabled
+      'pointer-events-none opacity-30': disabled
     }"
     :disabled="disabled"
   >

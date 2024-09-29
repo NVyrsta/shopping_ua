@@ -1,7 +1,7 @@
 <template>
   <div class="accordion-item">
     <h2
-      class="flex justify-between items-center gap-4 cursor-pointer md:cursor-default mb-2 md:mb-4 text-gray-500 text-[16px]"
+      class="mb-2 flex cursor-pointer items-center justify-between gap-4 text-[16px] text-gray-500 md:mb-4 md:cursor-default"
       @click="toggle"
     >
       <span class="block md:hidden" />
@@ -9,9 +9,9 @@
       <span>{{ props.title }}</span>
 
       <div
-        class="block flex-shrink-0 md:hidden w-[16px] h-[16px]"
+        class="block h-[16px] w-[16px] flex-shrink-0 md:hidden"
         :class="{
-          'transform rotate-180 transition ease-in-out duration-300': isOpen
+          'rotate-180 transform transition duration-300 ease-in-out': isOpen
         }"
       >
         <SvgIcon
@@ -25,7 +25,7 @@
     <ul
       ref="menu"
       :class="[
-        'transition-all duration-300 ease-in-out overflow-hidden md:max-h-[1000px] md:opacity-100',
+        'overflow-hidden transition-all duration-300 ease-in-out md:max-h-[1000px] md:opacity-100',
         { 'max-h-0 opacity-0': !isOpen, 'max-h-[1000px] opacity-100': isOpen }
       ]"
     >

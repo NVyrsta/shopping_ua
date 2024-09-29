@@ -1,11 +1,11 @@
 <template>
   <div
-    class="bg-white shadow-md py-2 px-4"
+    class="bg-white px-4 py-2 shadow-md"
     :class="{
-      'fixed top-0 width-full': isHeaderSticky
+      'width-full fixed top-0': isHeaderSticky
     }"
   >
-    <div class="flex justify-between items-center py-1">
+    <div class="flex items-center justify-between py-1">
       <BurgerMenu />
 
       <div class="flex items-center">
@@ -23,7 +23,7 @@
         <router-link to="/favorites">
           <div class="relative mr-6">
             <button
-              class="flex justify-start gap-2 items-center focus:outline-none"
+              class="flex items-center justify-start gap-2 focus:outline-none"
             >
               <SvgIcon
                 id="favorite-primary"
@@ -41,7 +41,7 @@
 
             <span
               v-if="favoritesCount > 0"
-              class="absolute -top-3 -right-3 flex items-center justify-center px-0.5 min-w-3 h-3 text-xs leading-none text-white bg-orange-600"
+              class="absolute -right-3 -top-3 flex h-3 min-w-3 items-center justify-center bg-orange-600 px-0.5 text-xs leading-none text-white"
             >
               {{ favoritesCount > 9 ? '9+' : favoritesCount }}
             </span>
@@ -51,7 +51,7 @@
         <router-link to="/basket">
           <div class="relative mr-6">
             <button
-              class="flex justify-start gap-2 items-center focus:outline-none"
+              class="flex items-center justify-start gap-2 focus:outline-none"
             >
               <SvgIcon
                 id="cart-primary"
@@ -69,7 +69,7 @@
 
             <span
               v-if="cartCount > 0"
-              class="absolute -top-3 -right-3 flex items-center justify-center px-0.5 min-w-3 h-3 text-xs leading-none text-white bg-orange-600"
+              class="absolute -right-3 -top-3 flex h-3 min-w-3 items-center justify-center bg-orange-600 px-0.5 text-xs leading-none text-white"
             >
               {{ cartCount > 9 ? '9+' : cartCount }}
             </span>
