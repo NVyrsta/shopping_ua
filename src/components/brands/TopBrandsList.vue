@@ -35,34 +35,162 @@
         </router-link>
       </div>
     </div>
+
+    <div
+      v-if="showCatalogue"
+      class="mt-8 flex flex-col px-4"
+    >
+      <div class="flex flex-wrap items-center justify-start">
+        <button
+          @click="filterBrands('All')"
+          class="pb-1/2 cursor-pointer border-b-2 border-gray-400 px-4 pt-2 text-base tracking-wider text-[#6d6d6d] transition duration-300"
+          :class="{
+            'border-b-3 border-black font-bold': filterBy === 'All'
+          }"
+        >
+          {{ $t('Main.All') }}
+        </button>
+
+        <button
+          v-for="(item, index) in filterLetters"
+          :key="index"
+          class="pb-1/2 cursor-pointer border-b-2 border-gray-400 px-4 pt-2 text-base tracking-wider text-[#6d6d6d] transition duration-300"
+          :class="{
+            'border-b-3 border-black font-bold': filterBy === item
+          }"
+          @click="filterBrands(item)"
+        >
+          {{ item }}
+        </button>
+      </div>
+
+      <div class="mt-8">
+        <div
+          v-if="filterBy !== 'All'"
+          class="my-4 flex items-start px-4"
+        >
+          <div class="mr-4 min-w-8 text-lg font-bold">{{ filterBy }}</div>
+
+          <div
+            class="grid w-full grid-cols-[repeat(auto-fill,minmax(100px,1fr))] gap-4"
+          >
+            <div
+              v-for="brand in filteredBrands.filter(b => {
+                const firstChar = b.name?.charAt(0);
+                return (
+                  (filterBy === '0-9' && /^[0-9]/.test(firstChar)) ||
+                  firstChar?.toUpperCase() === filterBy
+                );
+              })"
+              :key="brand.id"
+              class="pl-4 text-sm font-bold sm:pl-[80px]"
+            >
+              <router-link :to="`/brands/${brand.id}`">
+                {{ brand.name }}
+              </router-link>
+            </div>
+          </div>
+        </div>
+
+        <div
+          v-else
+          v-for="letter in filterLetters"
+          :key="letter"
+          class="my-4 flex items-start px-4"
+        >
+          <div class="mr-4 min-w-8 text-lg font-bold">{{ letter }}</div>
+
+          <div
+            class="grid w-full grid-cols-[repeat(auto-fill,minmax(100px,1fr))] gap-4"
+          >
+            <div
+              v-for="brand in filteredBrands.filter(b =>
+                b.name?.startsWith(letter)
+              )"
+              :key="brand.id"
+              class="pl-4 text-sm font-bold sm:pl-[80px]"
+            >
+              <router-link :to="`/brands/${brand.id}`">
+                {{ brand.name }}
+              </router-link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup>
   import { ref, onMounted } from 'vue';
   import { fetchBrands } from '@/app/core/plugins/firebase';
-
   import SectionSeparator from '@/components/elements/SectionSeparator.vue';
-
-  const brands = ref([]);
-  const isLoading = ref(false);
 
   defineProps({
     title: {
       type: String,
       default: ''
+    },
+    showCatalogue: {
+      type: Boolean,
+      default: false
     }
   });
+
+  const brands = ref([]);
+  const filterBy = ref('All');
+  const filteredBrands = ref([]);
+  const isLoading = ref(false);
+
+  const filterLetters = ref([
+    '0-9',
+    'A',
+    'B',
+    'C',
+    'D',
+    'E',
+    'F',
+    'G',
+    'H',
+    'I',
+    'J',
+    'K',
+    'L',
+    'M',
+    'N',
+    'O',
+    'P',
+    'Q',
+    'R',
+    'S',
+    'T',
+    'U',
+    'V',
+    'W',
+    'X',
+    'Y',
+    'Z',
+    'А-Я'
+  ]);
 
   const loadBrands = async () => {
     isLoading.value = true;
 
     try {
       brands.value = await fetchBrands();
+      filteredBrands.value = brands.value;
     } catch (error) {
       console.error('Error fetching brands: ', error);
     } finally {
       isLoading.value = false;
+    }
+  };
+
+  const filterBrands = letter => {
+    filterBy.value = letter;
+
+    if (letter === 'All') {
+      filteredBrands.value = brands.value;
     }
   };
 

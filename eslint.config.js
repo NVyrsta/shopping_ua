@@ -22,7 +22,14 @@ export default [
       eqeqeq: ['error', 'always'],
       'vue/max-attributes-per-line': ['error', { singleline: 3, multiline: 1 }],
       'vue/singleline-html-element-content-newline': 'off',
-      'vue/multiline-html-element-content-newline': 'off'
+      'vue/multiline-html-element-content-newline': 'off',
+      'vue/attribute-hyphenation': [
+        'error',
+        'always',
+        {
+          ignore: []
+        }
+      ]
     }
   }
 ];

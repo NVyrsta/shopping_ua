@@ -2,7 +2,10 @@
   <PageLayout>
     <BreadCrumbs />
 
-    <TopBrandsList :title="$t('Main.Top30Brands')" />
+    <TopBrandsList
+      :title="$t('Main.Top30Brands')"
+      show-catalogue
+    />
 
     <DiscountBlock />
   </PageLayout>
