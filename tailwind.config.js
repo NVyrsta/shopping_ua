@@ -4,12 +4,12 @@ export default {
   theme: {
     extend: {
       height: {
-        '500': '500px',
+        500: '500px'
       },
       animation: {
-        'pulse': 'pulse 2s ease-in-out infinite',
-      },
-    },
+        pulse: 'pulse 2s ease-in-out infinite'
+      }
+    }
   },
-  plugins: [],
+  plugins: []
 };

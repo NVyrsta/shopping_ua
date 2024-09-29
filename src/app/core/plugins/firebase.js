@@ -1,4 +1,3 @@
-// firebase.js
 import { initializeApp } from 'firebase/app';
 import {
   getFirestore,
@@ -9,11 +8,10 @@ import {
   query,
   where,
   updateDoc,
-  Timestamp,
+  Timestamp
 } from 'firebase/firestore';
 import { v4 as uuidv4 } from 'uuid';
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
   authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
@@ -21,20 +19,9 @@ const firebaseConfig = {
   storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
   messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
   appId: import.meta.env.VITE_FIREBASE_APP_ID,
-  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
-
-  // apiKey: 'AIzaSyAn6bWaWHE7nUxriO5K9BNjmazOa-9Svrw',
-  // authDomain: 'products-cataloge.firebaseapp.com',
-  // projectId: 'products-cataloge',
-  // storageBucket: 'products-cataloge.appspot.com',
-  // messagingSenderId: '35426212855',
-  // appId: '1:35426212855:web:5e70a934d03d1da6736cf2',
-  // measurementId: 'G-9GSYH92P8M',
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
 };
 
-console.log('dere', import.meta.env.VITE_FIREBASE_API_KEY);
-
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const dbRefGoods = collection(db, 'goods');
@@ -43,16 +30,16 @@ const dbRefBrands = collection(db, 'producers');
 export async function fetchProducts() {
   try {
     const querySnapshot = await getDocs(collection(db, 'goods'));
-  
+
     const products = [];
-    
-    querySnapshot.forEach((doc) => {
+
+    querySnapshot.forEach(doc => {
       products.push({ id: doc.id, ...doc.data() });
     });
 
     return products;
   } catch (error) {
-    console.log('Error fetching products', error);
+    console.error('Error fetching products', error);
   }
 }
 
@@ -62,23 +49,22 @@ export async function addProduct(
   price,
   quantity,
   category,
-  producer,
+  producer
 ) {
   try {
     const id = uuidv4();
     const date = new Date();
 
-    const docRef = await addDoc(collection(db, 'goods'), {
-      name, // `name` is now an object containing multiple translations
+    await addDoc(collection(db, 'goods'), {
+      name,
       price,
       quantity,
       id,
       date,
       img,
       category,
-      producer,
+      producer
     });
-    console.log('Document written with ID: ', docRef.id);
   } catch (e) {
     console.error('Error adding document: ', e);
   }
@@ -86,11 +72,9 @@ export async function addProduct(
 
 export async function updateProduct(product) {
   try {
-    const productRef = doc(db, 'goods', product.id); // Reference to the specific product document
+    const productRef = doc(db, 'goods', product.id);
 
-    await updateDoc(productRef, product); // Update the document with the new product data
-
-    console.log('Document updated with ID: ', product.id);
+    await updateDoc(productRef, product);
   } catch (error) {
     console.error('Error updating product:', error);
   }
@@ -98,21 +82,15 @@ export async function updateProduct(product) {
 
 export async function fetchProductById(id) {
   try {
-    // Create a query against the "goods" collection
     const q = query(dbRefGoods, where('id', '==', id));
 
-    // Execute the query
     const querySnapshot = await getDocs(q);
 
-    // Check if the query returned any documents
     if (!querySnapshot.empty) {
-      // Extract the first matching document
       const doc = querySnapshot.docs[0];
-      console.log('doc', doc.data());
 
       return { id: doc.id, ...doc.data() };
     } else {
-      console.log('No such document!');
       return null;
     }
   } catch (error) {
@@ -123,24 +101,18 @@ export async function fetchProductById(id) {
 
 export async function fetchProductsByIds(ids) {
   try {
-    // Create a query to find products where the 'id' field matches any of the ids in the array
     const q = query(dbRefGoods, where('id', 'in', ids));
 
-    // Execute the query
     const querySnapshot = await getDocs(q);
 
-    // Check if the query returned any documents
     if (!querySnapshot.empty) {
-      // Map over the returned documents and extract the data
-      const products = querySnapshot.docs.map((doc) => ({
+      const products = querySnapshot.docs.map(doc => ({
         id: doc.id,
-        ...doc.data(),
+        ...doc.data()
       }));
 
-      console.log('Products fetchProductsByIds:', products);
       return products;
     } else {
-      console.log('No matching documents!');
       return [];
     }
   } catch (error) {
@@ -153,31 +125,23 @@ export async function fetchFavoritesProducts() {
   const ids = JSON.parse(localStorage.getItem('favorites') || '[]');
 
   if (ids.length === 0) {
-    // Якщо масив порожній, повертаємо порожній масив
-    console.log('No favorite IDs found');
     return [];
   }
 
   try {
-    // Створити запит до колекції "goods" з умовою наявності ідентифікаторів у "ids"
     const q = query(dbRefGoods, where('id', 'in', ids));
 
-    // Виконати запит
     const querySnapshot = await getDocs(q);
 
-    // Перевірити, чи повернув запит які-небудь документи
     if (!querySnapshot.empty) {
-      // Створити масив для збереження знайдених документів
       const docs = [];
 
-      // Пройтись по всім документам і додати їх до масиву
-      querySnapshot.forEach((doc) => {
+      querySnapshot.forEach(doc => {
         docs.push({ id: doc.id, ...doc.data() });
       });
 
       return docs;
     } else {
-      console.log('No documents found!');
       return [];
     }
   } catch (error) {
@@ -188,23 +152,17 @@ export async function fetchFavoritesProducts() {
 
 export async function fetchProductByQuery(queryString) {
   try {
-    // Create a query against the "goods" collection
     const q = query(dbRefGoods);
 
-    // Execute the query
     const querySnapshot = await getDocs(q);
 
-    // Filter the documents based on the query string
     const filteredProducts = querySnapshot.docs
-      .map((doc) => ({ id: doc.id, ...doc.data() }))
-      .filter((product) => {
-        // Check if the query string is in any of the name fields
-        return Object.values(product.name).some((name) =>
-          name.toLowerCase().includes(queryString.toLowerCase()),
+      .map(doc => ({ id: doc.id, ...doc.data() }))
+      .filter(product => {
+        return Object.values(product.name).some(name =>
+          name.toLowerCase().includes(queryString.toLowerCase())
         );
       });
-
-    // Log the filtered products
 
     return filteredProducts;
   } catch (error) {
@@ -215,17 +173,13 @@ export async function fetchProductByQuery(queryString) {
 
 export async function fetchProductsByCategory(category) {
   try {
-    // Створюємо запит для колекції "goods"
     const q = query(dbRefGoods);
 
-    // Виконуємо запит
     const querySnapshot = await getDocs(q);
 
-    // Фільтруємо товари на основі категорії
     const filteredProducts = querySnapshot.docs
-      .map((doc) => ({ id: doc.id, ...doc.data() }))
-      .filter((product) => {
-        // Перевіряємо, чи продукт належить до потрібної категорії
+      .map(doc => ({ id: doc.id, ...doc.data() }))
+      .filter(product => {
         return product.categories?.includes(category);
       });
 
@@ -238,28 +192,22 @@ export async function fetchProductsByCategory(category) {
 
 export async function fetchProductsByCategoriesAndGender(categories, gender) {
   try {
-    // Створюємо запит для колекції "goods", використовуючи умови array-contains-any та equality
     const q = query(
       dbRefGoods,
       where('categories', 'array-contains-any', categories),
-      where('gender', '==', gender),
+      where('gender', '==', gender)
     );
 
-    // Виконуємо запит
     const querySnapshot = await getDocs(q);
 
-    // Перевіряємо, чи запит повернув документи
     if (!querySnapshot.empty) {
-      // Маппуємо повернуті документи та витягуємо дані
-      const products = querySnapshot.docs.map((doc) => ({
+      const products = querySnapshot.docs.map(doc => ({
         id: doc.id,
-        ...doc.data(),
+        ...doc.data()
       }));
 
-      console.log('Products fetchProductsByCategoriesAndGender:', products);
       return products;
     } else {
-      console.log('No matching documents!');
       return [];
     }
   } catch (error) {
@@ -269,29 +217,22 @@ export async function fetchProductsByCategoriesAndGender(categories, gender) {
 }
 
 export async function fetchProductsByCategories(categories) {
-  console.log('fetchProductsByCategories categories:', categories);
   try {
-    // Створюємо запит для колекції "goods", використовуючи умови array-contains-any та equality
     const q = query(
       dbRefGoods,
-      where('categories', 'array-contains', categories),
+      where('categories', 'array-contains', categories)
     );
 
-    // Виконуємо запит
     const querySnapshot = await getDocs(q);
 
-    // Перевіряємо, чи запит повернув документи
     if (!querySnapshot.empty) {
-      // Маппуємо повернуті документи та витягуємо дані
-      const products = querySnapshot.docs.map((doc) => ({
+      const products = querySnapshot.docs.map(doc => ({
         id: doc.id,
-        ...doc.data(),
+        ...doc.data()
       }));
 
-      console.log('Products fetchProductsByCategories:', products);
       return products;
     } else {
-      console.log('No matching documents!');
       return [];
     }
   } catch (error) {
@@ -307,36 +248,30 @@ export async function fetchProductsByBrand(brand) {
     const querySnapshot = await getDocs(q);
 
     if (!querySnapshot.empty) {
-      // Збираємо всі документи в масив
       const products = querySnapshot.docs.map(doc => ({
         id: doc.id,
-        ...doc.data(),
+        ...doc.data()
       }));
 
-      return products; // Повертаємо масив продуктів
+      return products;
     } else {
-      console.log('No products found for this brand!');
-      return []; // Повертаємо порожній масив, якщо продуктів немає
+      return [];
     }
   } catch (error) {
     console.error('Error getting products:', error);
-    return []; // Повертаємо порожній масив у випадку помилки
+    return [];
   }
 }
 
 export async function fetchProductsByGender(gender) {
   try {
-    // Створюємо запит для колекції "goods"
     const q = query(dbRefGoods);
 
-    // Виконуємо запит
     const querySnapshot = await getDocs(q);
 
-    // Фільтруємо товари на основі категорії
     const filteredProducts = querySnapshot.docs
-      .map((doc) => ({ id: doc.id, ...doc.data() }))
-      .filter((product) => {
-        // Перевіряємо, чи продукт належить до потрібної категорії
+      .map(doc => ({ id: doc.id, ...doc.data() }))
+      .filter(product => {
         return product.gender?.includes(gender);
       });
 
@@ -350,27 +285,28 @@ export async function fetchProductsByGender(gender) {
 export async function fetchNewProductsByCategory(category) {
   try {
     const currentDate = new Date();
-    const twoWeeksAgo = new Date(currentDate.setDate(currentDate.getDate() - 14));
+    const twoWeeksAgo = new Date(
+      currentDate.setDate(currentDate.getDate() - 14)
+    );
 
     const timestamp = Timestamp.fromDate(twoWeeksAgo);
-    
+
     const q = query(
       dbRefGoods,
       where('categories', 'array-contains', category),
-      where('date', '>', timestamp),
+      where('date', '>', timestamp)
     );
 
     const querySnapshot = await getDocs(q);
 
     if (!querySnapshot.empty) {
-      const products = querySnapshot.docs.map((doc) => ({
+      const products = querySnapshot.docs.map(doc => ({
         id: doc.id,
-        ...doc.data(),
+        ...doc.data()
       }));
 
       return products;
     } else {
-      console.log('No matching documents!');
       return [];
     }
   } catch (error) {
@@ -384,16 +320,16 @@ export async function fetchNewProductsByCategory(category) {
 export async function fetchBrands() {
   try {
     const querySnapshot = await getDocs(collection(db, 'producers'));
-  
+
     const brands = [];
-    
-    querySnapshot.forEach((doc) => {
+
+    querySnapshot.forEach(doc => {
       brands.push({ id: doc.id, ...doc.data() });
     });
 
     return brands;
   } catch (error) {
-    console.log('Error fetching brands', error);
+    console.error('Error fetching brands', error);
   }
 }
 
@@ -408,7 +344,6 @@ export async function fetchBrandById(id) {
 
       return { id: doc.id, ...doc.data() };
     } else {
-      console.log('No such document!');
       return null;
     }
   } catch (error) {

@@ -1,5 +1,5 @@
 <template>
-  <div 
+  <div
     class="bg-white shadow-md py-2 px-4"
     :class="{
       'fixed top-0 width-full': isHeaderSticky
@@ -9,7 +9,7 @@
       <BurgerMenu />
 
       <div class="flex items-center">
-        <router-link to="/"> 
+        <router-link to="/">
           <img
             src="@/assets/img/logo.png"
             alt="Shopping UA"
@@ -25,12 +25,12 @@
             <button
               class="flex justify-start gap-2 items-center focus:outline-none"
             >
-              <SvgIcon 
+              <SvgIcon
                 id="favorite-primary"
                 width="18"
                 height="16"
                 fill="#ee4a2e"
-              />  
+              />
 
               <div class="hidden sm:flex">
                 <span class="underline-effect">
@@ -38,7 +38,7 @@
                 </span>
               </div>
             </button>
-  
+
             <span
               v-if="favoritesCount > 0"
               class="absolute -top-3 -right-3 flex items-center justify-center px-0.5 min-w-3 h-3 text-xs leading-none text-white bg-orange-600"
@@ -53,12 +53,12 @@
             <button
               class="flex justify-start gap-2 items-center focus:outline-none"
             >
-              <SvgIcon 
+              <SvgIcon
                 id="cart-primary"
                 width="19"
                 height="21"
                 fill="#ee4a2e"
-              /> 
+              />
 
               <div class="hidden sm:flex">
                 <span class="underline-effect">
@@ -81,70 +81,57 @@
 </template>
 
 <script setup>
-import { ref, inject, onMounted, onUnmounted } from 'vue';
-import BurgerMenu from '@/components/header/BurgerMenu.vue';
+  import { ref, inject, onMounted, onUnmounted } from 'vue';
+  import BurgerMenu from '@/components/header/BurgerMenu.vue';
 
-const isHeaderSticky = ref(false);
-const emitter = inject('emitter');
-const favoritesCount = ref(0);
-const cartCount = ref(0);
+  const isHeaderSticky = ref(false);
+  const emitter = inject('emitter');
+  const favoritesCount = ref(0);
+  const cartCount = ref(0);
 
-// const updateFavoritesCount = (count) => {
-//   favoritesCount.value = count;
-// };
+  const updateFavoritesCount = () => {
+    const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
 
-const updateFavoritesCount = () => {
-  // Отримати поточний список улюблених з localStorage
-  const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+    favoritesCount.value = favorites.length;
+  };
 
-  // Оновити кількість улюблених
-  favoritesCount.value = favorites.length;
-};
+  const updateCartCount = () => {
+    const selected = JSON.parse(localStorage.getItem('cart') || '[]');
 
-// const updateCartCount = (count) => {
-//   cartCount.value = count;
-// };
+    cartCount.value = selected.reduce((acc, item) => {
+      if (item.reserved && Array.isArray(item.reserved)) {
+        const totalReservedAmount = item.reserved.reduce(
+          (sum, reserved) => sum + (reserved.amount || 0),
+          0
+        );
+        return acc + totalReservedAmount;
+      }
+      return acc;
+    }, 0);
+  };
 
-const updateCartCount = () => {
-  // Отримати поточний кошик з localStorage
-  const selected = JSON.parse(localStorage.getItem('cart') || '[]');
-
-  // Підрахунок загальної кількості товарів у масиві selected
-  cartCount.value = selected.reduce((acc, item) => {
-    if (item.reserved && Array.isArray(item.reserved)) {
-      // Якщо є масив reserved, проходимося по ньому і підраховуємо кількість
-      const totalReservedAmount = item.reserved.reduce((sum, reserved) => sum + (reserved.amount || 0), 0);
-      return acc + totalReservedAmount;
+  const handleScroll = () => {
+    if (window.scrollY > 37) {
+      isHeaderSticky.value = true;
+    } else {
+      isHeaderSticky.value = false;
     }
-    return acc;
-  }, 0);
-};
+  };
 
-const handleScroll = () => {
-  if (window.scrollY > 37) {
-    isHeaderSticky.value = true;
-  } else {
-    isHeaderSticky.value = false;
-  }
-};
+  onMounted(() => {
+    updateCartCount();
+    updateFavoritesCount();
 
-onMounted(() => { 
-  // const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
-  // favoritesCount.value = favorites.length;
+    emitter.on('update-favorites', updateFavoritesCount);
+    emitter.on('update-cart', updateCartCount);
 
-  updateCartCount();
-  updateFavoritesCount();
- 
-  emitter.on('update-favorites', updateFavoritesCount);
-  emitter.on('update-cart', updateCartCount);
+    window.addEventListener('scroll', handleScroll);
+  });
 
-  window.addEventListener('scroll', handleScroll);
-});
+  onUnmounted(() => {
+    emitter.off('update-favorites', updateFavoritesCount);
+    emitter.off('update-cart', updateCartCount);
 
-onUnmounted(() => {
-  emitter.off('update-favorites', updateFavoritesCount);
-  emitter.off('update-cart', updateCartCount);
-
-  window.removeEventListener('scroll', handleScroll);
-});
+    window.removeEventListener('scroll', handleScroll);
+  });
 </script>

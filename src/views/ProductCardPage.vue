@@ -1,22 +1,20 @@
 <template>
-  <PageLayout>    
-    <div 
+  <PageLayout>
+    <div
       v-if="product"
       class="relative"
     >
-      <ProductBreadcrumbs 
+      <ProductBreadcrumbs
         :categories="product.categories"
         :product="product"
       />
 
-      <ProductPageSlider 
+      <ProductPageSlider
         v-if="product.images"
         :slides="product.images"
       />
 
-      <ProductCardDescription 
-        :product="product"
-      />
+      <ProductCardDescription :product="product" />
     </div>
 
     <div v-else>
@@ -26,42 +24,46 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
-import { useRoute } from 'vue-router';
-import { fetchProductById } from '@/app/core/plugins/firebase.js'; 
+  import { ref, onMounted } from 'vue';
+  import { useRoute } from 'vue-router';
+  import { fetchProductById } from '@/app/core/plugins/firebase.js';
 
-import ProductPageSlider from '@/components/sliders/ProductPageSlider.vue';
-import ProductCardDescription from '@/components/product/ProductCardDescription.vue';
-import ProductBreadcrumbs from '@/components/elements/ProductBreadcrumbs.vue';
-import PageLayout from '@/layouts/PageLayout.vue';
+  import ProductPageSlider from '@/components/sliders/ProductPageSlider.vue';
+  import ProductCardDescription from '@/components/product/ProductCardDescription.vue';
+  import ProductBreadcrumbs from '@/components/elements/ProductBreadcrumbs.vue';
+  import PageLayout from '@/layouts/PageLayout.vue';
 
-const product = ref(null);
+  const product = ref(null);
 
-const route = useRoute();
+  const route = useRoute();
 
-onMounted(async () => {
-  const productId = route.params.id;
-  try {
-    const response = await fetchProductById(productId);
-    product.value = response;
+  onMounted(async () => {
+    const productId = route.params.id;
+    try {
+      const response = await fetchProductById(productId);
+      product.value = response;
 
-    addProductToRecentlyViewed(productId);
-  } catch (error) {
-    console.error('Помилка при завантаженні продукту:', error);
-  }
-});
-
-function addProductToRecentlyViewed(productId) {
-  let viewedProducts = JSON.parse(localStorage.getItem('recentlyViewedProducts')) || [];
-
-  if (!viewedProducts.includes(productId)) {
-    viewedProducts.unshift(productId);
-    
-    if (viewedProducts.length > 5) {
-      viewedProducts.pop();
+      addProductToRecentlyViewed(productId);
+    } catch (error) {
+      console.error('Помилка при завантаженні продукту:', error);
     }
+  });
 
-    localStorage.setItem('recentlyViewedProducts', JSON.stringify(viewedProducts));
+  function addProductToRecentlyViewed(productId) {
+    const viewedProducts =
+      JSON.parse(localStorage.getItem('recentlyViewedProducts')) || [];
+
+    if (!viewedProducts.includes(productId)) {
+      viewedProducts.unshift(productId);
+
+      if (viewedProducts.length > 5) {
+        viewedProducts.pop();
+      }
+
+      localStorage.setItem(
+        'recentlyViewedProducts',
+        JSON.stringify(viewedProducts)
+      );
+    }
   }
-}
 </script>

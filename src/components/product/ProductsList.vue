@@ -1,15 +1,16 @@
 <template>
   <div>
-    <SkeletonLoading 
-      :is-loading="isLoading" 
-      :number-of-skeletons="5" 
+    <SkeletonLoading
+      :is-loading="isLoading"
+      :number-of-skeletons="5"
     />
 
     <div
       v-if="products.length > 0 && !isLoading"
-      class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 px-2 sm:px-10 py-5 gap-2">
-      <ProductCard 
-        v-for="(product, index) in products" 
+      class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 px-2 sm:px-10 py-5 gap-2"
+    >
+      <ProductCard
+        v-for="(product, index) in products"
         :key="index"
         :product="product"
       />
@@ -28,87 +29,79 @@
 </template>
 
 <script setup>
-import { ref, onMounted, watch, computed } from 'vue';
-import {
-  fetchProducts,
-  fetchProductByQuery,
-  fetchProductsByCategories,
-  fetchProductsByBrand,
-  fetchBrandById,
-  fetchNewProductsByCategory,
-} from '@/app/core/plugins/firebase';
-import { useI18n } from 'vue-i18n';
-import { useRoute } from 'vue-router';
+  import { ref, onMounted, watch, computed } from 'vue';
+  import {
+    fetchProducts,
+    fetchProductByQuery,
+    fetchProductsByCategories,
+    fetchProductsByBrand,
+    fetchBrandById,
+    fetchNewProductsByCategory
+  } from '@/app/core/plugins/firebase';
+  import { useI18n } from 'vue-i18n';
+  import { useRoute } from 'vue-router';
 
-import ProductCard from '@/components/product/ProductCard.vue';
-import NotFoundComponent from '@/components/empty/NotFoundComponent.vue';
-import EmptySearch from '@/components/empty/EmptySearch.vue';
-import SkeletonLoading from '@/components/SkeletonLoading.vue';
+  import ProductCard from '@/components/product/ProductCard.vue';
+  import NotFoundComponent from '@/components/empty/NotFoundComponent.vue';
+  import EmptySearch from '@/components/empty/EmptySearch.vue';
+  import SkeletonLoading from '@/components/SkeletonLoading.vue';
 
-const { locale } = useI18n();
-const route = useRoute();
+  const { locale } = useI18n();
+  const route = useRoute();
 
-const products = ref([]);
-const isLoading = ref(false);
-const hasSearchQuery = computed(() => !!route.query.search);
+  const products = ref([]);
+  const isLoading = ref(false);
+  const hasSearchQuery = computed(() => !!route.query.search);
 
-const loadProducts = async () => {
-  isLoading.value = true;
+  const loadProducts = async () => {
+    isLoading.value = true;
 
-  const categories = (route.params.categories?.split('/') || []).filter(Boolean);
-  const gender = route.params.gender ? [route.params.gender] : ['women'];
-  const searchQuery = route.query.search;
-  const brandId = route.params.brandId;
+    const categories = (route.params.categories?.split('/') || []).filter(
+      Boolean
+    );
+    const gender = route.params.gender ? [route.params.gender] : ['women'];
+    const searchQuery = route.query.search;
+    const brandId = route.params.brandId;
 
-  const filters = [...gender, ...categories];
+    const filters = [...gender, ...categories];
 
-  try {
-    if (route.name === 'BrandPage' && brandId) {
-      const brand = await fetchBrandById(brandId);
+    try {
+      if (route.name === 'BrandPage' && brandId) {
+        const brand = await fetchBrandById(brandId);
 
-      if (brand?.name) {
-        products.value = await fetchProductsByBrand(brand.name);
-        console.log('fetchProductsByBrand works  products.value.length', products.value);
+        if (brand?.name) {
+          products.value = await fetchProductsByBrand(brand.name);
+        } else {
+          console.error('Brand not found or missing name');
+        }
+      } else if (searchQuery) {
+        products.value = await fetchProductByQuery(searchQuery);
+      } else if (route.name === 'NewProductsPage') {
+        const category = route.path.split('/')[1];
+        products.value = await fetchNewProductsByCategory(category);
+      } else if (filters.length > 0) {
+        products.value = await fetchProductsByCategories(
+          filters[filters.length - 1]
+        );
       } else {
-        console.error('Brand not found or missing name');
+        products.value = await fetchProducts();
       }
-
-    } else if (searchQuery) {
-      products.value = await fetchProductByQuery(searchQuery);
-      console.log('fetchProductByQuery works', products.value);
-
-    } else if (
-      route.name === 'NewProductsPage'
-    ) {
-      const category = route.path.split('/')[1]; // This gets the segment before 'new-products'
-      products.value = await fetchNewProductsByCategory(category);
-      console.log('fetchNewProductsByCategory works', products.value);
-
-    } else if (filters.length > 0) {
-      console.log('filters', filters);
-      products.value = await fetchProductsByCategories(filters[filters.length - 1]);
-      console.log('fetchProductsByCategories works', products.value);
-
-    } else {
-      products.value = await fetchProducts();
-      console.log('fetchProducts works', products.value);
+    } catch (error) {
+      console.error('Error fetching products:', error);
+    } finally {
+      isLoading.value = false;
     }
-  } catch (error) {
-    console.error('Error fetching products:', error);
-  } finally {    
-    isLoading.value = false;
-  }
-};
+  };
 
-onMounted(() => {
-  loadProducts();
-});
+  onMounted(() => {
+    loadProducts();
+  });
 
-watch([() => route.query.search, () => route.params], () => {
-  loadProducts();
-});
+  watch([() => route.query.search, () => route.params], () => {
+    loadProducts();
+  });
 
-watch(locale, () => {
-  loadProducts();
-});
+  watch(locale, () => {
+    loadProducts();
+  });
 </script>

@@ -9,7 +9,7 @@
 </template>
 
 <script setup>
-import CartHeader from '@/components/cart/CartHeader.vue';
-import CartBody from '@/components/cart/CartBody.vue';
-import CartFooter from '@/components/cart/CartFooter.vue';
+  import CartHeader from '@/components/cart/CartHeader.vue';
+  import CartBody from '@/components/cart/CartBody.vue';
+  import CartFooter from '@/components/cart/CartFooter.vue';
 </script>

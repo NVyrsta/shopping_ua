@@ -1,10 +1,10 @@
 <template>
-  <nav 
-    aria-label="breadcrumb" 
+  <nav
+    aria-label="breadcrumb"
     class="breadcrumbs flex justify-start items-center px-4 py-4 gap-4 overflow-x-auto"
   >
     <ol class="breadcrumb flex items-center justify-start gap-4">
-      <router-link to="/">{{ $t('Breadcrumbs.Main') }}</router-link> 
+      <router-link to="/">{{ $t('Breadcrumbs.Main') }}</router-link>
     </ol>
 
     <ol class="breadcrumb flex items-center justify-start gap-4">
@@ -16,7 +16,7 @@
       >
         <div class="flex items-center justify-start gap-4">
           <span class="arrow-next">
-            <SvgIcon 
+            <SvgIcon
               id="back"
               width="6"
               height="10"
@@ -25,9 +25,7 @@
             />
           </span>
 
-          <router-link
-            :to="category.link"
-          >
+          <router-link :to="category.link">
             {{ $t(`Breadcrumbs.${category.translationKey}`) }}
           </router-link>
         </div>
@@ -37,62 +35,58 @@
 </template>
 
 <script setup>
-import { computed, ref, watch, onMounted } from 'vue';
-import { useRoute } from 'vue-router';
+  import { computed, ref, watch, onMounted } from 'vue';
+  import { useRoute } from 'vue-router';
 
-const route = useRoute();
-const categories = ref([]);
+  const route = useRoute();
+  const categories = ref([]);
 
-// Функція для оновлення categories на основі URL
-const updateCategories = () => {
-  // Сплітимо шлях і видалимо порожні частини
-  categories.value = route.path.split('/').filter(Boolean);
-};
+  const updateCategories = () => {
+    categories.value = route.path.split('/').filter(Boolean);
+  };
 
-// Виклик при завантаженні компоненту
-onMounted(() => {
-  updateCategories();
-});
-
-// Вотчер для змін у маршруті
-watch(() => route.path, () => {
-  updateCategories();
-});
-
-// Генерація breadcrumb на основі categories
-const breadcrumbItems = computed(() => {
-  let categoryLinks = categories.value.map((category, index) => {
-    const path = `/${categories.value.slice(0, index + 1).join('/')}`;
-    console.log('path:', path);
-    
-    return {
-      link: path,
-      translationKey: category,
-    };
+  onMounted(() => {
+    updateCategories();
   });
 
-  return categoryLinks;
-});
+  watch(
+    () => route.path,
+    () => {
+      updateCategories();
+    }
+  );
+
+  const breadcrumbItems = computed(() => {
+    const categoryLinks = categories.value.map((category, index) => {
+      const path = `/${categories.value.slice(0, index + 1).join('/')}`;
+
+      return {
+        link: path,
+        translationKey: category
+      };
+    });
+
+    return categoryLinks;
+  });
 </script>
 
-
 <style scoped>
-a {
-  font-size: 14px;
-  color: #a8a8a8;
-  letter-spacing: .02em;
-  line-height: 16px;
-  text-decoration: none;
-  white-space: nowrap;
-  transition: 0.3s ease-in-out;
-  cursor: pointer;
-}
+  a {
+    font-size: 14px;
+    color: #a8a8a8;
+    letter-spacing: 0.02em;
+    line-height: 16px;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: 0.3s ease-in-out;
+    cursor: pointer;
+  }
 
-a:hover {
-  text-decoration: underline;
-}
+  a:hover {
+    text-decoration: underline;
+  }
 
-span {
-  color: #a8a8a8;
-}
+  span {
+    color: #a8a8a8;
+  }
 </style>

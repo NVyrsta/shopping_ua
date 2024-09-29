@@ -1,89 +1,28 @@
 import globals from 'globals';
-import js from '@eslint/js';
+import pluginJs from '@eslint/js';
 import pluginVue from 'eslint-plugin-vue';
-import eslintConfigPrettier from 'eslint-config-prettier';
 
 export default [
   {
-    ignores: ['node_modules/**/*', '**/dist/**/*'],
+    ignores: ['dist/**/*', 'vite.config.js']
   },
-  js.configs.recommended,
-  ...pluginVue.configs['flat/strongly-recommended'],
-  // Disable a set of rules that may conflict with prettier
-  // You can safely remove this if you don't use prettier
-  eslintConfigPrettier,
+
+  { files: ['**/*.{js,mjs,cjs,vue}'] },
+  { languageOptions: { globals: globals.browser } },
+
+  pluginJs.configs.recommended,
+
+  ...pluginVue.configs['flat/essential'],
+
   {
-    files: ['**/*.js', '**/*.mjs', '**/*.ts', '**/*.mts', '**/*.vue'],
-
-    languageOptions: {
-      globals: {
-        ...globals.node,
-      },
-    },
-
     rules: {
-      semi: ['error', 'always'],
-      'comma-dangle': ['warn', 'always-multiline'],
-
-      quotes: [
-        'warn',
-        'single',
-        {
-          avoidEscape: true,
-        },
-      ],
-
-      'no-undef': ['error'],
-      'no-control-regex': ['warn'],
-      'vue/max-attributes-per-line': [
-        'warn',
-        {
-          singleline: 1, // Мінімальна кількість атрибутів на одному рядку для однорядкових тегів
-          multiline: {
-            max: 1, // Максимальна кількість атрибутів на одному рядку для багаторядкових тегів
-          },
-        },
-      ],
-    },
-  },
-
-  {
-    files: ['packages/preload/**'],
-    languageOptions: {
-      globals: {
-        ...globals.node,
-        ...globals.browser,
-      },
-    },
-  },
-
-  {
-    files: ['packages/renderer/**'],
-    languageOptions: {
-      globals: {
-        ...Object.fromEntries(Object.entries(globals.node).map(([key]) => [key, 'off'])),
-        ...globals.browser,
-      },
-    },
-  },
-
-  {
-    files: ['**/tests/**'],
-    languageOptions: {
-      globals: {
-        ...globals.node,
-        ...globals.browser,
-      },
-    },
-  },
-
-  {
-    files: ['**/vite.config.*'],
-    languageOptions: {
-      globals: {
-        ...Object.fromEntries(Object.entries(globals.browser).map(([key]) => [key, 'off'])),
-        ...globals.node,
-      },
-    },
-  },
+      'no-console': ['warn', { allow: ['warn', 'error'] }],
+      'no-unused-vars': 'warn',
+      'prefer-const': 'error',
+      eqeqeq: ['error', 'always'],
+      'vue/max-attributes-per-line': ['error', { singleline: 3, multiline: 1 }],
+      'vue/singleline-html-element-content-newline': 'off',
+      'vue/multiline-html-element-content-newline': 'off'
+    }
+  }
 ];

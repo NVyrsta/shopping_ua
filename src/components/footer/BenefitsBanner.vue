@@ -1,5 +1,4 @@
-<script setup>
-</script>
+<script setup></script>
 
 <template>
   <div class="banner flex justify-center items-center m-auto gap-2 text-black">
@@ -137,31 +136,31 @@
 </template>
 
 <style lang="scss" scoped>
-.banner {
-  padding: 3px 10px;
-}
-
-.btn {
-  font-size: 10px;
-}
-
-.btn:hover .desc {
-  visibility: visible;
-  transform: translate(-50%, 0);
-}
-
-.desc {
-  position: absolute;
-  top: calc(100% + 12px);
-  left: 50%;
-  transform: translate(-50%, 8px);
-  z-index: 1;
-  visibility: hidden;
-  transition: 0.3s ease-in-out;
-  width: 200px;
-
-  @media (max-width: 768px) {
-    width: 120px;
+  .banner {
+    padding: 3px 10px;
   }
-}
+
+  .btn {
+    font-size: 10px;
+  }
+
+  .btn:hover .desc {
+    visibility: visible;
+    transform: translate(-50%, 0);
+  }
+
+  .desc {
+    position: absolute;
+    top: calc(100% + 12px);
+    left: 50%;
+    transform: translate(-50%, 8px);
+    z-index: 1;
+    visibility: hidden;
+    transition: 0.3s ease-in-out;
+    width: 200px;
+
+    @media (max-width: 768px) {
+      width: 120px;
+    }
+  }
 </style>

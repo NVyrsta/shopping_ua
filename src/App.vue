@@ -1,10 +1,10 @@
 <script setup>
-import { provide } from 'vue';
-import mitt from 'mitt';
+  import { provide } from 'vue';
+  import mitt from 'mitt';
 
-const emitter = mitt();
+  const emitter = mitt();
 
-provide('emitter', emitter);
+  provide('emitter', emitter);
 </script>
 
 <template>

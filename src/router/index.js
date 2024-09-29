@@ -15,7 +15,7 @@ import AdminPage from '@/views/AdminPage.vue';
 import CooperationPage from '@/views/CooperationPage.vue';
 
 const routes = [
-  { path: '/', component: ProductsPage, name: 'ProductsPage' }, // Home page
+  { path: '/', component: ProductsPage, name: 'ProductsPage' },
   { path: '/favorites', component: FavoritesPage, name: 'FavoritesPage' },
   { path: '/basket', component: BasketPage, name: 'BasketPage' },
   { path: '/contacts', component: ContactsPage, name: 'ContactsPage' },
@@ -23,17 +23,24 @@ const routes = [
   { path: '/brands', component: BrandsPage, name: 'BrandsPage' },
   { path: '/brands/:brandId', component: BrandPage, name: 'BrandPage' },
   { path: '/cooperation', component: CooperationPage, name: 'CooperationPage' },
-  { path: '/product_card/:id', component: ProductCardPage, name: 'ProductCardPage' },
-  // { path: '/:gender(women|men|children)', component: ProductsPage, name: 'GenderProductsPage' },
+  {
+    path: '/product_card/:id',
+    component: ProductCardPage,
+    name: 'ProductCardPage'
+  },
   { path: '/admin', component: AdminPage, name: 'AdminPage' },
-  { path: '/:gender(women|men|children)/new-products', component: NewProductsPage, name: 'NewProductsPage' },
+  {
+    path: '/:gender(women|men|children)/new-products',
+    component: NewProductsPage,
+    name: 'NewProductsPage'
+  },
   { path: '/:categories(.*)?', component: CategoryPage, name: 'CategoryPage' },
-  { path: '/:pathMatch(.*)*', component: NotFoundPage, name: 'NotFoundPage' },
+  { path: '/:pathMatch(.*)*', component: NotFoundPage, name: 'NotFoundPage' }
 ];
 
 const router = createRouter({
   history: createWebHistory(),
-  routes,
+  routes
 });
 
 export default router;

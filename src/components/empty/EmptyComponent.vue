@@ -4,15 +4,15 @@
       {{ title }}
     </h2>
 
-    <img 
+    <img
       src="@/assets/img/favorites-empty.png"
       alt="empty"
       class="block mx-auto"
-    >
+    />
 
     <div class="flex justify-center items-center">
-      <router-link 
-        :to="btnLink" 
+      <router-link
+        :to="btnLink"
         class="block text-md text-white bg-red-500 hover:bg-red-700 px-14 py-2 mx-auto"
       >
         {{ btnTitle ? btnTitle : $t('Favorites.OnTheMainOne') }}
@@ -22,18 +22,18 @@
 </template>
 
 <script setup>
-defineProps({
-  title: {
-    type: String,
-    default: '',
-  },
-  btnLink: {
-    type: String,
-    default: '/',
-  },
-  btnTitle: {
-    type: String,
-    default: '',
-  },
-});
+  defineProps({
+    title: {
+      type: String,
+      default: ''
+    },
+    btnLink: {
+      type: String,
+      default: '/'
+    },
+    btnTitle: {
+      type: String,
+      default: ''
+    }
+  });
 </script>

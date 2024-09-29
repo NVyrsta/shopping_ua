@@ -7,7 +7,7 @@
     <main class="flex-1">
       <slot />
     </main>
-    
+
     <footer>
       <FooterLayout />
     </footer>
@@ -15,8 +15,8 @@
 </template>
 
 <script setup>
-import HeaderLayout from '@/layouts/HeaderLayout.vue';
-import ProductSearch from '@/components/product/ProductSearch.vue';
+  import HeaderLayout from '@/layouts/HeaderLayout.vue';
+  import ProductSearch from '@/components/product/ProductSearch.vue';
 
-import FooterLayout from '@/layouts/FooterLayout.vue';
+  import FooterLayout from '@/layouts/FooterLayout.vue';
 </script>

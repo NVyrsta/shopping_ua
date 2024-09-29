@@ -1,8 +1,8 @@
 <template>
-  <button 
-    @click="handleClick" 
+  <button
+    @click="handleClick"
     class="text-md text-white px-14 py-2 flex items-center justify-center space-x-2"
-    :class="{ 
+    :class="{
       'bg-green-500 hover:bg-green-700': green,
       'bg-red-500 hover:bg-red-700': red,
       'opacity-30 pointer-events-none': disabled
@@ -18,33 +18,33 @@
 </template>
 
 <script setup>
-const props = defineProps({
-  title: {
-    type: String,
-    default: '',
-  },
+  const props = defineProps({
+    title: {
+      type: String,
+      default: ''
+    },
 
-  green: {
-    type: Boolean,
-    default: false,
-  },
+    green: {
+      type: Boolean,
+      default: false
+    },
 
-  red: {
-    type: Boolean,
-    default: false,
-  },
+    red: {
+      type: Boolean,
+      default: false
+    },
 
-  disabled: {
-    type: Boolean,
-    default: false,
-  },
-});
+    disabled: {
+      type: Boolean,
+      default: false
+    }
+  });
 
-const emit = defineEmits(['click']);
+  const emit = defineEmits(['click']);
 
-const handleClick = () => {
-  if (!props.disabled) {
-    emit('click');
-  }
-};
+  const handleClick = () => {
+    if (!props.disabled) {
+      emit('click');
+    }
+  };
 </script>

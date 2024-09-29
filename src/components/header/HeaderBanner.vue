@@ -1,5 +1,5 @@
 <script setup>
-import LanguageSwitcher from '@/components/LanguageSwitcher.vue';
+  import LanguageSwitcher from '@/components/LanguageSwitcher.vue';
 </script>
 
 <template>
@@ -169,28 +169,28 @@ import LanguageSwitcher from '@/components/LanguageSwitcher.vue';
 </template>
 
 <style scoped>
-.banner {
-  background-color: #353535;
-  padding: 3px 10px;
-}
+  .banner {
+    background-color: #353535;
+    padding: 3px 10px;
+  }
 
-.btn {
-  font-size: 10px;
-}
+  .btn {
+    font-size: 10px;
+  }
 
-.btn:hover .desc {
-  visibility: visible;
-  transform: translate(-50%, 0);
-}
+  .btn:hover .desc {
+    visibility: visible;
+    transform: translate(-50%, 0);
+  }
 
-.desc {
-  position: absolute;
-  top: calc(100% + 12px);
-  left: 50%;
-  transform: translate(-50%, 8px);
-  z-index: 1;
-  visibility: hidden;
-  transition: 0.3s ease-in-out;
-  width: 200px;
-}
+  .desc {
+    position: absolute;
+    top: calc(100% + 12px);
+    left: 50%;
+    transform: translate(-50%, 8px);
+    z-index: 1;
+    visibility: hidden;
+    transition: 0.3s ease-in-out;
+    width: 200px;
+  }
 </style>

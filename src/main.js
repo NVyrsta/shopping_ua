@@ -9,15 +9,12 @@ import VueNumberInput from '@chenfengyuan/vue-number-input';
 
 import '@/style.css';
 
-const app = createApp(App); // Створення додатка
+const app = createApp(App);
 
 app.component('SvgIcon', SvgIcon);
 app.component(VueNumberInput.name, VueNumberInput);
 
 const emitter = mitt();
-app.config.globalProperties.emitter = emitter; // Додаємо emitter до глобальних властивостей
+app.config.globalProperties.emitter = emitter;
 
-app
-  .use(i18n)
-  .use(router)
-  .mount('#app'); // Використовуємо плагін i18n і монтуємо додаток
+app.use(i18n).use(router).mount('#app');
