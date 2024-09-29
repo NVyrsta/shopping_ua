@@ -126,7 +126,7 @@
   import { fetchBrands } from '@/app/core/plugins/firebase';
   import SectionSeparator from '@/components/elements/SectionSeparator.vue';
 
-  defineProps({
+  const props = defineProps({
     title: {
       type: String,
       default: ''
@@ -134,6 +134,10 @@
     showCatalogue: {
       type: Boolean,
       default: false
+    },
+    limitCount: {
+      type: [Number, null],
+      default: null
     }
   });
 
@@ -177,7 +181,7 @@
     isLoading.value = true;
 
     try {
-      brands.value = await fetchBrands();
+      brands.value = await fetchBrands(props.limitCount);
       filteredBrands.value = brands.value;
     } catch (error) {
       console.error('Error fetching brands: ', error);

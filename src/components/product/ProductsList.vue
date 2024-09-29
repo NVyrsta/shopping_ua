@@ -16,12 +16,10 @@
       />
     </div>
 
-    <!-- Покажемо EmptySearch, якщо завантаження завершено, товарів немає і є пошуковий запит -->
     <div v-if="!isLoading && products.length === 0 && hasSearchQuery">
       <EmptySearch />
     </div>
 
-    <!-- Покажемо NotFoundComponent, якщо завантаження завершено, товарів немає і немає пошукового запиту -->
     <div v-if="!isLoading && products.length === 0 && !hasSearchQuery">
       <NotFoundComponent />
     </div>

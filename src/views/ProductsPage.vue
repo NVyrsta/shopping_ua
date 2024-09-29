@@ -6,7 +6,7 @@
       v-if="!hasSearchQuery"
       class="pb-8"
     >
-      <TopBrandsList />
+      <TopBrandsList :limit-count="20" />
 
       <router-link
         to="/brands"

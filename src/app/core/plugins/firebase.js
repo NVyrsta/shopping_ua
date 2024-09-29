@@ -8,7 +8,8 @@ import {
   query,
   where,
   updateDoc,
-  Timestamp
+  Timestamp,
+  limit
 } from 'firebase/firestore';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -253,9 +254,35 @@ export async function fetchNewProductsByCategory(category) {
 
 // --- Brands ---
 
-export async function fetchBrands() {
+// export async function fetchBrands() {
+//   try {
+//     const querySnapshot = await getDocs(collection(db, 'producers'));
+
+//     const brands = [];
+
+//     querySnapshot.forEach(doc => {
+//       brands.push({ id: doc.id, ...doc.data() });
+//     });
+
+//     return brands;
+//   } catch (error) {
+//     console.error('Error fetching brands', error);
+//   }
+// }
+
+export async function fetchBrands(limitCount = null) {
   try {
-    const querySnapshot = await getDocs(collection(db, 'producers'));
+    let q;
+
+    if (limitCount) {
+      // Якщо передано число, додаємо обмеження
+      q = query(collection(db, 'producers'), limit(limitCount));
+    } else {
+      // Якщо немає обмеження, запитуємо всі документи
+      q = query(collection(db, 'producers'));
+    }
+
+    const querySnapshot = await getDocs(q);
 
     const brands = [];
 

@@ -34,7 +34,10 @@
     </div>
 
     <div v-else>
-      <p>Завантаження продукту...</p>
+      <SpinnerLoading
+        width="240"
+        height="240"
+      />
     </div>
   </PageLayout>
 </template>
@@ -44,6 +47,7 @@
   import { useRoute } from 'vue-router';
   import { fetchBrandById } from '@/app/core/plugins/firebase.js';
   import SectionSeparator from '@/components/elements/SectionSeparator.vue';
+  import SpinnerLoading from '@/components/elements/SpinnerLoading.vue';
   import ProductsList from '@/components/product/ProductsList.vue';
 
   import PageLayout from '@/layouts/PageLayout.vue';

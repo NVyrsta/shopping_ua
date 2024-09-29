@@ -18,7 +18,10 @@
     </div>
 
     <div v-else>
-      <p>Завантаження продукту...</p>
+      <SpinnerLoading
+        width="240"
+        height="240"
+      />
     </div>
   </PageLayout>
 </template>
@@ -31,6 +34,7 @@
   import ProductPageSlider from '@/components/sliders/ProductPageSlider.vue';
   import ProductCardDescription from '@/components/product/ProductCardDescription.vue';
   import ProductBreadcrumbs from '@/components/elements/ProductBreadcrumbs.vue';
+  import SpinnerLoading from '@/components/elements/SpinnerLoading.vue';
   import PageLayout from '@/layouts/PageLayout.vue';
 
   const product = ref(null);
