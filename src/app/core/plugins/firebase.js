@@ -171,51 +171,6 @@ export async function fetchProductByQuery(queryString) {
   }
 }
 
-export async function fetchProductsByCategory(category) {
-  try {
-    const q = query(dbRefGoods);
-
-    const querySnapshot = await getDocs(q);
-
-    const filteredProducts = querySnapshot.docs
-      .map(doc => ({ id: doc.id, ...doc.data() }))
-      .filter(product => {
-        return product.categories?.includes(category);
-      });
-
-    return filteredProducts;
-  } catch (error) {
-    console.error('Error getting documents:', error);
-    return [];
-  }
-}
-
-export async function fetchProductsByCategoriesAndGender(categories, gender) {
-  try {
-    const q = query(
-      dbRefGoods,
-      where('categories', 'array-contains-any', categories),
-      where('gender', '==', gender)
-    );
-
-    const querySnapshot = await getDocs(q);
-
-    if (!querySnapshot.empty) {
-      const products = querySnapshot.docs.map(doc => ({
-        id: doc.id,
-        ...doc.data()
-      }));
-
-      return products;
-    } else {
-      return [];
-    }
-  } catch (error) {
-    console.error('Error getting documents:', error);
-    return [];
-  }
-}
-
 export async function fetchProductsByCategories(categories) {
   try {
     const q = query(
@@ -259,25 +214,6 @@ export async function fetchProductsByBrand(brand) {
     }
   } catch (error) {
     console.error('Error getting products:', error);
-    return [];
-  }
-}
-
-export async function fetchProductsByGender(gender) {
-  try {
-    const q = query(dbRefGoods);
-
-    const querySnapshot = await getDocs(q);
-
-    const filteredProducts = querySnapshot.docs
-      .map(doc => ({ id: doc.id, ...doc.data() }))
-      .filter(product => {
-        return product.gender?.includes(gender);
-      });
-
-    return filteredProducts;
-  } catch (error) {
-    console.error('Error getting documents:', error);
     return [];
   }
 }
