@@ -1,7 +1,7 @@
 <template>
   <PageLayout>
     <div
-      v-if="product"
+      v-if="product && brand"
       class="relative"
     >
       <ProductBreadcrumbs
@@ -14,7 +14,10 @@
         :slides="product.images"
       />
 
-      <ProductCardDescription :product="product" />
+      <ProductCardDescription
+        :product="product"
+        :brand="brand"
+      />
     </div>
 
     <div v-else>
@@ -29,7 +32,10 @@
 <script setup>
   import { ref, onMounted } from 'vue';
   import { useRoute } from 'vue-router';
-  import { fetchProductById } from '@/app/core/plugins/firebase.js';
+  import {
+    fetchProductById,
+    fetchBrandById
+  } from '@/app/core/plugins/firebase.js';
 
   import ProductPageSlider from '@/components/sliders/ProductPageSlider.vue';
   import ProductCardDescription from '@/components/product/ProductCardDescription.vue';
@@ -38,6 +44,7 @@
   import PageLayout from '@/layouts/PageLayout.vue';
 
   const product = ref(null);
+  const brand = ref(null);
 
   const route = useRoute();
 
@@ -46,6 +53,10 @@
     try {
       const response = await fetchProductById(productId);
       product.value = response;
+
+      if (product.value && product.value.producer_id) {
+        brand.value = await fetchBrandById(product.value.producer_id);
+      }
 
       addProductToRecentlyViewed(productId);
     } catch (error) {

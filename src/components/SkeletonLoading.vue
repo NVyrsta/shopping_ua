@@ -32,6 +32,6 @@
   }
 
   .h-500 {
-    height: 500px;
+    height: 420px;
   }
 </style>

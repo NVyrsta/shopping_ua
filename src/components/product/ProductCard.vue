@@ -23,7 +23,7 @@
       />
 
       <div
-        v-if="isWithinLastTwoWeeks(product?.date)"
+        v-if="isWithinLastTwoWeeks"
         class="absolute left-0 top-0"
       >
         <span
@@ -32,24 +32,53 @@
           {{ $t('Main.Novelty') }}
         </span>
       </div>
+
+      <div
+        v-if="isOnSale && !isWithinLastTwoWeeks"
+        class="absolute left-0 top-0"
+      >
+        <span
+          class="w-[50px] bg-[#ee4a2e] px-2 py-1 text-xs capitalize leading-[10px] tracking-wider text-white"
+        >
+          {{ $t('Main.discount') }}
+        </span>
+      </div>
     </div>
 
     <div class="p-4">
       <strong class="block truncate text-sm font-semibold text-gray-800">
         {{ product.name[locale] }}
       </strong>
-      <p class="text-sm font-bold text-gray-800">{{ product.price }} грн</p>
+      <!-- <p class="text-sm font-bold text-gray-800">{{ product.price }} грн</p> -->
 
-      <p>
+      <!-- Display price and discount -->
+      <div
+        v-if="isOnSale"
+        class="flex items-center justify-start gap-2 text-sm text-gray-800"
+      >
+        <p class="text-gray-500 line-through">{{ product.price }} грн</p>
+
+        <p class="font-bold text-red-500">{{ product.price_new }} грн</p>
+      </div>
+
+      <!-- Regular Price when not on sale -->
+      <div
+        v-else
+        class="text-left text-sm font-bold text-gray-800"
+      >
+        {{ product.price }} грн
+      </div>
+
+      <p class="block truncate text-left">
         <span class="mr-1 inline-block text-sm">
           {{ product.producer ? product.producer : '' }}
         </span>
         <span class="text-sm text-gray-500">
           /
           {{
-            product.category && product.category[locale]
-              ? product.category[locale]
-              : ''
+            $t(
+              'Breadcrumbs.' + product.categories[product.categories.length - 1]
+            )
           }}
         </span>
       </p>
@@ -95,14 +124,18 @@
     return favorites.value.includes(props.product.id);
   });
 
-  const isWithinLastTwoWeeks = date => {
-    if (!date) return false;
+  const isOnSale = computed(() => {
+    return (
+      props.product.price_new && props.product.price_new < props.product.price
+    );
+  });
 
-    const productDate = new Date(date.seconds * 1000);
+  const isWithinLastTwoWeeks = computed(() => {
+    if (!props.product.date) return false;
+    const productDate = new Date(props.product.date.seconds * 1000);
     const twoWeeksAgo = new Date(Date.now() - 14 * 24 * 60 * 60 * 1000);
-
     return productDate >= twoWeeksAgo;
-  };
+  });
 
   const toggleFavorite = () => {
     const productId = props.product.id;

@@ -16,6 +16,7 @@
       <div
         v-for="brand in brands"
         :key="brand.id"
+        class="brand-card"
       >
         <router-link :to="`/brands/${brand.id}`">
           <div
@@ -24,11 +25,12 @@
             <img
               :src="brand.logo"
               :alt="brand.name"
+              class="brand-logo"
             />
           </div>
 
           <div
-            class="mt-1 text-center text-sm font-medium leading-4 tracking-wide text-gray-700"
+            class="brand-name mt-1 text-center text-sm font-medium leading-4 tracking-wide text-gray-700"
           >
             {{ brand.name }}
           </div>
@@ -203,8 +205,39 @@
   });
 </script>
 
-<style scoped>
+<style scoped lang="scss">
   .grid-cols-auto-fit {
     grid-template-columns: repeat(auto-fit, 132px);
+  }
+
+  .brand-card {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.05);
+
+      .brand-logo {
+        transform: scale(1.2);
+      }
+
+      .brand-name {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+    }
+  }
+
+  .brand-logo {
+    transition: transform 0.3s ease;
+  }
+
+  .brand-name {
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease;
+    opacity: 1;
+    transform: translateY(0);
   }
 </style>

@@ -2,11 +2,46 @@
   <div
     class="static right-14 top-24 z-10 mx-auto max-w-full bg-white p-8 shadow-lg min-[450px]:w-[428px] min-[1100px]:absolute min-[1100px]:w-[428px]"
   >
+    <p class="mb-4 flex items-center justify-between">
+      <span>№ {{ product.id }}</span>
+
+      <router-link :to="`/brands/${brand.id}`">
+        <img
+          :src="brand.logo"
+          :alt="brand.name"
+          class="max-h-[100px] min-h-[100px] min-w-[100px] max-w-[100px] object-contain"
+        />
+      </router-link>
+    </p>
     <p class="mb-6 text-center text-lg font-semibold text-black">
       {{ product.name[locale] }}
     </p>
 
-    <p class="mb-4 text-lg text-gray-600">Ціна: {{ product.price }}грн</p>
+    <div>
+      <p
+        v-if="product.price_new < product.price"
+        class="mb-4 text-lg text-gray-600"
+      >
+        {{ $t('Main.price') }}:
+        <span class="font-bold">{{ product.price_new }} грн </span>
+        {{ $t('Main.discount') }}:
+        <span class="font-bold text-gray-700"
+          >{{ product.price - product.price_new }} грн</span
+        >
+        <br />
+
+        <span class="text-sm font-bold text-red-600 line-through"
+          >{{ $t('Main.oldPrice') }}: {{ product.price }} грн</span
+        >
+      </p>
+
+      <p
+        v-else
+        class="mb-4 text-lg text-gray-600"
+      >
+        {{ $t('Main.price') }}: {{ product.price }} грн
+      </p>
+    </div>
 
     <div class="mb-4">
       <select
@@ -70,6 +105,10 @@
 
   const props = defineProps({
     product: {
+      type: Object,
+      required: true
+    },
+    brand: {
       type: Object,
       required: true
     }

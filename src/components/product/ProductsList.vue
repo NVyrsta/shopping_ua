@@ -67,8 +67,8 @@
       if (route.name === 'BrandPage' && brandId) {
         const brand = await fetchBrandById(brandId);
 
-        if (brand?.name) {
-          products.value = await fetchProductsByBrand(brand.name);
+        if (brand) {
+          products.value = await fetchProductsByBrand(brandId);
         } else {
           console.error('Brand not found or missing name');
         }

@@ -41,7 +41,10 @@
     "WatchAll": "Дивитися всі",
     "Novelty": "Новинка",
     "Top30Brands": "Топ 30 брендів",
-    "All": "Все"
+    "All": "Все",
+    "discount": "знижка",
+    "price": "Ціна",
+    "oldPrice": "стара ціна"
   },
   "Breadcrumbs": {
     "Main": "Головна",
@@ -58,6 +61,7 @@
     "men": "Чоловікам",
     "children": "Дітям",
     "for_girls": "Дівчаткам",
+    "school": "Школа",
     "dresses": "Сукні",
     "SearchResults": "Результати пошуку",
     "Brands": "Бренди",
@@ -73,7 +77,19 @@
     "sneakers_and_sneakers": "Кросівки і кеди",
     "sneakers": "Кеди",
     "home_clothes": "Одяг для дому",
-    "pajamas": "Піжами"
+    "pajamas": "Піжами",
+    "suits": "Костюми",
+    "dresses_and_sundresses": "Сукні та сарафани",
+    "casual_dresses": "Повсякденні сукні",
+    "to_the_boys": "Хлопчикам",
+    "hoodies_and_sweatshirts": "Толстовки і світшоти",
+    "t-shirts_and_polo_shirts": "Футболки і поло",
+    "t-shirts_with_short_sleeves": "Футболки з коротким рукавом",
+    "home_shoes": "Домашнє взуття",
+    "tops_and_t-shirts": "Топи і майки",
+    "strappy_tops": "Топи на бретелях",
+    "blouses_and_shirts": "Блузи і сорочки",
+    "blouses": "Блузи"
   },
   "Contacts": {
     "ContactsDescription": "Ми цінуємо кожного клієнта і цінуємо Вашу довіру. Тому ми готові оперативно вирішити будь-яке Ваше питання! Зв'язатися з нашою службою підтримки Ви можете за допомогою одного з контактів нижче або відправивши нам свої контактні дані через форму зворотного зв'язку.",

@@ -11,7 +11,6 @@ import {
   Timestamp,
   limit
 } from 'firebase/firestore';
-import { v4 as uuidv4 } from 'uuid';
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -44,28 +43,13 @@ export async function fetchProducts() {
   }
 }
 
-export async function addProduct(
-  name,
-  img,
-  price,
-  quantity,
-  category,
-  producer
-) {
+export async function addProduct(data) {
+  const dataDoc = {
+    ...data,
+    date: Timestamp.fromDate(new Date())
+  };
   try {
-    const id = uuidv4();
-    const date = new Date();
-
-    await addDoc(collection(db, 'goods'), {
-      name,
-      price,
-      quantity,
-      id,
-      date,
-      img,
-      category,
-      producer
-    });
+    await addDoc(collection(db, 'goods'), dataDoc);
   } catch (e) {
     console.error('Error adding document: ', e);
   }
@@ -197,9 +181,9 @@ export async function fetchProductsByCategories(categories) {
   }
 }
 
-export async function fetchProductsByBrand(brand) {
+export async function fetchProductsByBrand(brandID) {
   try {
-    const q = query(dbRefGoods, where('producer', '==', brand));
+    const q = query(dbRefGoods, where('producer_id', '==', brandID));
 
     const querySnapshot = await getDocs(q);
 

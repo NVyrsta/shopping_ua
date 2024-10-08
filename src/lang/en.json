@@ -41,7 +41,10 @@
     "WatchAll": "Watch all",
     "Novelty": "Novelty",
     "Top30Brands": "Top 30 brands",
-    "All": "All"
+    "All": "All",
+    "discount": "discount",
+    "price": "Price",
+    "oldPrice": "old price"
   },
   "Breadcrumbs": {
     "Main": "Main",
@@ -57,6 +60,7 @@
     "outerwear": "Outerwear",
     "menswear": "Menswear",
     "for_girls": "For girls",
+    "school": "School",
     "dresses": "Dresses",
     "children": "To children",
     "SearchResults": "Search results",
@@ -73,7 +77,19 @@
     "sneakers_and_sneakers": "Sneakers and sneakers",
     "sneakers": "Sneakers",
     "home_clothes": "Home clothes",
-    "pajamas": "Pajamas"
+    "pajamas": "Pajamas",
+    "suits": "Suits",
+    "dresses_and_sundresses": "Dresses and sundresses",
+    "casual_dresses": "Casual dresses",
+    "to_the_boys": "To the boys",
+    "hoodies_and_sweatshirts": "Hoodies and sweatshirts",
+    "t-shirts_and_polo_shirts": "T-shirts and polo shirts",
+    "t-shirts_with_short_sleeves": "T-shirts with short sleeves",
+    "home_shoes": "Home shoes",
+    "tops_and_t-shirts": "Tops and T-shirts",
+    "strappy_tops": "Strappy tops",
+    "blouses_and_shirts": "Blouses and shirts",
+    "blouses": "Blouses"
   },
   "Contacts": {
     "ContactsDescription": "We value every client and value your trust. Therefore, we are ready to quickly solve any of your questions! You can contact our support service using one of the contacts below or by sending us your contact details through the feedback form 'link.'",
