@@ -69,7 +69,7 @@
       <div class="mt-8">
         <div
           v-if="filterBy !== 'All'"
-          class="my-4 flex items-start px-4"
+          class="my-4 flex items-center px-4"
         >
           <div class="mr-4 min-w-8 text-lg font-bold">{{ filterBy }}</div>
 
@@ -85,7 +85,7 @@
                 );
               })"
               :key="brand.id"
-              class="pl-4 text-sm font-bold sm:pl-[80px]"
+              class="text-sm font-bold"
             >
               <router-link :to="`/brands/${brand.id}`">
                 {{ brand.name }}
@@ -98,7 +98,7 @@
           v-else
           v-for="letter in filterLetters"
           :key="letter"
-          class="my-4 flex items-start px-4"
+          class="my-4 flex items-center px-4"
         >
           <div class="mr-4 min-w-8 text-lg font-bold">{{ letter }}</div>
 
@@ -106,11 +106,15 @@
             class="grid w-full grid-cols-[repeat(auto-fill,minmax(100px,1fr))] gap-4"
           >
             <div
-              v-for="brand in filteredBrands.filter(b =>
-                b.name?.startsWith(letter)
-              )"
+              v-for="brand in filteredBrands.filter(b => {
+                const firstChar = b.name?.charAt(0);
+                return (
+                  (letter === '0-9' && /^[0-9]/.test(firstChar)) ||
+                  firstChar?.toUpperCase() === letter
+                );
+              })"
               :key="brand.id"
-              class="pl-4 text-sm font-bold sm:pl-[80px]"
+              class="text-sm font-bold"
             >
               <router-link :to="`/brands/${brand.id}`">
                 {{ brand.name }}
