@@ -11,6 +11,7 @@ import BrandsPage from '@/views/BrandsPage.vue';
 import BrandPage from '@/views/BrandPage.vue';
 import CategoryPage from '@/views/CategoryPage.vue';
 import NewProductsPage from '@/views/NewProductsPage.vue';
+import SaledProductsPage from '@/views/SaledProductsPage.vue';
 import AdminPage from '@/views/AdminPage.vue';
 import CooperationPage from '@/views/CooperationPage.vue';
 
@@ -33,6 +34,11 @@ const routes = [
     path: '/:gender(women|men|children)/new-products',
     component: NewProductsPage,
     name: 'NewProductsPage'
+  },
+  {
+    path: '/:gender(women|men|children)/discount-products',
+    component: SaledProductsPage,
+    name: 'SaledProductsPage'
   },
   { path: '/:categories(.*)?', component: CategoryPage, name: 'CategoryPage' },
   { path: '/:pathMatch(.*)*', component: NotFoundPage, name: 'NotFoundPage' }

@@ -62,6 +62,7 @@
       </router-link>
 
       <NovetlyRoute class="text-xl" />
+      <SalesRoute class="text-xl" />
     </div>
 
     <!-- Desktop Menu -->
@@ -100,6 +101,7 @@
   import { ref, computed } from 'vue';
   import { useRoute } from 'vue-router';
   import NovetlyRoute from '@/components/header/NovetlyRoute.vue';
+  import SalesRoute from '@/components/header/SalesRoute.vue';
 
   const isMenuOpen = ref(false);
   const route = useRoute();

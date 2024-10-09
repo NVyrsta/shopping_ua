@@ -45,13 +45,12 @@
 <script setup>
   import { ref, onMounted } from 'vue';
   import { useRoute } from 'vue-router';
+  import { useI18n } from 'vue-i18n';
   import { fetchBrandById } from '@/app/core/plugins/firebase.js';
+  import PageLayout from '@/layouts/PageLayout.vue';
   import SectionSeparator from '@/components/elements/SectionSeparator.vue';
   import SpinnerLoading from '@/components/elements/SpinnerLoading.vue';
   import ProductsList from '@/components/product/ProductsList.vue';
-
-  import PageLayout from '@/layouts/PageLayout.vue';
-  import { useI18n } from 'vue-i18n';
 
   const { locale } = useI18n();
 
@@ -66,7 +65,7 @@
       const response = await fetchBrandById(brandId);
       brand.value = response;
     } catch (error) {
-      console.error('Помилка при завантаженні продукту:', error);
+      console.error('Error loading the product:', error);
     }
   });
 </script>

@@ -236,33 +236,41 @@ export async function fetchNewProductsByCategory(category) {
   }
 }
 
+export async function fetchSaledProductsByCategory(category) {
+  try {
+    const q = query(
+      dbRefGoods,
+      where('categories', 'array-contains', category),
+      where('isDiscounted', '==', true)
+    );
+
+    const querySnapshot = await getDocs(q);
+
+    if (!querySnapshot.empty) {
+      const products = querySnapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data()
+      }));
+
+      return products;
+    } else {
+      return [];
+    }
+  } catch (error) {
+    console.error('Error getting documents:', error);
+    return [];
+  }
+}
+
 // --- Brands ---
-
-// export async function fetchBrands() {
-//   try {
-//     const querySnapshot = await getDocs(collection(db, 'producers'));
-
-//     const brands = [];
-
-//     querySnapshot.forEach(doc => {
-//       brands.push({ id: doc.id, ...doc.data() });
-//     });
-
-//     return brands;
-//   } catch (error) {
-//     console.error('Error fetching brands', error);
-//   }
-// }
 
 export async function fetchBrands(limitCount = null) {
   try {
     let q;
 
     if (limitCount) {
-      // Якщо передано число, додаємо обмеження
       q = query(collection(db, 'producers'), limit(limitCount));
     } else {
-      // Якщо немає обмеження, запитуємо всі документи
       q = query(collection(db, 'producers'));
     }
 

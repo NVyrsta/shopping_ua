@@ -60,7 +60,7 @@
 
       addProductToRecentlyViewed(productId);
     } catch (error) {
-      console.error('Помилка при завантаженні продукту:', error);
+      console.error('Error loading the product:', error);
     }
   });
 

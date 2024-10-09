@@ -34,7 +34,8 @@
     fetchProductsByCategories,
     fetchProductsByBrand,
     fetchBrandById,
-    fetchNewProductsByCategory
+  fetchNewProductsByCategory,
+    fetchSaledProductsByCategory
   } from '@/app/core/plugins/firebase';
   import { useI18n } from 'vue-i18n';
   import { useRoute } from 'vue-router';
@@ -77,6 +78,9 @@
       } else if (route.name === 'NewProductsPage') {
         const category = route.path.split('/')[1];
         products.value = await fetchNewProductsByCategory(category);
+      } else if (route.name === 'SaledProductsPage') {
+        const category = route.path.split('/')[1];
+        products.value = await fetchSaledProductsByCategory(category);
       } else if (filters.length > 0) {
         products.value = await fetchProductsByCategories(
           filters[filters.length - 1]

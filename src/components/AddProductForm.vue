@@ -250,7 +250,7 @@
       { amount: 3, size: 'l' },
       { amount: 5, size: 'm' }
     ];
-
+    const isDiscounted = productPriceNew.value < productPrice.value;
     const docData = {
       id: productId.value,
       producer: productProducer.value,
@@ -260,7 +260,8 @@
       price_new: productPriceNew.value,
       images: productImages.value,
       categories: productCategories.value,
-      name: productName.value
+      name: productName.value,
+      isDiscounted
     };
 
     try {

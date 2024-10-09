@@ -14,6 +14,7 @@
       </router-link>
 
       <NovetlyRoute class="underline-effect" />
+      <SalesRoute class="underline-effect" />
     </div>
 
     <div class="relative order-1 w-full py-2 sm:order-2 sm:w-auto">
@@ -41,6 +42,7 @@
   import { useRouter } from 'vue-router';
   import { debounce } from '@/app/core/plugins/utils';
   import NovetlyRoute from '@/components/header/NovetlyRoute.vue';
+  import SalesRoute from '@/components/header/SalesRoute.vue';
 
   const searchQuery = ref('');
   const router = useRouter();
