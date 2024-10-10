@@ -3,8 +3,10 @@
     class="flex flex-wrap items-center justify-between gap-2 bg-orange-100 px-4 sm:flex-nowrap"
   >
     <div
-      class="order-2 flex w-full flex-wrap items-center justify-center gap-2 pb-2 sm:order-1 sm:w-auto sm:justify-start sm:pb-0"
+      class="order-2 flex w-full flex-wrap items-center justify-center gap-4 pb-2 sm:order-1 sm:w-auto sm:justify-start sm:pb-0"
     >
+      <GenderRoutes class-name="underline-effect" />
+
       <router-link
         to="/brands"
         active-class="font-bold"
@@ -50,6 +52,7 @@
   import { useRouter } from 'vue-router';
   import { debounce } from '@/app/core/plugins/utils';
   import DynamicRoute from '@/components/header/DynamicRoute.vue';
+  import GenderRoutes from '@/components/header/GenderRoutes.vue';
 
   const searchQuery = ref('');
   const router = useRouter();

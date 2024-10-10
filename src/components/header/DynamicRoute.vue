@@ -23,9 +23,11 @@
       return route.params.gender;
     } else if (
       route.params.categories &&
-      ['men', 'women', 'children'].includes(route.params.categories)
+      ['men', 'women', 'children'].includes(
+        route.params.categories.split('/')[0]
+      )
     ) {
-      return route.params.categories;
+      return route.params.categories.split('/')[0];
     } else {
       return 'women';
     }
@@ -36,6 +38,6 @@
   });
 
   const isActive = computed(() => {
-    return route.path.includes(props.linkUrl);
+    return route.path === link.value;
   });
 </script>

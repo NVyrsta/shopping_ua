@@ -20,7 +20,7 @@
       >
         <router-link :to="`/brands/${brand.id}`">
           <div
-            class="mx-auto flex h-32 w-32 cursor-pointer items-center justify-center border border-gray-200 p-2"
+            class="mx-auto flex h-32 w-32 cursor-pointer items-center justify-center overflow-hidden border border-gray-200 p-2"
           >
             <img
               :src="brand.logo"

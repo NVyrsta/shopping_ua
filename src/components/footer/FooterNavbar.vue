@@ -63,8 +63,8 @@
   ]);
 
   const catalogueLinks = computed(() => [
-    { path: '/women', label: t('Breadcrumbs.women_clothing') },
-    { path: '/men', label: t('Breadcrumbs.menswear') },
+    { path: '/women/women_clothing', label: t('Breadcrumbs.women_clothing') },
+    { path: '/men/menswear', label: t('Breadcrumbs.menswear') },
     { path: '/children', label: t('Breadcrumbs.childrens-clothes') }
   ]);
 </script>

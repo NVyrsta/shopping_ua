@@ -27,6 +27,8 @@
     <ProductsList />
 
     <RecentlyViewedProductsList />
+
+    <DiscountBlock />
   </PageLayout>
 </template>
 
@@ -39,6 +41,7 @@
   import PrimaryBannerSlider from '@/components/sliders/PrimaryBannerSlider.vue';
   import TopBrandsList from '@/components/brands/TopBrandsList.vue';
   import RecentlyViewedProductsList from '@/components/RecentlyViewedProductsList.vue';
+  import DiscountBlock from '@/components/blocks/DiscountBlock.vue';
 
   const route = useRoute();
   const hasSearchQuery = computed(() => !!route.query.search);

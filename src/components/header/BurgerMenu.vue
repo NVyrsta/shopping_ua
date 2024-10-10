@@ -52,6 +52,8 @@
         <span>{{ $t('Breadcrumbs.children') }}</span>
       </router-link>
 
+      <GenderRoutes />
+
       <router-link
         to="/brands"
         class="text-xl"
@@ -66,6 +68,7 @@
         link-url="new-products"
         :link-text="$t('Breadcrumbs.Novelty')"
       />
+
       <DynamicRoute
         class="text-xl"
         link-url="discount-products"
@@ -109,6 +112,7 @@
   import { ref, computed } from 'vue';
   import { useRoute } from 'vue-router';
   import DynamicRoute from '@/components/header/DynamicRoute.vue';
+  import GenderRoutes from '@/components/header/GenderRoutes.vue';
 
   const isMenuOpen = ref(false);
   const route = useRoute();
