@@ -61,8 +61,16 @@
         <span>{{ $t('Breadcrumbs.Brands') }}</span>
       </router-link>
 
-      <NovetlyRoute class="text-xl" />
-      <SalesRoute class="text-xl" />
+      <DynamicRoute
+        class="text-xl"
+        link-url="new-products"
+        :link-text="$t('Breadcrumbs.Novelty')"
+      />
+      <DynamicRoute
+        class="text-xl"
+        link-url="discount-products"
+        :link-text="$t('Breadcrumbs.discount-products')"
+      />
     </div>
 
     <!-- Desktop Menu -->
@@ -100,8 +108,7 @@
 <script setup>
   import { ref, computed } from 'vue';
   import { useRoute } from 'vue-router';
-  import NovetlyRoute from '@/components/header/NovetlyRoute.vue';
-  import SalesRoute from '@/components/header/SalesRoute.vue';
+  import DynamicRoute from '@/components/header/DynamicRoute.vue';
 
   const isMenuOpen = ref(false);
   const route = useRoute();

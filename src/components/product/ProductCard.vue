@@ -20,6 +20,7 @@
       <ProductCardSlider
         :images="product.images"
         :id="product.id"
+        :gender="product.categories[0]"
       />
 
       <div
@@ -34,7 +35,7 @@
       </div>
 
       <div
-        v-if="isOnSale && !isWithinLastTwoWeeks"
+        v-if="product.isDiscounted && !isWithinLastTwoWeeks"
         class="absolute left-0 top-0"
       >
         <span
@@ -49,11 +50,9 @@
       <strong class="block truncate text-sm font-semibold text-gray-800">
         {{ product.name[locale] }}
       </strong>
-      <!-- <p class="text-sm font-bold text-gray-800">{{ product.price }} грн</p> -->
 
-      <!-- Display price and discount -->
       <div
-        v-if="isOnSale"
+        v-if="product.isDiscounted"
         class="flex items-center justify-start gap-2 text-sm text-gray-800"
       >
         <p class="text-gray-500 line-through">{{ product.price }} грн</p>
@@ -61,7 +60,6 @@
         <p class="font-bold text-red-500">{{ product.price_new }} грн</p>
       </div>
 
-      <!-- Regular Price when not on sale -->
       <div
         v-else
         class="text-left text-sm font-bold text-gray-800"
@@ -122,12 +120,6 @@
 
   const isFavorited = computed(() => {
     return favorites.value.includes(props.product.id);
-  });
-
-  const isOnSale = computed(() => {
-    return (
-      props.product.price_new && props.product.price_new < props.product.price
-    );
   });
 
   const isWithinLastTwoWeeks = computed(() => {

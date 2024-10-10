@@ -34,7 +34,7 @@
     fetchProductsByCategories,
     fetchProductsByBrand,
     fetchBrandById,
-  fetchNewProductsByCategory,
+    fetchNewProductsByCategory,
     fetchSaledProductsByCategory
   } from '@/app/core/plugins/firebase';
   import { useI18n } from 'vue-i18n';

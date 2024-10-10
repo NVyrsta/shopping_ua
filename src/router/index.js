@@ -25,7 +25,7 @@ const routes = [
   { path: '/brands/:brandId', component: BrandPage, name: 'BrandPage' },
   { path: '/cooperation', component: CooperationPage, name: 'CooperationPage' },
   {
-    path: '/product_card/:id',
+    path: '/:gender(women|men|children)/product_card/:id',
     component: ProductCardPage,
     name: 'ProductCardPage'
   },

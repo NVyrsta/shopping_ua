@@ -3,7 +3,7 @@
     class="flex flex-wrap items-center justify-between gap-2 bg-orange-100 px-4 sm:flex-nowrap"
   >
     <div
-      class="order-2 flex w-full items-center justify-center gap-2 pb-2 sm:order-1 sm:w-auto sm:justify-start sm:pb-0"
+      class="order-2 flex w-full flex-wrap items-center justify-center gap-2 pb-2 sm:order-1 sm:w-auto sm:justify-start sm:pb-0"
     >
       <router-link
         to="/brands"
@@ -13,8 +13,16 @@
         {{ $t('Breadcrumbs.Brands') }}
       </router-link>
 
-      <NovetlyRoute class="underline-effect" />
-      <SalesRoute class="underline-effect" />
+      <DynamicRoute
+        class="underline-effect"
+        link-url="new-products"
+        :link-text="$t('Breadcrumbs.Novelty')"
+      />
+      <DynamicRoute
+        class="underline-effect"
+        link-url="discount-products"
+        :link-text="$t('Breadcrumbs.discount-products')"
+      />
     </div>
 
     <div class="relative order-1 w-full py-2 sm:order-2 sm:w-auto">
@@ -41,8 +49,7 @@
   import { ref, onMounted, watch } from 'vue';
   import { useRouter } from 'vue-router';
   import { debounce } from '@/app/core/plugins/utils';
-  import NovetlyRoute from '@/components/header/NovetlyRoute.vue';
-  import SalesRoute from '@/components/header/SalesRoute.vue';
+  import DynamicRoute from '@/components/header/DynamicRoute.vue';
 
   const searchQuery = ref('');
   const router = useRouter();

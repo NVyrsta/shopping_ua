@@ -18,7 +18,8 @@
           :src="slide"
           class="h-80 w-full object-cover object-top transition-all duration-300"
           @click="
-            () => $router.push({ name: 'ProductCardPage', params: { id } })
+            () =>
+              $router.push({ name: 'ProductCardPage', params: { gender, id } })
           "
         />
       </slide>
@@ -43,6 +44,11 @@
     id: {
       type: String,
       default: ''
+    },
+
+    gender: {
+      type: String,
+      default: 'women'
     }
   });
 </script>
