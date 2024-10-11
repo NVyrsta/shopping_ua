@@ -193,7 +193,7 @@
     top: calc(100% + 12px);
     left: 50%;
     transform: translate(-50%, 8px);
-    z-index: 1;
+    z-index: 20;
     visibility: hidden;
     transition: 0.3s ease-in-out;
     width: 200px;
