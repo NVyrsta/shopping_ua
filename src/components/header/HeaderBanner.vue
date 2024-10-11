@@ -1,10 +1,15 @@
 <script setup>
   import LanguageSwitcher from '@/components/LanguageSwitcher.vue';
+  import NoWarBanner from '@/components/elements/NoWarBanner.vue';
 </script>
 
 <template>
   <div class="banner flex items-center justify-between gap-2">
-    <div class="flex items-center justify-start gap-1">
+    <div>
+      <NoWarBanner />
+    </div>
+
+    <div class="hidden items-center justify-start gap-1">
       <a href="#">
         <SvgIcon
           id="social-instagram"

@@ -16,7 +16,12 @@ import AdminPage from '@/views/AdminPage.vue';
 import CooperationPage from '@/views/CooperationPage.vue';
 
 const routes = [
-  { path: '/', component: ProductsPage, name: 'ProductsPage' },
+  { path: '/', redirect: '/women' },
+  {
+    path: '/:gender(women|men|children)',
+    component: ProductsPage,
+    name: 'ProductsPage'
+  },
   { path: '/favorites', component: FavoritesPage, name: 'FavoritesPage' },
   { path: '/basket', component: BasketPage, name: 'BasketPage' },
   { path: '/contacts', component: ContactsPage, name: 'ContactsPage' },
@@ -40,7 +45,11 @@ const routes = [
     component: SaledProductsPage,
     name: 'SaledProductsPage'
   },
-  { path: '/:categories(.*)?', component: CategoryPage, name: 'CategoryPage' },
+  {
+    path: '/:gender(women|men|children)/:categories(.*)',
+    component: CategoryPage,
+    name: 'CategoryPage'
+  },
   { path: '/:pathMatch(.*)*', component: NotFoundPage, name: 'NotFoundPage' }
 ];
 

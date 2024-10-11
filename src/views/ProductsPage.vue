@@ -28,6 +28,8 @@
 
     <RecentlyViewedProductsList />
 
+    <GenderDescriptionBlock />
+
     <DiscountBlock />
   </PageLayout>
 </template>
@@ -42,6 +44,7 @@
   import TopBrandsList from '@/components/brands/TopBrandsList.vue';
   import RecentlyViewedProductsList from '@/components/RecentlyViewedProductsList.vue';
   import DiscountBlock from '@/components/blocks/DiscountBlock.vue';
+  import GenderDescriptionBlock from '@/components/blocks/GenderDescriptionBlock.vue';
 
   const route = useRoute();
   const hasSearchQuery = computed(() => !!route.query.search);

@@ -5,7 +5,9 @@
       'width-full fixed top-0': isHeaderSticky
     }"
   >
-    <div class="flex items-center justify-between py-1">
+    <div
+      class="relative z-10 flex items-center justify-between bg-transparent py-1"
+    >
       <BurgerMenu />
 
       <div class="flex items-center">
