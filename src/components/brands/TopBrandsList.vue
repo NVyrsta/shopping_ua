@@ -79,9 +79,13 @@
             <div
               v-for="brand in filteredBrands.filter(b => {
                 const firstChar = b.name?.charAt(0);
+                const isCyrillic = /^[А-Яа-яЄєІіЇїҐґ]/.test(firstChar);
                 return (
+                  // (filterBy === '0-9' && /^[0-9]/.test(firstChar)) ||
+                  // firstChar?.toUpperCase() === filterBy
                   (filterBy === '0-9' && /^[0-9]/.test(firstChar)) ||
-                  firstChar?.toUpperCase() === filterBy
+                  firstChar?.toUpperCase() === filterBy ||
+                  (filterBy === 'А-Я' && isCyrillic)
                 );
               })"
               :key="brand.id"
@@ -108,9 +112,11 @@
             <div
               v-for="brand in filteredBrands.filter(b => {
                 const firstChar = b.name?.charAt(0);
+                const isCyrillic = /^[А-Яа-яЄєІіЇїҐґ]/.test(firstChar);
                 return (
                   (letter === '0-9' && /^[0-9]/.test(firstChar)) ||
-                  firstChar?.toUpperCase() === letter
+                  firstChar?.toUpperCase() === letter ||
+                  (letter === 'А-Я' && isCyrillic)
                 );
               })"
               :key="brand.id"
