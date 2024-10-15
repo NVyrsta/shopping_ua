@@ -18,6 +18,8 @@
         :product="product"
         :brand="brand"
       />
+
+      <RecentlyViewedProductsList />
     </div>
 
     <div v-else>
@@ -42,6 +44,7 @@
   import ProductBreadcrumbs from '@/components/elements/ProductBreadcrumbs.vue';
   import SpinnerLoading from '@/components/elements/SpinnerLoading.vue';
   import PageLayout from '@/layouts/PageLayout.vue';
+  import RecentlyViewedProductsList from '@/components/RecentlyViewedProductsList.vue';
 
   const product = ref(null);
   const brand = ref(null);
