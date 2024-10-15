@@ -172,7 +172,7 @@
                 :key="index"
                 class="inline-flex items-center rounded-full bg-green-200 px-3 py-1 text-sm font-medium text-green-700"
               >
-                <span v-html="$t('Breadcrumbs.' + category.id)" />
+                <span v-html="$t('Breadcrumbs.' + category)" />
                 <button
                   type="button"
                   @click="removeCategory(index)"
@@ -254,8 +254,8 @@
   const removeImage = index => productImages.value.splice(index, 1);
 
   const addCategory = category => {
-    if (!productCategories.value.find(c => c.id === category.id)) {
-      productCategories.value.push(category);
+    if (!productCategories.value.includes(category.id)) {
+      productCategories.value.push(category.id);
     }
   };
 
