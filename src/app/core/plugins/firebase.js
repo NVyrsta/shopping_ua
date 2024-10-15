@@ -26,7 +26,7 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const dbRefGoods = collection(db, 'goods');
 const dbRefBrands = collection(db, 'producers');
-
+const dbRefVisitors = collection(db, 'shopping_ua_visitors');
 export async function fetchProducts() {
   try {
     const querySnapshot = await getDocs(collection(db, 'goods'));
@@ -52,6 +52,48 @@ export async function addProduct(data) {
     await addDoc(collection(db, 'goods'), dataDoc);
   } catch (e) {
     console.error('Error adding document: ', e);
+  }
+}
+
+export async function addVisitorId(id) {
+  const dataDoc = {
+    ip_hash: id,
+    date: Timestamp.fromDate(new Date())
+  };
+  try {
+    await addDoc(collection(db, 'shopping_ua_visitors'), dataDoc);
+  } catch (e) {
+    console.error('Error adding id visitors: ', e);
+  }
+}
+
+export async function fetchVisitorByIpHash(id) {
+  try {
+    const q = query(dbRefVisitors, where('ip_hash', '==', id));
+
+    const querySnapshot = await getDocs(q);
+
+    if (!querySnapshot.empty) {
+      const doc = querySnapshot.docs[0];
+
+      return { id: doc.id, ...doc.data() };
+    } else {
+      return null;
+    }
+  } catch (error) {
+    console.error('Error getting document:', error);
+    return null;
+  }
+}
+
+export async function fetchVisitorsCount() {
+  try {
+    const q = query(dbRefVisitors);
+    const querySnapshot = await getDocs(q);
+    return querySnapshot.size; // Повертаємо кількість документів
+  } catch (error) {
+    console.error('Error getting document count:', error);
+    return null;
   }
 }
 

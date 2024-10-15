@@ -18,11 +18,30 @@
         src="https://shopping.ua/static/media/NP.3d77914fc4467541cdc851e703761fd6.svg"
         alt="Nova Poshta"
       />
+
+      <SvgIcon
+        id="eye"
+        width="14"
+        height="14"
+        fill="#6d6d6d"
+        class="ml-auto"
+      />
+
+      <span class="text-gray-400">{{ uniqueVisitors }}</span>
     </div>
   </div>
 </template>
 
 <script setup>
+  import { onMounted } from 'vue';
   import BenefitsBanner from '@/components/footer/BenefitsBanner.vue';
   import FooterNavbar from '@/components/footer/FooterNavbar.vue';
+  import {
+    uniqueVisitors,
+    initializeVisitorTracking
+  } from '@/app/core/plugins/visitorTracker';
+
+  onMounted(async () => {
+    await initializeVisitorTracking();
+  });
 </script>
