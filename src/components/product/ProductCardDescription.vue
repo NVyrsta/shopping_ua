@@ -68,26 +68,41 @@
       </select>
     </div>
 
-    <ButtonComponent
-      :title="
-        isInCart
-          ? $t('Main.InTheCart', { count: selectedSizeInCartCount })
-          : $t('Main.AddToCart')
-      "
-      :green="isInCart"
-      :red="!isInCart"
-      :disabled="!isValidForm"
-      @click="() => addToCart(product, selectedSize)"
-    >
-      <template #icon-left>
-        <SvgIcon
-          id="cart"
-          width="16"
-          height="16"
-          fill="white"
-        />
-      </template>
-    </ButtonComponent>
+    <div class="flex items-center justify-start gap-4">
+      <ButtonComponent
+        :title="
+          isInCart
+            ? $t('Main.InTheCart', { count: selectedSizeInCartCount })
+            : $t('Main.AddToCart')
+        "
+        :green="isInCart"
+        :red="!isInCart"
+        :disabled="!isValidForm"
+        @click="() => addToCart(product, selectedSize)"
+      >
+        <template #icon-left>
+          <SvgIcon
+            id="cart"
+            width="16"
+            height="16"
+            fill="white"
+          />
+        </template>
+      </ButtonComponent>
+
+      <div
+        class="flex h-10 w-11 cursor-pointer items-center justify-center border border-gray-300"
+      >
+        <button @click.stop="toggleFavorite">
+          <SvgIcon
+            id="favorite"
+            width="18"
+            height="18"
+            :fill="!isFavorited ? 'white' : 'black'"
+          />
+        </button>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -145,6 +160,30 @@
 
     cartItems.value = currentCartList;
     emitter.emit('update-cart', cartItems.value.length);
+  };
+
+  const favorites = ref(JSON.parse(localStorage.getItem('favorites') || '[]'));
+
+  const isFavorited = computed(() => {
+    return favorites.value.includes(props.product.id);
+  });
+
+  const toggleFavorite = () => {
+    const productId = props.product.id;
+    const currentFavorites = JSON.parse(
+      localStorage.getItem('favorites') || '[]'
+    );
+
+    if (currentFavorites.includes(productId)) {
+      favorites.value = currentFavorites.filter(id => id !== productId);
+    } else {
+      favorites.value = [...currentFavorites, productId];
+    }
+
+    localStorage.setItem('favorites', JSON.stringify(favorites.value));
+    emitter.emit('update-favorites', favorites.value.length);
+
+    emitter.emit('load-recently-viewed');
   };
 
   const selectedSizeInCartCount = computed(() => {

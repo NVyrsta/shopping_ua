@@ -17,7 +17,7 @@
 </template>
 
 <script setup>
-  import { ref, onMounted, watch } from 'vue';
+  import { ref, onMounted, onUnmounted, watch, inject } from 'vue';
   import { fetchProductsByIds } from '@/app/core/plugins/firebase';
   import { useI18n } from 'vue-i18n';
 
@@ -27,6 +27,7 @@
   import ProductsSlider from '@/components/sliders/ProductsSlider.vue';
 
   const { locale } = useI18n();
+  const emitter = inject('emitter');
 
   const products = ref([]);
   const isLoading = ref(false);
@@ -51,5 +52,11 @@
 
   onMounted(() => {
     loadProducts();
+
+    emitter.on('load-recently-viewed', loadProducts);
+  });
+
+  onUnmounted(() => {
+    emitter.off('load-recently-viewed', loadProducts);
   });
 </script>
