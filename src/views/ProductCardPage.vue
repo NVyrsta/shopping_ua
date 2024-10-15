@@ -32,7 +32,7 @@
 </template>
 
 <script setup>
-  import { ref, onMounted } from 'vue';
+  import { ref, onMounted, watch } from 'vue';
   import { useRoute } from 'vue-router';
   import {
     fetchProductById,
@@ -48,11 +48,9 @@
 
   const product = ref(null);
   const brand = ref(null);
-
   const route = useRoute();
 
-  onMounted(async () => {
-    const productId = route.params.id;
+  const loadProduct = async productId => {
     try {
       const response = await fetchProductById(productId);
       product.value = response;
@@ -65,9 +63,9 @@
     } catch (error) {
       console.error('Error loading the product:', error);
     }
-  });
+  };
 
-  function addProductToRecentlyViewed(productId) {
+  const addProductToRecentlyViewed = productId => {
     const viewedProducts =
       JSON.parse(localStorage.getItem('recentlyViewedProducts')) || [];
 
@@ -83,5 +81,19 @@
         JSON.stringify(viewedProducts)
       );
     }
-  }
+  };
+
+  onMounted(() => {
+    const productId = route.params.id;
+    loadProduct(productId);
+  });
+
+  watch(
+    () => route.params.id,
+    newId => {
+      if (newId) {
+        loadProduct(newId);
+      }
+    }
+  );
 </script>
