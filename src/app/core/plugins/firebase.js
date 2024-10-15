@@ -43,6 +43,22 @@ export async function fetchProducts() {
   }
 }
 
+export async function fetchCategoriesList() {
+  try {
+    const querySnapshot = await getDocs(collection(db, 'categories'));
+
+    const categories = [];
+
+    querySnapshot.forEach(doc => {
+      categories.push({ id: doc.id, ...doc.data() });
+    });
+
+    return categories;
+  } catch (error) {
+    console.error('Error fetching products', error);
+  }
+}
+
 export async function addProduct(data) {
   const dataDoc = {
     ...data,
@@ -90,7 +106,7 @@ export async function fetchVisitorsCount() {
   try {
     const q = query(dbRefVisitors);
     const querySnapshot = await getDocs(q);
-    return querySnapshot.size; // Повертаємо кількість документів
+    return querySnapshot.size;
   } catch (error) {
     console.error('Error getting document count:', error);
     return null;
