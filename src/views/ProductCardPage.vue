@@ -19,6 +19,11 @@
         :brand="brand"
       />
 
+      <YouMayBeInterested
+        :category="product.categories[product.categories.length - 1]"
+        :gender="product.categories[0]"
+      />
+
       <RecentlyViewedProductsList />
     </div>
 
@@ -45,12 +50,15 @@
   import SpinnerLoading from '@/components/elements/SpinnerLoading.vue';
   import PageLayout from '@/layouts/PageLayout.vue';
   import RecentlyViewedProductsList from '@/components/RecentlyViewedProductsList.vue';
+  import YouMayBeInterested from '@/components/YouMayBeInterested.vue';
 
   const product = ref(null);
   const brand = ref(null);
   const route = useRoute();
 
   const loadProduct = async productId => {
+    product.value = null;
+    brand.value = null;
     try {
       const response = await fetchProductById(productId);
       product.value = response;

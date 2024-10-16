@@ -44,7 +44,8 @@
     "All": "Все",
     "discount": "знижка",
     "price": "Ціна",
-    "oldPrice": "стара ціна"
+    "oldPrice": "стара ціна",
+    "YouMayBeInterested": "ВАС МОЖЕ ЗАЦІКАВИТИ"
   },
   "Breadcrumbs": {
     "Main": "Головна",
@@ -112,7 +113,31 @@
     "down_jackets_and_winter_jackets": "Пуховики та зимові куртки",
     "сrop_tops": "Кроп-топи",
     "watches": "Годинники",
-    "jackets": "Піджаки"
+    "jackets": "Піджаки",
+    "nightgowns": "Нічні сорочки",
+    "bodysuits": "Боді",
+    "vests": "Жилети",
+    "jumpers_sweaters_and_cardigans": "Джемпери, светри та кардигани",
+    "jeans": "Джинси",
+    "home_wear": "Домашній одяг",
+    "jumpsuits": "Комбінезони",
+    "swimwear_and_beachwear": "Купальники і пляжний одяг",
+    "underwear": "Нижня білизна",
+    "socks_stockings_and_tights": "Шкарпетки, панчохи і колготки",
+    "maternity_wear": "Одяг для вагітних",
+    "tops_and_tank_tops": "Топи і майки",
+    "tunics": "Туніки",
+    "shorts": "Шорти",
+    "sports_wear": "Одяг для спорту",
+    "embroidered_shirts": "Вишиванки",
+    "tank_tops": "Майки",
+    "socks_and_gaiters": "Шкарпетки та гетри",
+    "plus_size_wear": "Одяг великих розмірів",
+    "swim_trunks_and_shorts": "Плавки і шорти для плавання",
+    "shirts": "Сорочки",
+    "thermal_underwear": "Термобілизна",
+    "hoodies_and_olympic_jackets": "Толстовки і олімпійки",
+    "military_wear": "Одяг військового призначення"
   },
   "Contacts": {
     "ContactsDescription": "Ми цінуємо кожного клієнта і цінуємо Вашу довіру. Тому ми готові оперативно вирішити будь-яке Ваше питання! Зв'язатися з нашою службою підтримки Ви можете за допомогою одного з контактів нижче або відправивши нам свої контактні дані через форму зворотного зв'язку.",

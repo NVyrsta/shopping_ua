@@ -320,6 +320,39 @@ export async function fetchSaledProductsByCategory(category) {
   }
 }
 
+export async function fetchByCategory(category, gender, limitCount = null) {
+  try {
+    const q = query(
+      dbRefGoods,
+      where('categories', 'array-contains', category)
+    );
+
+    const querySnapshot = await getDocs(q);
+
+    if (!querySnapshot.empty) {
+      let products = querySnapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data()
+      }));
+
+      products = products.filter(product =>
+        product.categories.includes(gender)
+      );
+
+      if (limitCount) {
+        products = products.slice(0, limitCount);
+      }
+
+      return products;
+    } else {
+      return [];
+    }
+  } catch (error) {
+    console.error('Error getting documents:', error);
+    return [];
+  }
+}
+
 // --- Brands ---
 
 export async function fetchBrands(limitCount = null) {

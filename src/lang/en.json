@@ -44,7 +44,8 @@
     "All": "All",
     "discount": "discount",
     "price": "Price",
-    "oldPrice": "old price"
+    "oldPrice": "old price",
+    "YouMayBeInterested": "YOU MAY BE INTERESTED"
   },
   "Breadcrumbs": {
     "Main": "Main",
@@ -112,7 +113,31 @@
     "down_jackets_and_winter_jackets": "Down jackets and winter jackets",
     "сrop_tops": "Crop tops",
     "watches": "Watches",
-    "jackets": "Jackets"
+    "jackets": "Jackets",
+    "nightgowns": "Nightgowns",
+    "bodysuits": "Bodysuits",
+    "vests": "Vests",
+    "jumpers_sweaters_and_cardigans": "Jumpers, sweaters and cardigans",
+    "jeans": "Jeans",
+    "home_wear": "Home wear",
+    "jumpsuits": "Jumpsuits",
+    "swimwear_and_beachwear": "Swimwear and beachwear",
+    "underwear": "Underwear",
+    "socks_stockings_and_tights": "Socks, stockings and tights",
+    "maternity_wear": "Maternity wear",
+    "tops_and_tank_tops": "Tops and tank tops",
+    "tunics": "Tunics",
+    "shorts": "Shorts",
+    "sports_wear": "Sports wear",
+    "embroidered_shirts": "Embroidered shirts",
+    "tank_tops": "Tank tops",
+    "socks_and_gaiters": "Socks and gaiters",
+    "plus_size_wear": "Plus size wear",
+    "swim_trunks_and_shorts": "Swim trunks and shorts",
+    "shirts": "Shirts",
+    "thermal_underwear": "Thermal underwear",
+    "hoodies_and_olympic_jackets": "Hoodies and Olympic jackets",
+    "military_wear": "Military wear"
   },
   "Contacts": {
     "ContactsDescription": "We value every client and value your trust. Therefore, we are ready to quickly solve any of your questions! You can contact our support service using one of the contacts below or by sending us your contact details through the feedback form 'link.'",
