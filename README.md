@@ -40,12 +40,6 @@
    npm run serve
    ```
 
-## License
-
-This project is licensed under the MIT License.
-
----
-
 ### Topics
 
 `i18n` `firebase` `shopping-cart` `localstorage` `breadcrumbs` `vue-router` `slick-slider` `tailwind` `e-commerce-website` `vue3-composition-api` `recently-viewed-product` `favorite-list`
