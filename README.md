@@ -1,5 +1,51 @@
-# Vue 3 + Vite
+# Shopping-UA
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+[shopping-ua.vercel.app](https://shopping-ua.vercel.app/)
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+## Overview
+
+**Shopping-UA** is an e-commerce website for clothing and home goods. It offers a large product catalog, where items in the shopping cart and favorites list are stored locally using **LocalStorage**. The site supports features like product recommendations, recently viewed products, breadcrumbs, pagination, and product search, with full multi-language support.
+
+## Features
+
+- **Large Product Catalog**: Browse a wide selection of clothing and home goods.
+- **Shopping Cart & Favorites**: Items persist in **LocalStorage**.
+- **Recently Viewed & Recommendations**: Personalized suggestions based on your activity.
+- **Search & Breadcrumbs**: Navigate and find products easily.
+- **Multi-language Support**: English and Ukrainian support with **i18n**.
+- **Responsive Design**: Styled with **Tailwind CSS** for modern and mobile-friendly layouts.
+
+## Tech Stack
+
+- **Vue 3 Composition API**
+- **Firebase**
+- **Tailwind CSS**
+- **Vue Router**
+- **LocalStorage**
+- **Slick Slider**
+- **Vercel** (for deployment)
+
+## Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/shopping-ua.git
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Run the development server:
+   ```bash
+   npm run serve
+   ```
+
+## License
+
+This project is licensed under the MIT License.
+
+---
+
+### Topics
+
+`i18n` `firebase` `shopping-cart` `localstorage` `breadcrumbs` `vue-router` `slick-slider` `tailwind` `e-commerce-website` `vue3-composition-api` `recently-viewed-product` `favorite-list`
