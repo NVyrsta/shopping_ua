@@ -45,7 +45,8 @@
     "discount": "знижка",
     "price": "Ціна",
     "oldPrice": "стара ціна",
-    "YouMayBeInterested": "ВАС МОЖЕ ЗАЦІКАВИТИ"
+    "YouMayBeInterested": "ВАС МОЖЕ ЗАЦІКАВИТИ",
+    "CurrentCategories": "Актуальні категорії"
   },
   "Breadcrumbs": {
     "Main": "Головна",

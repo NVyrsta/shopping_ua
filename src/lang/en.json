@@ -45,7 +45,8 @@
     "discount": "discount",
     "price": "Price",
     "oldPrice": "old price",
-    "YouMayBeInterested": "YOU MAY BE INTERESTED"
+    "YouMayBeInterested": "YOU MAY BE INTERESTED",
+    "CurrentCategories": "Current categories"
   },
   "Breadcrumbs": {
     "Main": "Main",
