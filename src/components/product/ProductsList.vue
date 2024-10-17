@@ -83,7 +83,8 @@
         products.value = await fetchSaledProductsByCategory(category);
       } else if (filters.length > 0) {
         products.value = await fetchProductsByCategories(
-          filters[filters.length - 1]
+          filters[filters.length - 1],
+          gender[0]
         );
       } else {
         products.value = await fetchProducts();

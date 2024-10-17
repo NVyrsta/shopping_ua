@@ -20,6 +20,9 @@
   "Main": {
     "SHOESOFUKRAINIANBRANDS": "SHOES OF UKRAINIAN BRANDS",
     "HOMECLOTHES": "HOME CLOTHES",
+    "BESTPRICESONCLOTHING": "BEST PRICES ON CLOTHING",
+    "CHILDRENSTOYS": "CHILDREN'S TOYS",
+    "MAXIMUM_DISCOUNTS": "MAXIMUM DISCOUNTS",
     "AllRightsReserved": "All rights reserved",
     "Back": "Back",
     "YouRecentlyBrowsed": "You recently browsed",
@@ -138,7 +141,8 @@
     "shirts": "Shirts",
     "thermal_underwear": "Thermal underwear",
     "hoodies_and_olympic_jackets": "Hoodies and Olympic jackets",
-    "military_wear": "Military wear"
+    "military_wear": "Military wear",
+    "toys": "Toys"
   },
   "Contacts": {
     "ContactsDescription": "We value every client and value your trust. Therefore, we are ready to quickly solve any of your questions! You can contact our support service using one of the contacts below or by sending us your contact details through the feedback form 'link.'",

@@ -214,7 +214,7 @@ export async function fetchProductByQuery(queryString) {
   }
 }
 
-export async function fetchProductsByCategories(categories) {
+export async function fetchProductsByCategories(categories, gender) {
   try {
     const q = query(
       dbRefGoods,
@@ -224,10 +224,14 @@ export async function fetchProductsByCategories(categories) {
     const querySnapshot = await getDocs(q);
 
     if (!querySnapshot.empty) {
-      const products = querySnapshot.docs.map(doc => ({
+      let products = querySnapshot.docs.map(doc => ({
         id: doc.id,
         ...doc.data()
       }));
+
+      products = products.filter(product =>
+        product.categories.includes(gender)
+      );
 
       return products;
     } else {
