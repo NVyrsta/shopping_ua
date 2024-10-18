@@ -142,7 +142,21 @@
     "thermal_underwear": "Thermal underwear",
     "hoodies_and_olympic_jackets": "Hoodies and Olympic jackets",
     "military_wear": "Military wear",
-    "toys": "Toys"
+    "toys": "Toys",
+    "hair_accessories": "Hair accessories",
+    "headwear": "Headwear",
+    "wallets_and_cardholders": "Wallets and cardholders",
+    "document_covers": "Document covers",
+    "glasses": "Glasses",
+    "gloves_and_mittens": "Gloves and mittens",
+    "scarves_and_shawls": "Scarves and shawls",
+    "belts_and_straps": "Belts and straps",
+    "bags": "Bags",
+    "suitcases_and_travel_bags": "Suitcases and travel bags",
+    "jewelry": "Jewelry",
+    "fine_jewelry": "Fine jewelry",
+    "masks": "Masks",
+    "phone_and_laptop_cases": "Phone and laptop cases"
   },
   "Contacts": {
     "ContactsDescription": "We value every client and value your trust. Therefore, we are ready to quickly solve any of your questions! You can contact our support service using one of the contacts below or by sending us your contact details through the feedback form 'link.'",
