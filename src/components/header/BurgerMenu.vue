@@ -53,27 +53,6 @@
       </router-link>
 
       <GenderRoutes />
-
-      <router-link
-        to="/brands"
-        class="text-xl"
-        active-class="font-bold"
-        @click="isMenuOpen = false"
-      >
-        <span>{{ $t('Breadcrumbs.Brands') }}</span>
-      </router-link>
-
-      <DynamicRoute
-        class="text-xl"
-        link-url="new-products"
-        :link-text="$t('Breadcrumbs.Novelty')"
-      />
-
-      <DynamicRoute
-        class="text-xl"
-        link-url="discount-products"
-        :link-text="$t('Breadcrumbs.discount-products')"
-      />
     </div>
 
     <!-- Desktop Menu -->
@@ -111,7 +90,6 @@
 <script setup>
   import { ref, computed } from 'vue';
   import { useRoute } from 'vue-router';
-  import DynamicRoute from '@/components/header/DynamicRoute.vue';
   import GenderRoutes from '@/components/header/GenderRoutes.vue';
 
   const isMenuOpen = ref(false);

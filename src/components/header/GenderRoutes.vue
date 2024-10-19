@@ -7,6 +7,25 @@
       :link-url="link.url"
       :link-text="$t(link.text)"
     />
+
+    <router-link
+      to="/brands"
+      active-class="font-bold"
+      :class="className || 'underline-effect'"
+    >
+      {{ $t('Breadcrumbs.Brands') }}
+    </router-link>
+
+    <DynamicRoute
+      :class="className"
+      link-url="new-products"
+      :link-text="$t('Breadcrumbs.Novelty')"
+    />
+    <DynamicRoute
+      :class="className"
+      link-url="discount-products"
+      :link-text="$t('Breadcrumbs.discount-products')"
+    />
   </div>
 </template>
 

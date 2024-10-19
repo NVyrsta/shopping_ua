@@ -6,8 +6,11 @@
     }"
   >
     <div class="relative cursor-pointer">
-      <div class="absolute right-2 top-2 z-10 flex space-x-2">
-        <button @click.stop="toggleFavorite">
+      <div class="absolute right-2 top-2 flex space-x-2">
+        <button
+          @click.stop="toggleFavorite"
+          class="z-1"
+        >
           <SvgIcon
             id="favorite"
             width="14"
@@ -172,5 +175,8 @@
       z-index: 11;
       opacity: 0;
     }
+  }
+  .z-1 {
+    z-index: 1;
   }
 </style>
