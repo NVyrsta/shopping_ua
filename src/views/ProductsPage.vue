@@ -4,7 +4,7 @@
 
     <div
       v-if="!hasSearchQuery"
-      class="pb-8"
+      class="py-4"
     >
       <TopBrandsList :limit-count="20" />
 
@@ -24,9 +24,23 @@
       </router-link>
     </div>
 
+    <ProductSnippet
+      v-if="onSaleList.length > 0"
+      :section-title="$t('Breadcrumbs.discount-products')"
+      :products="onSaleList"
+      :watch-all-link="`${route.params.gender}/discount-products`"
+    />
+
     <ProductsList />
 
     <RecentlyViewedProductsList />
+
+    <ProductSnippet
+      v-if="novetlyList.length > 0"
+      :section-title="$t('Breadcrumbs.Novelty')"
+      :products="novetlyList"
+      :watch-all-link="`${route.params.gender}/new-products`"
+    />
 
     <GenderDescriptionBlock />
 
@@ -35,9 +49,12 @@
 </template>
 
 <script setup>
-  import { computed } from 'vue';
+  import { computed, onMounted, ref, watch } from 'vue';
   import { useRoute } from 'vue-router';
-
+  import {
+    fetchNewProductsByCategory,
+    fetchSaledProductsByCategory
+  } from '@/app/core/plugins/firebase';
   import PageLayout from '@/layouts/PageLayout.vue';
   import ProductsList from '@/components/product/ProductsList.vue';
   import PrimaryBannerSlider from '@/components/sliders/PrimaryBannerSlider.vue';
@@ -45,7 +62,27 @@
   import RecentlyViewedProductsList from '@/components/RecentlyViewedProductsList.vue';
   import DiscountBlock from '@/components/blocks/DiscountBlock.vue';
   import GenderDescriptionBlock from '@/components/blocks/GenderDescriptionBlock.vue';
+  import ProductSnippet from '@/components/blocks/ProductSnippet.vue';
 
   const route = useRoute();
+  const novetlyList = ref([]);
+  const onSaleList = ref([]);
+
+  const fetchProducts = async gender => {
+    novetlyList.value = await fetchNewProductsByCategory(gender, 10);
+    onSaleList.value = await fetchSaledProductsByCategory(gender, 10);
+  };
+
+  onMounted(async () => {
+    await fetchProducts(route.params.gender);
+  });
+
+  watch(
+    () => route.params.gender,
+    async newGender => {
+      await fetchProducts(newGender);
+    }
+  );
+
   const hasSearchQuery = computed(() => !!route.query.search);
 </script>

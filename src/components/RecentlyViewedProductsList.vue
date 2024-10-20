@@ -1,5 +1,8 @@
 <template>
-  <div v-if="products.length > 0 && !isLoading">
+  <div
+    v-if="products.length > 0 && !isLoading"
+    class="py-4"
+  >
     <SectionSeparator :title="$t('Main.YouRecentlyBrowsed')" />
 
     <SkeletonLoading

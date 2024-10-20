@@ -1,7 +1,6 @@
 <template>
   <carousel
     :items-to-show="1"
-    :autoplay="2000"
     wrap-around
   >
     <slide
@@ -35,6 +34,7 @@
 
 <style lang="scss" scoped>
   .carousel::v-deep {
+    align-self: stretch;
     .carousel__prev {
       background: white;
     }
@@ -58,6 +58,23 @@
 
     & .carousel__pagination-button.carousel__pagination-button--active::after {
       background: #f75d5d;
+    }
+
+    & .carousel__viewport,
+    & .carousel__track {
+      width: 100%;
+      height: 100%;
+    }
+
+    & .carousel__slide {
+      width: 100%;
+      height: 100%;
+    }
+
+    & .carousel__slide img,
+    & .carousel__slide video {
+      height: 100%;
+      object-fit: cover;
     }
   }
 </style>

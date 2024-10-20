@@ -3,7 +3,7 @@
     <SectionSeparator :title="$t('Breadcrumbs.' + gender)" />
     <div
       v-html="$t('Gender.' + gender)"
-      class="px-10 py-10"
+      class="px-2 py-10 sm:px-24"
     />
   </div>
 </template>

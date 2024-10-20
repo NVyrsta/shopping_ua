@@ -2,7 +2,7 @@
   <div
     class="grid grid-cols-1 gap-2 px-4 py-12 lg:grid-cols-[2fr_1fr] lg:gap-2"
   >
-    <div>
+    <div class="flex">
       <SlickSlider :slides="slides" />
     </div>
 

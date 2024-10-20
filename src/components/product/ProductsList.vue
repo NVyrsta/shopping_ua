@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="py-4">
     <SkeletonLoading
       :is-loading="isLoading"
       :number-of-skeletons="5"
@@ -7,7 +7,7 @@
 
     <div
       v-if="products.length > 0 && !isLoading"
-      class="grid grid-cols-2 gap-2 px-2 py-5 sm:grid-cols-3 sm:px-10 md:grid-cols-4 lg:grid-cols-5"
+      class="grid grid-cols-2 gap-2 px-2 sm:grid-cols-3 sm:px-10 md:grid-cols-4 lg:grid-cols-5"
     >
       <ProductCard
         v-for="(product, index) in products"

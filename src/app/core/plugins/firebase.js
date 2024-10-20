@@ -265,7 +265,7 @@ export async function fetchProductsByBrand(brandID) {
   }
 }
 
-export async function fetchNewProductsByCategory(category) {
+export async function fetchNewProductsByCategory(category, limitCount = null) {
   try {
     const currentDate = new Date();
     const twoWeeksAgo = new Date(
@@ -274,11 +274,22 @@ export async function fetchNewProductsByCategory(category) {
 
     const timestamp = Timestamp.fromDate(twoWeeksAgo);
 
-    const q = query(
-      dbRefGoods,
-      where('categories', 'array-contains', category),
-      where('date', '>', timestamp)
-    );
+    let q;
+
+    if (limitCount) {
+      q = query(
+        dbRefGoods,
+        where('categories', 'array-contains', category),
+        where('date', '>', timestamp),
+        limit(limitCount)
+      );
+    } else {
+      q = query(
+        dbRefGoods,
+        where('categories', 'array-contains', category),
+        where('date', '>', timestamp)
+      );
+    }
 
     const querySnapshot = await getDocs(q);
 
@@ -298,13 +309,26 @@ export async function fetchNewProductsByCategory(category) {
   }
 }
 
-export async function fetchSaledProductsByCategory(category) {
+export async function fetchSaledProductsByCategory(
+  category,
+  limitCount = null
+) {
   try {
-    const q = query(
-      dbRefGoods,
-      where('categories', 'array-contains', category),
-      where('isDiscounted', '==', true)
-    );
+    let q;
+    if (limitCount) {
+      q = query(
+        dbRefGoods,
+        where('categories', 'array-contains', category),
+        where('isDiscounted', '==', true),
+        limit(limitCount)
+      );
+    } else {
+      q = query(
+        dbRefGoods,
+        where('categories', 'array-contains', category),
+        where('isDiscounted', '==', true)
+      );
+    }
 
     const querySnapshot = await getDocs(q);
 
