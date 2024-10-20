@@ -4,7 +4,7 @@
 
     <FooterNavbar />
 
-    <div class="flex items-center justify-start gap-2 p-4">
+    <div class="content-wrapper flex items-center justify-start gap-2 p-4">
       <img
         src="https://shopping.ua/static/media/visa.d4b7abe5042cf749b1794d91d31b8e58.svg"
         alt="Visa"

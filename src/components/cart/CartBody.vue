@@ -1,5 +1,5 @@
 <template>
-  <div class="px-6 py-8">
+  <div class="content-wrapper px-6 py-8">
     <SectionSeparator :title="$t('Header.Cart')" />
 
     <EmptyComponent

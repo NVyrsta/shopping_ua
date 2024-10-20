@@ -1,12 +1,12 @@
 <template>
   <div class="flex min-h-screen flex-col">
     <HeaderLayout />
-
     <ProductSearch />
-
-    <main class="flex-1">
-      <slot />
-    </main>
+    <div class="content-wrapper">
+      <main class="flex-1">
+        <slot />
+      </main>
+    </div>
 
     <footer>
       <FooterLayout />

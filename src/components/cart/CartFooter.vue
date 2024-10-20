@@ -1,27 +1,29 @@
 <script setup></script>
 
 <template>
-  <div class="banner flex items-center justify-between gap-2">
-    <div class="flex-1">
-      <span class="text-xs">
-        {{ new Date().getFullYear() }}. {{ $t('Main.AllRightsReserved') }}
-      </span>
-    </div>
+  <div class="banner">
+    <div class="content-wrapper flex items-center justify-between gap-2">
+      <div class="flex-1">
+        <span class="text-xs">
+          {{ new Date().getFullYear() }}. {{ $t('Main.AllRightsReserved') }}
+        </span>
+      </div>
 
-    <div class="flex-1">
-      <router-link
-        to="/"
-        class="flex items-center justify-center"
-      >
-        <img
-          src="@/assets/img/logo-light-bg.png"
-          alt="Shopping UA"
-          class="h-[28px] w-[86px] md:h-[38px] md:w-[114px]"
-        />
-      </router-link>
-    </div>
+      <div class="flex-1">
+        <router-link
+          to="/"
+          class="flex items-center justify-center"
+        >
+          <img
+            src="@/assets/img/logo-light-bg.png"
+            alt="Shopping UA"
+            class="h-[28px] w-[86px] md:h-[38px] md:w-[114px]"
+          />
+        </router-link>
+      </div>
 
-    <div class="flex-1" />
+      <div class="flex-1" />
+    </div>
   </div>
 </template>
 

@@ -1,7 +1,7 @@
 <template>
   <div class="bg-white px-4 py-12 shadow-[0px_-4px_10px_0px_rgba(0,0,0,0.1)]">
     <div
-      class="flex flex-wrap items-center justify-between gap-6 py-1 text-center"
+      class="content-wrapper flex flex-wrap items-center justify-between gap-6 py-1 text-center"
     >
       <div
         class="flex w-full flex-col items-center justify-center gap-2 text-center sm:w-fit"

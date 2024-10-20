@@ -6,7 +6,7 @@
     }"
   >
     <div
-      class="relative z-10 flex items-center justify-between bg-transparent py-1"
+      class="content-wrapper relative z-10 flex items-center justify-between bg-transparent py-1"
     >
       <BurgerMenu />
 

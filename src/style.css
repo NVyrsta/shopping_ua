@@ -7,7 +7,12 @@ body {
   color: #3f3f3f;
   overflow-x: hidden;
   margin: 0 auto;
+}
+
+.content-wrapper {
   max-width: 1920px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .underline-effect {
