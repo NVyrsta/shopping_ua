@@ -1,6 +1,7 @@
 <template>
   <carousel
     :items-to-show="1"
+    :autoplay="3000"
     wrap-around
   >
     <slide
