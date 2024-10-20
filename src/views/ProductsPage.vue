@@ -25,7 +25,7 @@
     </div>
 
     <ProductSnippet
-      v-if="onSaleList.length > 0"
+      v-if="onSaleList.length > 0 && !hasSearchQuery"
       :section-title="$t('Breadcrumbs.discount-products')"
       :products="onSaleList"
       :watch-all-link="`${route.params.gender}/discount-products`"
@@ -33,16 +33,14 @@
 
     <ProductsList />
 
-    <RecentlyViewedProductsList />
-
     <ProductSnippet
-      v-if="novetlyList.length > 0"
+      v-if="novetlyList.length > 0 && !hasSearchQuery"
       :section-title="$t('Breadcrumbs.Novelty')"
       :products="novetlyList"
       :watch-all-link="`${route.params.gender}/new-products`"
     />
 
-    <GenderDescriptionBlock />
+    <GenderDescriptionBlock v-if="!hasSearchQuery" />
 
     <DiscountBlock />
   </PageLayout>
@@ -59,7 +57,6 @@
   import ProductsList from '@/components/product/ProductsList.vue';
   import PrimaryBannerSlider from '@/components/sliders/PrimaryBannerSlider.vue';
   import TopBrandsList from '@/components/brands/TopBrandsList.vue';
-  import RecentlyViewedProductsList from '@/components/RecentlyViewedProductsList.vue';
   import DiscountBlock from '@/components/blocks/DiscountBlock.vue';
   import GenderDescriptionBlock from '@/components/blocks/GenderDescriptionBlock.vue';
   import ProductSnippet from '@/components/blocks/ProductSnippet.vue';

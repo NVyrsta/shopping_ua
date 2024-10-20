@@ -32,6 +32,7 @@
   }
 
   .h-500 {
-    height: 420px;
+    height: 400px;
+    max-height: 400px;
   }
 </style>
