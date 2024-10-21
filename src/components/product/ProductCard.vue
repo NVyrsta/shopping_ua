@@ -27,26 +27,24 @@
       />
 
       <div
-        v-if="isWithinLastTwoWeeks"
-        class="absolute left-0 top-0"
+        class="absolute left-0 top-0 flex flex-col items-start justify-start gap-1"
       >
         <span
-          class="w-[50px] bg-[#9baef0] px-2 py-1 text-xs leading-[10px] tracking-wider text-white"
+          v-if="isWithinLastTwoWeeks"
+          class="bg-[#9baef0] px-2 py-1 text-xs leading-[10px] tracking-wider text-white"
         >
           {{ $t('Main.Novelty') }}
         </span>
-      </div>
 
-      <div
-        v-if="product.isDiscounted && !isWithinLastTwoWeeks"
-        class="absolute left-0 top-0"
-      >
         <span
-          class="w-[50px] bg-[#ee4a2e] px-2 py-1 text-xs capitalize leading-[10px] tracking-wider text-white"
+          v-if="product.isDiscounted"
+          class="bg-[#ee4a2e] px-2 py-1 text-xs capitalize leading-[10px] tracking-wider text-white"
         >
           {{ $t('Main.discount') }}
         </span>
       </div>
+
+      <div class="absolute left-0 top-0"></div>
     </div>
 
     <div class="p-4">
