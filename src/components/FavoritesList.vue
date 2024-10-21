@@ -29,7 +29,7 @@
 
 <script setup>
   import { ref, onMounted, onUnmounted, inject, watch } from 'vue';
-  import { fetchFavoritesProducts } from '@/app/core/plugins/firebase';
+  import { fetchFavoritesProducts } from '@/app/services/productsService.js';
   import { useI18n } from 'vue-i18n';
 
   import ProductCard from '@/components/product/ProductCard.vue';

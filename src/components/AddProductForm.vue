@@ -234,7 +234,8 @@
 
 <script setup>
   import { ref, onMounted, computed } from 'vue';
-  import { addProduct, fetchCategoriesList } from '@/app/core/plugins/firebase';
+  import { fetchCategoriesList } from '@/app/services/categoriesService.js';
+  import { addProduct } from '@/app/services/adminService.js';
 
   const categoriesCatalog = ref([]);
 

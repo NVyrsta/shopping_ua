@@ -21,7 +21,7 @@
 
 <script setup>
   import { ref, onMounted, onUnmounted, watch, inject } from 'vue';
-  import { fetchProductsByIds } from '@/app/core/plugins/firebase';
+  import { fetchProductsByIds } from '@/app/services/productsService.js';
   import { useI18n } from 'vue-i18n';
 
   import SkeletonLoading from '@/components/SkeletonLoading.vue';

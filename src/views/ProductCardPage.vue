@@ -39,10 +39,9 @@
 <script setup>
   import { ref, onMounted, watch } from 'vue';
   import { useRoute } from 'vue-router';
-  import {
-    fetchProductById,
-    fetchBrandById
-  } from '@/app/core/plugins/firebase.js';
+  import { fetchBrandById } from '@/app/services/brandsService.js';
+
+  import { fetchProductById } from '@/app/services/productsService.js';
 
   import ProductPageSlider from '@/components/sliders/ProductPageSlider.vue';
   import ProductCardDescription from '@/components/product/ProductCardDescription.vue';

@@ -46,7 +46,7 @@
   import { ref, onMounted } from 'vue';
   import { useRoute } from 'vue-router';
   import { useI18n } from 'vue-i18n';
-  import { fetchBrandById } from '@/app/core/plugins/firebase.js';
+  import { fetchBrandById } from '@/app/services/brandsService.js';
   import PageLayout from '@/layouts/PageLayout.vue';
   import SectionSeparator from '@/components/elements/SectionSeparator.vue';
   import SpinnerLoading from '@/components/elements/SpinnerLoading.vue';

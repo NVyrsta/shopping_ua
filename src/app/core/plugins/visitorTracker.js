@@ -1,9 +1,9 @@
 import { ref } from 'vue';
 import {
   addVisitorId,
-  fetchVisitorByIpHash,
-  fetchVisitorsCount
-} from '@/app/core/plugins/firebase';
+  fetchVisitorsCount,
+  fetchVisitorByIpHash
+} from '@/app/services/visitorsService';
 import CryptoJS from 'crypto-js';
 
 const uniqueVisitors = ref(0);
@@ -14,7 +14,9 @@ const getHashedIP = ip => {
 
 const trackVisitor = async visitorIP => {
   const visitorHash = getHashedIP(visitorIP);
+
   const existingVisitor = await fetchVisitorByIpHash(visitorHash);
+
   if (!existingVisitor) {
     await addVisitorId(visitorHash);
   }

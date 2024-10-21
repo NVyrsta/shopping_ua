@@ -135,7 +135,7 @@
 
 <script setup>
   import { ref, onMounted } from 'vue';
-  import { fetchBrands } from '@/app/core/plugins/firebase';
+  import { fetchBrands } from '@/app/services/brandsService.js';
   import SectionSeparator from '@/components/elements/SectionSeparator.vue';
 
   const props = defineProps({

@@ -23,7 +23,7 @@
   import { ref, onMounted, watch } from 'vue';
   import { useI18n } from 'vue-i18n';
 
-  import { fetchByCategory } from '@/app/core/plugins/firebase.js';
+  import { fetchByCategory } from '@/app/services/productsService.js';
 
   import SkeletonLoading from '@/components/SkeletonLoading.vue';
   import SectionSeparator from '@/components/elements/SectionSeparator.vue';

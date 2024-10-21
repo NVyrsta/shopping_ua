@@ -29,14 +29,14 @@
 <script setup>
   import { ref, onMounted, watch, computed } from 'vue';
   import {
+    fetchProductsByCategories,
     fetchProducts,
     fetchProductByQuery,
-    fetchProductsByCategories,
-    fetchProductsByBrand,
-    fetchBrandById,
     fetchNewProductsByCategory,
-    fetchSaledProductsByCategory
-  } from '@/app/core/plugins/firebase';
+    fetchSaledProductsByCategory,
+    fetchProductsByBrand
+  } from '@/app/services/productsService.js';
+  import { fetchBrandById } from '@/app/services/brandsService.js';
   import { useI18n } from 'vue-i18n';
   import { useRoute } from 'vue-router';
 

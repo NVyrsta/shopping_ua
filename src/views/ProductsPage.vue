@@ -52,7 +52,7 @@
   import {
     fetchNewProductsByCategory,
     fetchSaledProductsByCategory
-  } from '@/app/core/plugins/firebase';
+  } from '@/app/services/productsService.js';
   import PageLayout from '@/layouts/PageLayout.vue';
   import ProductsList from '@/components/product/ProductsList.vue';
   import PrimaryBannerSlider from '@/components/sliders/PrimaryBannerSlider.vue';
