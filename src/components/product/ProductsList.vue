@@ -5,6 +5,13 @@
       :number-of-skeletons="5"
     />
 
+    <div>
+      <SingleSelect
+        v-if="hasSorting"
+        :options="['За зростанням ціни', 'За спаданням ціни']"
+      />
+    </div>
+
     <div
       v-if="products.length > 0 && !isLoading"
       class="grid grid-cols-2 gap-2 px-2 sm:grid-cols-3 sm:px-10 md:grid-cols-4 lg:grid-cols-5"
@@ -44,6 +51,7 @@
   import NotFoundComponent from '@/components/empty/NotFoundComponent.vue';
   import EmptySearch from '@/components/empty/EmptySearch.vue';
   import SkeletonLoading from '@/components/SkeletonLoading.vue';
+  import SingleSelect from '@/components/elements/SingleSelect.vue';
 
   const { locale } = useI18n();
   const route = useRoute();
@@ -51,6 +59,13 @@
   const products = ref([]);
   const isLoading = ref(false);
   const hasSearchQuery = computed(() => !!route.query.search);
+
+  defineProps({
+    hasSorting: {
+      type: Boolean,
+      default: false
+    }
+  });
 
   const loadProducts = async () => {
     isLoading.value = true;

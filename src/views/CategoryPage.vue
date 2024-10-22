@@ -4,7 +4,7 @@
 
     <SectionSeparator :title="$t('Breadcrumbs.' + categoryName)" />
 
-    <ProductsList />
+    <ProductsList has-sorting />
     <DiscountBlock />
   </PageLayout>
 </template>
